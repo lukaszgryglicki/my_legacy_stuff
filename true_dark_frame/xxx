@@ -1,0 +1,29 @@
+I've converted DSLR camera into monochrome one (removed bayer pattern RGBR patter from sensor), also removed IR-cut filter. So camera sees UV, IR & visible light in monochrome.
+But its software knows nothign about that, so to have a correct images I must process them by my program tif_mp.c to produce monochrome image.
+So this is basically a RAW processing algorithm that is skipping demosaic (producing color from 2x2 RGBR pixels and interpolating value).
+This read RAW in multiple threads (each thread processes its own line using one CPU), extracts data from RAW, applies gamma curve and saves as TIFF.
+Compilation on Unix-like system (macOS, FreeBSD, Linux works, when TIFF library is present):
+cc -pthread -Wall -ansi -pedantic -O3 -I/usr/local/include -L/usr/local/lib -o tdf_mp tdf_mp.c -ltiff -lm
+
+2006-2011: PowerBuilder, C++, Oracle, Sybase, Informix
+2011-2012: Polar expedition, shell scripts, C
+2012-2013: LAMP (Apache, Linux, PHP, Mysql, Javascript, AJAX)
+2013-2014: PowerBuilder, Sybase ASA, stored procedures, 
+2014-2015: LAMP (one project), Python + ODOO (2nd project)
+2015-2017: Ruby on Rails (senior developer), rspec, cucumber, JavaScript
+
+Hi, I'm interesed in working for You.
+I got this offer from: 
+I'm currently working as senior rails developer at Spreemo (since 2015).
+We successfully developed and deployed health care web application and my contract ends in 30 days.
+I have a big experience with newest rails and also test frameworks like cucumber, rspec, AWS (Amazon Web Services - used a lot in our code).
+We've been using waffle.io as task organizer, and countinuous integration circleCI.
+Our repo is a provate github repository.
+Our app have >95% test coverage including model specs, controller specs, rspec and cucumber feature tests, headless chromedriver to test scenarios etc etc.
+I'm also familiar with many other programming languages as well as SQL databases: mysql, PostrgreSQL, Oracle etc.
+We've been workign using daily scrums.
+
+I can only work remotely from Poland, starting even from tomorrow.
+I'm attaching my resume.
+
+Best Regards.
