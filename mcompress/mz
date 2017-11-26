@@ -1,0 +1,4 @@
+#!/bin/sh
+echo 'usage: mz [-c|-u] file.in file.out'
+mcompressf -b 16 -p 432513 $1 -i $2 -o $3
+

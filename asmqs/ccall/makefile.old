@@ -1,0 +1,22 @@
+all: qsortasm gas
+qsortasm: qsortasm.o link.o
+	g++ -g3 -o qsortasm qsortasm.o link.o
+gas: gas.o link.o
+	g++ -o gas gas.o link.o
+	strip -S gas
+	strip -s gas
+	strip -x gas
+	strip -X gas
+	strip -R .sbss gas
+	strip -R .ident gas
+	strip -R .comment gas
+	strip --strip-unneeded gas
+qsortasm.o: qsortasm.s
+	nasm -f elf -g -o qsortasm.o qsortasm.s
+gas.o: gas.s
+	as -o gas.o gas.s
+link.o: link.c
+	g++ -g3 -c link.c
+clean:
+	-rm -rf *.o qsortasm
+

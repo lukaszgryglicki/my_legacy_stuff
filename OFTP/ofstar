@@ -1,0 +1,3 @@
+#!/bin/sh
+/data/bin/oftpc -n -s starlight -a 3 $*
+

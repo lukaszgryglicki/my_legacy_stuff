@@ -1,0 +1,19 @@
+#!/bin/sh
+make
+> diff_res
+echo "args: file pwd bsize"
+for i in 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 
+do
+	echo "COMPRESSING $i. . ."
+	echo "./mcompressf -b $i -p $2 -c -i $1 -o $1.cod -d 0 -s $3"
+	./mcompressf -b $i -p $2 -c -i $1 -o $1.cod -d 0 -s $3
+	echo "DECOMPRESSING $i. . ."
+	echo "./mcompressf -b $i -p $2 -u -i $1.cod -o $1.dec -d 0"
+	./mcompressf -b $i -p $2 -u -i $1.cod -o $1.dec -d 0
+	echo "COMPARE $i. . ."
+	echo "COMPARE $i" >> diff_res
+	diff $1 $1.dec >> diff_res
+done
+echo 'DONE TESTS.'
+cat diff_res
+

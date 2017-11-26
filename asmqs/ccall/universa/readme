@@ -1,0 +1,5 @@
+universal qsorts all types with external func
+qsortasm(void*, int (*)(const void*, const void*), uint, uint)
+function can be given as NULL, then qsort will use default
+ASM_COMPARE_STRINGS (quite fast) uses lodsb & xchg
+

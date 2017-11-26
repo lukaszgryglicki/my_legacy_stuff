@@ -1,0 +1,18 @@
+Kill_random	smath.c	/^void Kill_random()  \/* close random seed *\/$/
+Msmath	smath.c	/^int main(int lb, char** par)$/
+Random	smath.c	/^int Random(int lb)   \/* randomize number from 0 t/
+Randomize	smath.c	/^int Randomize()   \/* init random engine *\/$/
+SADD	smath.c	/^char* SADD(const char* p1, const char* p2)$/
+SMUL	smath.c	/^char* SMUL(const char* p1, const char* p2)$/
+SSUB	smath.c	/^char* SSUB(const char* p1, const char* p2) \/* p1=/
+atos	smath.c	/^char* atos(int a)$/
+c2i	smath.c	/^int c2i(char arg)$/
+i2c	smath.c	/^char i2c(int arg)$/
+test	smath.c	/^void test()$/
+test2	smath.c	/^void test2()$/
+test3	smath.c	/^void test3()$/
+test4	smath.c	/^void test4()$/
+test5	smath.c	/^void test5()$/
+test6	smath.c	/^void test6()$/
+test7	smath.c	/^void test7()$/
+test_MUL	smath.c	/^int test_MUL(int a, int b)$/

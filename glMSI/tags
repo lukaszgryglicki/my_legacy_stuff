@@ -1,0 +1,165 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.3.1	//
+DEBUGALG	cpu4.c	9;"	d	file:
+Debug	cpu4.c	/^int Debug(char* fmt, ...)  \/* print out DEBUG information if DEBUG defined *\/$/;"	f
+Debug	msi4.c	/^int Debug(char* fmt, ...)  \/* print out DEBUG information if DEBUG defined *\/$/;"	f
+DrawScene	cpu4.c	/^void DrawScene(int isBlack)	\/* Rysuje cala scene *\/$/;"	f
+DrawScene	msi4.c	/^void DrawScene(int isBlack)	\/* Rysuje cala scene *\/$/;"	f
+Early	cpu4.c	/^void Early()$/;"	f
+Early	msi4.c	/^void Early()$/;"	f
+Kill_random	cpu4.c	/^void Kill_random()  \/* close random seed *\/$/;"	f
+Kill_random	msi4.c	/^void Kill_random()  \/* close random seed *\/$/;"	f
+MAXZ	cpu4.c	17;"	d	file:
+MAXZ	msi4.c	15;"	d	file:
+NFLOATS	cpu4.c	20;"	d	file:
+NFLOATS	msi4.c	18;"	d	file:
+NLINES	cpu4.c	19;"	d	file:
+NLINES	msi4.c	17;"	d	file:
+NPOINTS	cpu4.c	21;"	d	file:
+NPOINTS	msi4.c	19;"	d	file:
+Random	cpu4.c	/^int Random(int lb)   \/* randomize number from 0 to lb-1 *\/$/;"	f
+Random	msi4.c	/^int Random(int lb)   \/* randomize number from 0 to lb-1 *\/$/;"	f
+Randomize	cpu4.c	/^int Randomize()   \/* init random engine *\/$/;"	f
+Randomize	msi4.c	/^int Randomize()   \/* init random engine *\/$/;"	f
+START_AX	cpu4.c	10;"	d	file:
+START_AX	msi4.c	8;"	d	file:
+START_AY	cpu4.c	11;"	d	file:
+START_AY	msi4.c	9;"	d	file:
+START_AZ	cpu4.c	12;"	d	file:
+START_AZ	msi4.c	10;"	d	file:
+START_DX	cpu4.c	15;"	d	file:
+START_DX	msi4.c	13;"	d	file:
+START_DY	cpu4.c	14;"	d	file:
+START_DY	msi4.c	12;"	d	file:
+START_DZ	cpu4.c	13;"	d	file:
+START_DZ	msi4.c	11;"	d	file:
+UNIX	cpu4.c	8;"	d	file:
+UNIX	msi4.c	7;"	d	file:
+X_PERSP	cpu4.c	18;"	d	file:
+X_PERSP	msi4.c	16;"	d	file:
+_ran_device	cpu4.c	/^static FILE* _ran_device;		\/* where to grt random values *\/$/;"	v	file:
+_ran_device	msi4.c	/^static FILE* _ran_device;		\/* where to get random values *\/$/;"	v	file:
+angle_x	cpu4.c	/^static int angle_x = START_AX;		\/*rotations*\/$/;"	v	file:
+angle_x	msi4.c	/^static int angle_x = START_AX;		\/*rotations*\/$/;"	v	file:
+angle_y	cpu4.c	/^static int angle_y = START_AY;$/;"	v	file:
+angle_y	msi4.c	/^static int angle_y = START_AY;$/;"	v	file:
+angle_z	cpu4.c	/^static int angle_z = START_AZ;$/;"	v	file:
+angle_z	msi4.c	/^static int angle_z = START_AZ;$/;"	v	file:
+anim	cpu4.c	/^void anim(void)$/;"	f
+anim	msi4.c	/^void anim(void)$/;"	f
+board	cpu4.c	/^static int board[64];			\/* board 0-empty, 1-human, 2-CPU *\/$/;"	v	file:
+board	msi4.c	/^static int board[64];			\/* board 0-empty, 1-human, 2-CPU *\/$/;"	v	file:
+board_lines	cpu4.c	/^float board_lines[NFLOATS] =$/;"	v
+board_lines	msi4.c	/^GLdouble board_lines[NFLOATS] =$/;"	v
+board_lines_buff	cpu4.c	/^float board_lines_buff[NFLOATS]; \/* size 6 X 12 *\/$/;"	v
+board_lines_buff	msi4.c	/^GLdouble board_lines_buff[NFLOATS]; \/* size 6 X 12 *\/$/;"	v
+check_angles	cpu4.c	/^void check_angles()			\/* czy wszystkie dane sa sensowne ? *\/$/;"	f
+check_angles	msi4.c	/^void check_angles()			\/* czy wszystkie dane sa sensowne ? *\/$/;"	f
+check_draw	cpu4.c	/^int check_draw(int* h1, int* h2, int n)$/;"	f
+check_draw	msi4.c	/^int check_draw(int* h1, int* h2, int n)$/;"	f
+check_full	cpu4.c	/^void check_full()$/;"	f
+check_full	msi4.c	/^void check_full()$/;"	f
+clear_board	cpu4.c	/^void clear_board()$/;"	f
+clear_board	msi4.c	/^void clear_board()$/;"	f
+copy_buffers	cpu4.c	/^void copy_buffers() \/*create dat buffer, once on init*\/$/;"	f
+copy_buffers	msi4.c	/^void copy_buffers() \/*create dat buffer, once on init*\/$/;"	f
+copy_from_buffers	cpu4.c	/^void copy_from_buffers()		 \/*set start values before another transformation*\/$/;"	f
+copy_from_buffers	msi4.c	/^void copy_from_buffers()		 \/*set start values before another transformation*\/$/;"	f
+cosines	cpu4.c	/^static float cosines[360];$/;"	v	file:
+cosines	msi4.c	/^static GLdouble cosines[360];$/;"	v	file:
+cpu1_turn	cpu4.c	/^static int cpu1_turn=1;$/;"	v	file:
+cpu1_wins	cpu4.c	/^static int cpu1_wins=0;$/;"	v	file:
+cpu2_wins	cpu4.c	/^static int cpu2_wins=0;$/;"	v	file:
+cpu_msi_move	cpu4.c	/^void cpu_msi_move(int player)$/;"	f
+cpu_msi_move	msi4.c	/^void cpu_msi_move()$/;"	f
+cpu_wins	msi4.c	/^static int cpu_wins=0;$/;"	v	file:
+cx	cpu4.c	/^static int cx = 600;			\/* window sizes *\/$/;"	v	file:
+cx	msi4.c	/^static int cx = 600;			\/* window sizes *\/$/;"	v	file:
+cy	cpu4.c	/^static int cy = 450;$/;"	v	file:
+cy	msi4.c	/^static int cy = 600;$/;"	v	file:
+debug	cpu4.c	/^int debug(char* fmt, ...)  \/* print out DEBUG information if DEBUG defined *\/$/;"	f
+debug	msi4.c	/^int debug(char* fmt, ...)  \/* print out DEBUG information if DEBUG defined *\/$/;"	f
+delta_x	cpu4.c	/^static float delta_x=0.0;$/;"	v	file:
+delta_x	msi4.c	/^static GLdouble delta_x=0.0;$/;"	v	file:
+delta_y	cpu4.c	/^static float delta_y=0.0;$/;"	v	file:
+delta_y	msi4.c	/^static GLdouble delta_y=0.0;$/;"	v	file:
+delta_z	cpu4.c	/^static float delta_z=0.0;$/;"	v	file:
+delta_z	msi4.c	/^static GLdouble delta_z=0.0;$/;"	v	file:
+draw	cpu4.c	/^void draw()$/;"	f
+draw	msi4.c	/^void draw()$/;"	f
+draw_2D_field	cpu4.c	/^void draw_2D_field(int x, int y, int col, int sel)$/;"	f
+draw_2D_field	msi4.c	/^void draw_2D_field(int x, int y, int col, int sel)$/;"	f
+draw_2D_objects	cpu4.c	/^void draw_2D_objects()			\/* draw 2D objects *\/$/;"	f
+draw_2D_objects	msi4.c	/^void draw_2D_objects()			\/* draw 2D objects *\/$/;"	f
+end_cond	cpu4.c	/^static int end_cond = 0;		\/* CPU win or lost currently *\/$/;"	v	file:
+end_cond	msi4.c	/^static int end_cond = 0;		\/* CPU win or lost currently *\/$/;"	v	file:
+forseen_best_move	cpu4.c	/^int forseen_best_move(int h1, int h2, int h3, int h4, int cpu, int opp)$/;"	f
+forseen_best_move	msi4.c	/^int forseen_best_move(int h1, int h2, int h3, int h4, int cpu, int opp)$/;"	f
+fps	cpu4.c	/^static int fps = 0;$/;"	v	file:
+fps	msi4.c	/^static int fps = 0;$/;"	v	file:
+get_2D_selected_pos	cpu4.c	/^void get_2D_selected_pos(int* dx, int *dy) \/* selected to 2D output screen *\/$/;"	f
+get_2D_selected_pos	msi4.c	/^void get_2D_selected_pos(int* dx, int *dy) \/* selected to 2D output screen *\/$/;"	f
+get_3D_selected_pos	cpu4.c	/^void get_3D_selected_pos(float* dx, float* dy, float* dz)$/;"	f
+get_3D_selected_pos	msi4.c	/^void get_3D_selected_pos(GLdouble* dx, GLdouble* dy, GLdouble* dz)$/;"	f
+get_at	cpu4.c	/^int get_at(int x, int y, int z)$/;"	f
+get_at	msi4.c	/^int get_at(int x, int y, int z)$/;"	f
+get_current_heuristics	cpu4.c	/^int get_current_heuristics(int* h1, int* h2, int* h3, int* h4, int cpu, int opp)$/;"	f
+get_current_heuristics	msi4.c	/^int get_current_heuristics(int* h1, int* h2, int* h3, int* h4, int cpu, int opp)$/;"	f
+half_arc	cpu4.c	16;"	d	file:
+half_arc	msi4.c	14;"	d	file:
+halt	msi4.c	/^static int halt=0;$/;"	v	file:
+halt_btx	msi4.c	/^void halt_btx()$/;"	f
+help	cpu4.c	/^void help()$/;"	f
+help	msi4.c	/^void help()$/;"	f
+heuristic_count_moves_to_win	cpu4.c	/^int heuristic_count_moves_to_win(int player)$/;"	f
+heuristic_count_moves_to_win	msi4.c	/^int heuristic_count_moves_to_win(int player)$/;"	f
+heuristic_count_ways_to_win	cpu4.c	/^int heuristic_count_ways_to_win(int player)$/;"	f
+heuristic_count_ways_to_win	msi4.c	/^int heuristic_count_ways_to_win(int player)$/;"	f
+hum_wins	msi4.c	/^static int hum_wins=0;$/;"	v	file:
+hx	cpu4.c	/^static int hx = 300;$/;"	v	file:
+hx	msi4.c	/^static int hx = 300;$/;"	v	file:
+hy	cpu4.c	/^static int hy = 225;$/;"	v	file:
+hy	msi4.c	/^static int hy = 300;$/;"	v	file:
+init	cpu4.c	/^void init() \/*create sine\/cosine tables and board*\/$/;"	f
+init	msi4.c	/^void init() \/*create sine\/cosine tables and board*\/$/;"	f
+keyboard	cpu4.c	/^void keyboard(unsigned char key, int x, int y)$/;"	f
+keyboard	msi4.c	/^void keyboard(unsigned char key, int x, int y)$/;"	f
+main	cpu4.c	/^int main(int lb, char** par)$/;"	f
+main	msi4.c	/^int main(int lb, char** par)$/;"	f
+move_x	cpu4.c	/^void move_x(int arg) \/* move selected +\/- X *\/$/;"	f
+move_x	msi4.c	/^void move_x(int arg) \/* move selected +\/- X *\/$/;"	f
+move_y	cpu4.c	/^void move_y(int arg) \/* move selected +\/- Y *\/$/;"	f
+move_y	msi4.c	/^void move_y(int arg) \/* move selected +\/- Y *\/$/;"	f
+move_z	cpu4.c	/^void move_z(int arg) \/* move selected +\/- Z *\/$/;"	f
+move_z	msi4.c	/^void move_z(int arg) \/* move selected +\/- Z *\/$/;"	f
+perspective	cpu4.c	/^static float perspective = 0.;		\/* perspective *\/$/;"	v	file:
+perspective	msi4.c	/^static GLdouble perspective = 0.;		\/* perspective *\/$/;"	v	file:
+render_scene	cpu4.c	/^void render_scene()$/;"	f
+render_scene	msi4.c	/^void render_scene()$/;"	f
+resize_scene	cpu4.c	/^void resize_scene(int w, int h)$/;"	f
+resize_scene	msi4.c	/^void resize_scene(int w, int h)$/;"	f
+selected	cpu4.c	/^static int selected = 0;		\/* AKTUALNIE ZAZNACZONE POLE *\/$/;"	v	file:
+selected	msi4.c	/^static int selected = 0;		\/* AKTUALNIE ZAZNACZONE POLE *\/$/;"	v	file:
+set_at	cpu4.c	/^void set_at(int x, int y, int z, int value)$/;"	f
+set_at	msi4.c	/^void set_at(int x, int y, int z, int value)$/;"	f
+sines	cpu4.c	/^static float sines[360];		\/*tables of function values*\/$/;"	v	file:
+sines	msi4.c	/^static GLdouble sines[360];		\/*tables of function values*\/$/;"	v	file:
+stats	cpu4.c	/^void stats()$/;"	f
+stats	msi4.c	/^void stats()$/;"	f
+t1	cpu4.c	/^static time_t t1 = 0, t2 = 0;$/;"	v	file:
+t1	msi4.c	/^static time_t t1 = 0, t2 = 0;$/;"	v	file:
+t2	cpu4.c	/^static time_t t1 = 0, t2 = 0;$/;"	v	file:
+t2	msi4.c	/^static time_t t1 = 0, t2 = 0;$/;"	v	file:
+time_counter	cpu4.c	/^void time_counter()$/;"	f
+time_counter	msi4.c	/^void time_counter()$/;"	f
+try_random_move	cpu4.c	/^int try_random_move(int player)$/;"	f
+ulong	cpu4.c	/^typedef unsigned long ulong;$/;"	t	file:
+ulong	msi4.c	/^typedef unsigned long ulong;$/;"	t	file:
+visible	cpu4.c	/^void visible(int vis)$/;"	f
+visible	msi4.c	/^void visible(int vis)$/;"	f
+world_transforms	cpu4.c	/^void world_transforms()		\/* przeksztalcenia swiata nie uzywam ZADNYCH macierzy *\/$/;"	f
+world_transforms	msi4.c	/^void world_transforms()		\/* przeksztalcenia swiata nie uzywam ZADNYCH macierzy *\/$/;"	f

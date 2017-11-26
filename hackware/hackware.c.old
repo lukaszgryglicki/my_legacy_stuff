@@ -1,0 +1,61 @@
+#include <time.h>
+#include <stdio.h>
+#include <pthread.h>
+#include <sched.h>
+#include <unistd.h>
+#include <signal.h>
+    
+time_t t1, t2;
+int ticks, bticks;
+
+void catch_int(int signo)
+{
+     time(&t2);
+     ticks ++;
+     if (t2 > t1)
+     {
+         t1 = t2;
+         printf("%d %d\n", ticks, bticks);
+/*         fflush(stdout);*/
+         ticks = 0;
+	 bticks = 0;
+     }
+}
+
+
+void signal_setup()
+{
+    static struct sigaction act;
+    act.sa_handler = catch_int;
+    sigfillset(&(act.sa_mask));
+    sigaction(SIGALRM, &act, NULL);
+}
+
+void hackware_forever()
+{
+    signal_setup();
+    time(&t1);
+    ticks = 0;
+    ualarm(100000, 100000);
+
+    while (0xffff)
+    {
+	bticks ++;
+    }
+}
+
+void* hackware_thr(void* dummy)
+{
+    hackware_forever();
+    return NULL;
+}
+
+int main(int lb, char** par)
+{
+/*    pthread_t t;*/
+/*    pthread_create(&t, NULL, hackware_thr, NULL);*/
+/*    pthread_join(t, NULL);*/
+    hackware_forever();
+    return 0;
+}
+

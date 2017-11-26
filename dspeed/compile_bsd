@@ -1,0 +1,17 @@
+#!/bin/sh
+echo $1
+if [ "$1" = "" ]
+then
+	echo parameter required!
+        exit 1
+fi
+c++ -o $1_bsd $1.c
+c++ -o $1_bsd $1.cpp
+
+echo "Install $1 now? "
+read z
+if [ "$z" = "y" ]
+then
+mins $1_bsd
+fi
+ 

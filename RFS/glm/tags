@@ -1,0 +1,233 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.3.1	//
+BAND_BASE	../paint.h	49;"	d
+BAND_SIZE	../paint.h	51;"	d
+BLACK	../paint.h	44;"	d
+CC	../Makefile	/^CC=cc$/;"	m
+CFLAGS	../Makefile	/^CFLAGS=-I\/usr\/include\/X11$/;"	m
+COL_RANGE	../paint.h	56;"	d
+CRINKLE	../crinkle.h	3;"	d
+Col	../paint.h	/^typedef int Col;$/;"	t
+DB	../calcalt.c	26;"	d	file:
+DB	../calcalt.c	28;"	d	file:
+DEF_COL	../paint.h	54;"	d
+DefaultRootWindow	../vroot.h	147;"	d
+DefaultRootWindow	../vroot.h	148;"	d
+FALSE	../X_graphics.c	20;"	d	file:
+FALSE	../crinkle.h	13;"	d
+Fold	../crinkle.h	/^} Fold;$/;"	t
+Graph	../paint.h	/^}Graph;$/;"	t
+Gun	../paint.h	/^typedef unsigned short Gun;$/;"	t
+HDRS	../Makefile	/^           HDRS = crinkle.h  paint.h patchlevel.h copyright.h vroot.h$/;"	m
+Height	../crinkle.h	/^typedef float Height;$/;"	t
+LDFLAGS	../Makefile	/^LDFLAGS=-L\/usr\/lib\/X11$/;"	m
+LOCAL_LIBRARIES	../Makefile	/^LOCAL_LIBRARIES = -lX11 $/;"	m
+Length	../crinkle.h	/^typedef float Length;$/;"	t
+MIN_COL	../paint.h	55;"	d
+NSTRIP	../crinkle.h	20;"	d
+NULL	../crinkle.h	10;"	d
+N_BANDS	../paint.h	53;"	d
+OBJS	../Makefile	/^           OBJS = calcalt.o random.o  artist.o xmountains.o X_graphics.o print_alg.o$/;"	m
+P	../print_alg.c	3;"	d	file:
+PAINT	../paint.h	3;"	d
+PARANOID	../random.c	18;"	d	file:
+PATCHLEVEL	../patchlevel.h	1;"	d
+PI	../artist.c	12;"	d	file:
+PI	../paint.h	58;"	d
+Parm	../crinkle.h	/^}Parm;$/;"	t
+RootWindow	../vroot.h	144;"	d
+RootWindow	../vroot.h	145;"	d
+RootWindowOfScreen	../vroot.h	141;"	d
+RootWindowOfScreen	../vroot.h	142;"	d
+SEA_LIT	../paint.h	46;"	d
+SEA_UNLIT	../paint.h	47;"	d
+SIDE	../artist.c	10;"	d	file:
+SIDE	../xmountains.c	10;"	d	file:
+SKY	../paint.h	48;"	d
+SRCS	../Makefile	/^           SRCS = calcalt.c random.c  artist.c xmountains.c X_graphics.c print_alg.c$/;"	m
+START	../crinkle.h	17;"	d
+STORE	../crinkle.h	18;"	d
+SYS_LIBRARIES	../Makefile	/^  SYS_LIBRARIES = -lm$/;"	m
+Strip	../crinkle.h	/^}Strip;$/;"	t
+TRUE	../X_graphics.c	19;"	d	file:
+TRUE	../crinkle.h	14;"	d
+Uni_save	../random.c	/^Uni_save;$/;"	t	file:
+VERSION	../xmountains.c	9;"	d	file:
+VROOT	../X_graphics.c	5;"	d	file:
+VirtualRootWindowOfScreen	../vroot.h	/^VirtualRootWindowOfScreen(Screen *screen)$/;"	f
+WHITE	../paint.h	45;"	d
+X_graphics_Id	../X_graphics.c	/^char X_graphics_Id[]="$Id: X_graphics.c,v 1.25 2004\/05\/05 08:29:48 spb Exp spb $";$/;"	v
+_VROOT_H_	../vroot.h	66;"	d
+_XSCREENSAVER_VROOT_H_	../vroot.h	67;"	d
+a_strip	../artist.c	/^Height *a_strip, *b_strip;    \/* the two most recent strips *\/$/;"	v
+alpha	../paint.h	/^  double alpha;         \/* angle of the light (horizontal plane) $/;"	m	struct:graph
+altitude	../paint.h	/^  float altitude;$/;"	m	struct:graph
+ambient	../paint.h	/^  float ambient;        \/* level of ambient light *\/$/;"	m	struct:graph
+artist_Id	../artist.c	/^char artist_Id[] = "$Id: artist.c,v 1.40 1997\/12\/03 17:21:10 spb Exp $";$/;"	v
+b_strip	../artist.c	/^Height *a_strip, *b_strip;    \/* the two most recent strips *\/$/;"	v
+band_size	../paint.h	/^  int band_size;$/;"	m	struct:graph
+base	../artist.c	/^int base=0;      \/* parity flag for mirror routine *\/$/;"	v
+base_shift	../paint.h	/^  Height base_shift;    \/* offset from calcalt to artist coordinates *\/$/;"	m	struct:graph
+blank_col	../X_graphics.c	/^void blank_col( pos )$/;"	f
+blank_region	../X_graphics.c	/^void blank_region(lx,ly,ux,uy)$/;"	f
+c	../random.c	/^  float c;$/;"	m	struct:	file:
+calcalt_Id	../calcalt.c	/^char calcalt_Id[] = "$Id: calcalt.c,v 2.17 2001\/03\/30 12:35:32 spb Exp $";$/;"	v
+camera	../artist.c	/^Col *camera(a,b,shadow)$/;"	f
+cd	../random.c	/^  float cd;$/;"	m	struct:	file:
+cm	../random.c	/^  float cm;$/;"	m	struct:	file:
+contour	../paint.h	/^  float contour;$/;"	m	struct:graph
+contrast	../paint.h	/^  float contrast;       \/* contrast,$/;"	m	struct:graph
+cos_phi	../artist.c	/^double cos_phi;$/;"	v
+count	../crinkle.h	/^  int count;                \/* number of points at this level *\/$/;"	m	struct:fold
+cross	../crinkle.h	/^  int cross;                \/* use four point average on edges rather than 2 *\/$/;"	m	struct:parm
+d	../crinkle.h	/^  Height *d;        \/* should have 2^level + 1 (f->count) points *\/$/;"	m	struct:strip
+defaultmap	../X_graphics.c	/^  Colormap map, defaultmap;$/;"	v
+delta_shadow	../artist.c	/^Height delta_shadow;$/;"	v
+depth	../X_graphics.c	/^  unsigned int depth=0;$/;"	v
+display	../X_graphics.c	/^char *display=NULL;       \/* name of display to open, NULL for default *\/$/;"	v
+display	../xmountains.c	/^char *display;$/;"	v
+distance	../paint.h	/^  float distance;$/;"	m	struct:graph
+do_clear	../X_graphics.c	/^  int do_clear=FALSE;$/;"	v
+double_strip	../calcalt.c	/^Strip *double_strip(Strip *s) $/;"	f
+dpy	../X_graphics.c	/^  Display *dpy;$/;"	v
+dump_pipeline	../calcalt.c	/^dump_pipeline(s, f)$/;"	f
+extract	../artist.c	/^Height *extract (s)$/;"	f
+f	../crinkle.h	/^  struct fold *f;   \/* parent fold structure *\/$/;"	m	struct:strip
+fdim	../crinkle.h	/^  float fdim;$/;"	m	struct:parm
+finish_artist	../artist.c	/^void finish_artist()$/;"	f
+finish_graphics	../X_graphics.c	/^void finish_graphics()$/;"	f
+finish_prog	../xmountains.c	/^void finish_prog()$/;"	f
+flush_region	../X_graphics.c	/^void flush_region( x, y, w, h)$/;"	f
+focal	../artist.c	/^float focal;$/;"	v
+fold	../crinkle.h	/^typedef struct fold{$/;"	s
+fold_param	../xmountains.c	/^Parm fold_param;$/;"	v
+force_back	../crinkle.h	/^  int force_back;           \/* keep back edge low *\/$/;"	m	struct:parm
+force_front	../crinkle.h	/^  int force_front;          \/* keep front edge low *\/$/;"	m	struct:parm
+forceval	../crinkle.h	/^  Height forceval;          \/* value to force to *\/$/;"	m	struct:parm
+free_fold	../calcalt.c	/^void free_fold(Fold *f) $/;"	f
+free_strip	../calcalt.c	/^void free_strip(Strip *p) $/;"	f
+g	../X_graphics.c	/^Graph g={$/;"	v
+gaussian	../random.c	/^float gaussian()$/;"	f
+gc	../X_graphics.c	/^  GC gc;$/;"	v
+geom	../X_graphics.c	/^char *geom=NULL;          \/* geometry of window, NULL for default *\/$/;"	v
+get_col	../artist.c	/^Col get_col (p,p_minus_x,p_minus_y,shadow)$/;"	f
+graph	../paint.h	/^typedef struct graph{$/;"	s
+graph_height	../X_graphics.c	/^  unsigned int graph_height;$/;"	v
+graph_height	../paint.h	/^  int graph_height;     \/* height of display *\/$/;"	m	struct:graph
+graph_width	../X_graphics.c	/^  unsigned int graph_width;$/;"	v
+graph_width	../paint.h	/^  int graph_width ;     \/* width of display *\/$/;"	m	struct:graph
+hside_update	../calcalt.c	/^void hside_update(Fold *fold,float scale, float mix, Strip *a, Strip *b, Strip *c)$/;"	f
+init_artist_variables	../artist.c	/^void init_artist_variables()$/;"	f
+init_graphics	../X_graphics.c	/^void init_graphics( want_use_root, use_window, use_background, want_clear, s_graph_width,s_graph_height,ncol,red,green,blue )$/;"	f
+init_parameters	../artist.c	/^void init_parameters()$/;"	f
+length	../crinkle.h	/^  Length length;            \/* width of the update square *\/$/;"	m	struct:fold
+level	../crinkle.h	/^  int level;                \/* levels of recursion below us *\/$/;"	m	struct:fold
+levels	../paint.h	/^  int levels;$/;"	m	struct:graph
+lstrength	../artist.c	/^float lstrength; \/* strength of vertical light source *\/$/;"	v
+main	../xmountains.c	/^main (argc,argv)$/;"	f
+make_fold	../calcalt.c	/^Fold *make_fold(Fold *parent,Parm *param, int levels, int stop, Length length) $/;"	f
+make_strip	../calcalt.c	/^  Strip *make_strip(Fold *f) $/;"	f
+makemap	../artist.c	/^Col *makemap (a,b,shadow)$/;"	f
+map	../X_graphics.c	/^  Colormap map, defaultmap;$/;"	v
+map	../paint.h	/^  int map;$/;"	m	struct:graph
+mapwid	../xmountains.c	/^int mapwid;$/;"	v
+mean	../crinkle.h	/^  Height mean;              \/* mean altitude *\/$/;"	m	struct:parm
+midmix	../crinkle.h	/^  float midmix;             \/* same but for cross updates *\/$/;"	m	struct:parm
+midscale	../crinkle.h	/^  Length midscale;          \/* as above but for diagonal offsets *\/$/;"	m	struct:fold
+mirror	../artist.c	/^Col *mirror(a,b,shadow)$/;"	f
+mix	../crinkle.h	/^  float mix;                \/* fraction of old value to include in average *\/$/;"	m	struct:parm
+my_getopt	../xmountains.c	/^int my_getopt (argc, argv, pat)$/;"	f
+n_col	../paint.h	/^  int n_col;$/;"	m	struct:graph
+next	../crinkle.h	/^  struct fold *next;        \/* next iteration down *\/$/;"	m	struct:fold
+next_col	../artist.c	/^Col *next_col (paint, reflec)$/;"	f
+next_strip	../calcalt.c	/^Strip *next_strip(Fold *fold) $/;"	f
+optarg	../xmountains.c	/^char *optarg;$/;"	v
+opterr	../xmountains.c	/^int opterr=1;$/;"	v
+optind	../xmountains.c	/^int optind=1;$/;"	v
+p	../crinkle.h	/^  struct parm *p;           \/* update parameters *\/$/;"	m	struct:fold
+p_update	../calcalt.c	/^void p_update(Fold *fold,float scale, float mix, Strip *a, Strip *b, Strip *c)$/;"	f
+parent	../X_graphics.c	/^  Window parent, win, root;$/;"	v
+parent	../crinkle.h	/^  struct fold *parent;      \/* next iteration up *\/$/;"	m	struct:fold
+parm	../crinkle.h	/^typedef struct parm{$/;"	s
+phi	../paint.h	/^  double phi;           \/* angle of the light (vertical plane)*\/$/;"	m	struct:graph
+pix	../X_graphics.c	/^  Pixmap pix;$/;"	v
+pixmap_installed	../X_graphics.c	/^  int pixmap_installed=FALSE;$/;"	v
+plot_col	../X_graphics.c	/^  unsigned long plot_col;$/;"	v
+plot_column	../artist.c	/^void plot_column(g)$/;"	f
+plot_pixel	../X_graphics.c	/^void plot_pixel( x, y, value )$/;"	f
+plot_saved	../X_graphics.c	/^  int plot_saved=FALSE;$/;"	v
+plot_x	../X_graphics.c	/^  int plot_x, plot_y1, plot_y2;$/;"	v
+plot_y1	../X_graphics.c	/^  int plot_x, plot_y1, plot_y2;$/;"	v
+plot_y2	../X_graphics.c	/^  int plot_x, plot_y1, plot_y2;$/;"	v
+pos	../paint.h	/^  int pos;$/;"	m	struct:graph
+print_algorithm	../print_alg.c	/^void print_algorithm()$/;"	f
+project	../artist.c	/^int project (x,y)$/;"	f
+quit_xmount	../X_graphics.c	/^  int quit_xmount=FALSE;$/;"	v
+random_strip	../calcalt.c	/^Strip *random_strip(Fold *f)$/;"	f
+reflec	../paint.h	/^  int reflec;$/;"	m	struct:graph
+repeat	../paint.h	/^  int repeat;$/;"	m	struct:graph
+reset_fold	../calcalt.c	/^void reset_fold(Fold *f) $/;"	f
+rg1	../crinkle.h	/^  int rg1;                  \/* optional regeneration steps *\/$/;"	m	struct:parm
+rg2	../crinkle.h	/^  int rg2;$/;"	m	struct:parm
+rg3	../crinkle.h	/^  int rg3;$/;"	m	struct:parm
+root	../X_graphics.c	/^  Window parent, win, root;$/;"	v
+rstart	../random.c	/^void rstart(i,j,k,l)$/;"	f
+s	../crinkle.h	/^  struct strip *s[NSTRIP];  \/* pointers to the pipeline strips *\/$/;"	m	struct:fold
+s_height	../xmountains.c	/^int s_height=768, s_width=1024;$/;"	v
+s_width	../xmountains.c	/^int s_height=768, s_width=1024;$/;"	v
+save	../crinkle.h	/^  struct strip *save;       \/* save position for STORE state *\/$/;"	m	struct:fold
+scale	../crinkle.h	/^  Length scale;             \/* scale factor for perturbations *\/$/;"	m	struct:fold
+screen	../X_graphics.c	/^  int screen;$/;"	v
+scroll	../paint.h	/^  int scroll;$/;"	m	struct:graph
+scroll_Id	../xmountains.c	/^char scroll_Id[]="$Id: xmountains.c,v 1.39 2004\/05\/05 08:29:48 spb Exp spb $";$/;"	v
+scroll_screen	../X_graphics.c	/^void scroll_screen( dist )$/;"	f
+sealevel	../paint.h	/^  Height sealevel;$/;"	m	struct:graph
+seed_uni	../random.c	/^void seed_uni(ijkl)$/;"	f
+set_clut	../artist.c	/^void set_clut (max_col,red,green,blue)$/;"	f
+set_strip	../calcalt.c	/^Strip *set_strip(Fold *f, Height value)$/;"	f
+shadow	../artist.c	/^Height *shadow;               \/* height of the shadows *\/$/;"	v
+shadow_register	../artist.c	/^double shadow_register;$/;"	v
+shadow_slip	../artist.c	/^double shadow_slip;$/;"	v
+shift	../artist.c	/^Height shift;$/;"	v
+sin_phi	../artist.c	/^double sin_phi;$/;"	v
+state	../crinkle.h	/^  int state;                \/* internal stat of algorithm *\/$/;"	m	struct:fold
+stip	../X_graphics.c	/^  Pixmap stip;$/;"	v
+stop	../crinkle.h	/^  int stop;                 \/* level to stop recursion *\/$/;"	m	struct:fold
+stop	../paint.h	/^  int stop;$/;"	m	struct:graph
+stretch	../paint.h	/^  double stretch;       \/* vertical stretch *\/$/;"	m	struct:graph
+strip	../crinkle.h	/^typedef struct strip{$/;"	s
+t_update	../calcalt.c	/^void t_update(Fold *fold,float scale, float mix, Strip *a, Strip *b, Strip *c)$/;"	f
+table	../X_graphics.c	/^  XColor *table=NULL;$/;"	v
+tan_phi	../artist.c	/^double tan_phi;$/;"	v
+tan_vangle	../artist.c	/^double tan_vangle;                                     $/;"	v
+top	../artist.c	/^Fold *top;$/;"	v
+u	../random.c	/^  float u[98];$/;"	m	struct:	file:
+ui	../random.c	/^  int ui;$/;"	m	struct:	file:
+uj	../random.c	/^  int uj;$/;"	m	struct:	file:
+uni	../random.c	/^float uni()$/;"	f
+uni_data	../random.c	/^Uni_save uni_data;$/;"	v
+uni_id	../random.c	/^char uni_id[] = "$Id: random.c,v 1.6 1995\/01\/20 15:13:06 spb Exp $" ;$/;"	v
+use_root	../X_graphics.c	/^  int use_root=FALSE;$/;"	v
+v_update	../calcalt.c	/^void v_update(Fold *fold,float scale, float mix, Strip *a, Strip *b, Strip *c)$/;"	f
+vangle	../artist.c	/^double vangle;$/;"	v
+varience	../artist.c	/^Height varience;$/;"	v
+vfract	../paint.h	/^  float vfract;         \/* relative strength of vertical light relative$/;"	m	struct:graph
+viewheight	../artist.c	/^float viewheight;      \/* height of viewpoint *\/$/;"	v
+viewpos	../artist.c	/^float viewpos;        \/* position of viewpoint *\/$/;"	v
+vroot_rcsid	../vroot.h	/^static const char vroot_rcsid[] =$/;"	v
+vscale	../artist.c	/^double vscale;$/;"	v
+vside_update	../calcalt.c	/^void vside_update(Fold *fold,float scale, float mix, Strip *a)$/;"	f
+vstrength	../artist.c	/^float vstrength; \/* strength of vertical light source *\/$/;"	v
+width	../paint.h	/^  int width;            \/* width of terrain strip *\/$/;"	m	struct:graph
+win	../X_graphics.c	/^  Window parent, win, root;$/;"	v
+window_id_kludge	../xmountains.c	/^window_id_kludge (argcP, argv)$/;"	f	file:
+wm_delete_window	../X_graphics.c	/^Atom wm_delete_window;$/;"	v
+wm_protocols	../X_graphics.c	/^Atom wm_protocols;$/;"	v
+x_fact	../artist.c	/^double x_fact;$/;"	v
+x_update	../calcalt.c	/^void x_update(Fold *fold,float scale, float mix, Strip *a, Strip *b, Strip *c)$/;"	f
+y_fact	../artist.c	/^double y_fact;$/;"	v
+zap_events	../X_graphics.c	/^void zap_events(snooze)$/;"	f

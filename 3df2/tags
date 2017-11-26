@@ -1,0 +1,77 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.3.1	//
+D	3do.c	/^typedef double D;$/;"	t	file:
+GRID_X	3do.c	/^static int GRID_X = 40;$/;"	v	file:
+GRID_Y	3do.c	/^static int GRID_Y = 20;$/;"	v	file:
+IRES	3do.c	/^static int IRES   = 4;$/;"	v	file:
+MakeStatus	3do.c	/^void MakeStatus(Display* dsp, GC& gc, Window& win, int cx, int cy)$/;"	f
+RGBs	3do.c	/^inline unsigned long RGBs(int r, int g, int b)$/;"	f
+ReactKey	3do.c	/^void ReactKey(unsigned int key, Display*d)$/;"	f
+ReactMouse	3do.c	/^void ReactMouse(D x, D y, D cx, D cy, int zoom)$/;"	f
+SprawozdFunc	3do.c	/^void SprawozdFunc(Wnd& w, void* ptr)$/;"	f
+ToRad	3do.c	/^inline double ToRad(int angle)$/;"	f
+boom	3do.c	/^static int boom=1;$/;"	v	file:
+create_gc	3do.c	/^GC create_gc(Display* display, Window win)$/;"	f
+create_simple_window	3do.c	/^Window create_simple_window(Display* display, int width, int height, int x, int y)$/;"	f
+cur_func	3do.c	/^static int cur_func=0;$/;"	v	file:
+draw_fp	3do.c	/^void draw_fp(Display* d, GC& g, Window& w, int cx, int cy)$/;"	f
+draw_fpp	3do.c	/^void draw_fpp(Display* d, GC& g, Window& w, int cx, int cy)$/;"	f
+draw_function	3do.c	/^void draw_function(Display* d, GC& g, Window& w, int cx, int cy)$/;"	f
+draw_grid	3do.c	/^void draw_grid(Display* d, GC& g, Window& w)$/;"	f
+draw_limes	3do.c	/^void draw_limes(Display* d, GC& g, Window& w)$/;"	f
+draw_turrus	3do.c	/^void draw_turrus(Display* d, GC& g, Window& w, int cx, int cy)$/;"	f
+drawf	3do.c	/^static int drawf=1;$/;"	v	file:
+drawp	3do.c	/^static int drawp=0;$/;"	v	file:
+drawpp	3do.c	/^static int drawpp=0;$/;"	v	file:
+ex	3do.c	/^static double ex=3.0;$/;"	v	file:
+ey	3do.c	/^static double ey=3.0;$/;"	v	file:
+ez	3do.c	/^static double ez=10.0;$/;"	v	file:
+f	3do.c	/^static void **f= 0 ;$/;"	v	file:
+f1	3do.c	/^inline double f1(double x, double y)$/;"	f
+f10	3do.c	/^inline double f10(double x, double y)$/;"	f
+f11	3do.c	/^inline double f11(double x, double y)$/;"	f
+f2	3do.c	/^inline double f2(double x, double y)$/;"	f
+f3	3do.c	/^inline double f3(double x, double y)$/;"	f
+f4	3do.c	/^inline double f4(double x, double y)$/;"	f
+f5	3do.c	/^inline double f5(double x, double y)$/;"	f
+f6	3do.c	/^inline double f6(double x, double y)$/;"	f
+f7	3do.c	/^inline double f7(double x, double y)$/;"	f
+f8	3do.c	/^inline double f8(double x, double y)$/;"	f
+f9	3do.c	/^inline double f9(double x, double y)$/;"	f
+f_h	3do.c	/^static int f_h=8;$/;"	v	file:
+funcprim	3do.c	/^double funcprim(double x, double i, int num)$/;"	f
+funcprim	3do.c	/^inline double funcprim(double x, double y)$/;"	f
+funcprimp	3do.c	/^inline double funcprimp(double x, double y)$/;"	f
+function_ptr	3do.c	/^static double (*function_ptr)(double, double) = 0 ;$/;"	v	file:
+h	3do.c	/^static double h=1;$/;"	v	file:
+help	3do.c	/^void help(Display* d)$/;"	f
+hh	3do.c	/^static double hh=0.00001;$/;"	v	file:
+main	3do.c	/^int main(int lb, char** par)$/;"	f
+merge_names	3do.c	/^void merge_names(char* str)$/;"	f
+n	3do.c	/^static double n=10;$/;"	v	file:
+nastepna_funkcja	3do.c	/^void nastepna_funkcja(int a)$/;"	f
+p1x	3do.c	/^static int p1x,p1y,p2x,p2y,p3x,p3y,p4x,p4y,xlen,ylen;$/;"	v	file:
+p1y	3do.c	/^static int p1x,p1y,p2x,p2y,p3x,p3y,p4x,p4y,xlen,ylen;$/;"	v	file:
+p2x	3do.c	/^static int p1x,p1y,p2x,p2y,p3x,p3y,p4x,p4y,xlen,ylen;$/;"	v	file:
+p2y	3do.c	/^static int p1x,p1y,p2x,p2y,p3x,p3y,p4x,p4y,xlen,ylen;$/;"	v	file:
+p3x	3do.c	/^static int p1x,p1y,p2x,p2y,p3x,p3y,p4x,p4y,xlen,ylen;$/;"	v	file:
+p3y	3do.c	/^static int p1x,p1y,p2x,p2y,p3x,p3y,p4x,p4y,xlen,ylen;$/;"	v	file:
+p4x	3do.c	/^static int p1x,p1y,p2x,p2y,p3x,p3y,p4x,p4y,xlen,ylen;$/;"	v	file:
+p4y	3do.c	/^static int p1x,p1y,p2x,p2y,p3x,p3y,p4x,p4y,xlen,ylen;$/;"	v	file:
+rotX	3do.c	/^static int rotX=15;$/;"	v	file:
+rotY	3do.c	/^static int rotY=20;$/;"	v	file:
+sgn	3do.c	/^inline double sgn(double par) { if (par>=0.0) return 1.0; else return -1.0; }$/;"	f
+sgx	3do.c	/^static int sgx=1;$/;"	v	file:
+sgy	3do.c	/^static int sgy=1;$/;"	v	file:
+show_g2	3do.c	/^static int show_g2=1;$/;"	v	file:
+show_grid	3do.c	/^static int show_grid=1;$/;"	v	file:
+std_check	3do.c	/^inline void std_check()$/;"	f
+sx	3do.c	/^static double sx=-3.0;$/;"	v	file:
+sy	3do.c	/^static double sy=-3.0;$/;"	v	file:
+sz	3do.c	/^static double sz=-5.0;$/;"	v	file:
+xlen	3do.c	/^static int p1x,p1y,p2x,p2y,p3x,p3y,p4x,p4y,xlen,ylen;$/;"	v	file:
+ylen	3do.c	/^static int p1x,p1y,p2x,p2y,p3x,p3y,p4x,p4y,xlen,ylen;$/;"	v	file:

@@ -1,0 +1,40 @@
+Frame	program.c	/^} Frame;$/
+I_matrix	program.c	/^void I_matrix(GLdouble** dst, int siz)$/
+KChain	program.c	/^} KChain;$/
+Mprogram	program.c	/^int main(int lb, char** par)$/
+anim	program.c	/^void anim(void)$/
+copy_matrix	program.c	/^void copy_matrix(GLdouble** dst, GLdouble** src, i/
+free_chain	program.c	/^void free_chain(KChain* kc)$/
+free_frame	program.c	/^void free_frame(Frame* f)$/
+free_matrix	program.c	/^void free_matrix(GLdouble** m, int siz)$/
+glInit	program.c	/^void glInit()$/
+glTest	program.c	/^void glTest()$/
+help	program.c	/^void help()$/
+init_chain	program.c	/^void init_chain(KChain* kc, GLint n)$/
+init_frame	program.c	/^void init_frame(Frame* f)$/
+invert_matrix	program.c	/^GLdouble** invert_matrix(GLdouble** srcC, int dim)/
+keyboard	program.c	/^void keyboard(unsigned char key, int x, int y)$/
+lightInit	program.c	/^void lightInit()$/
+make_angles	program.c	/^void make_angles(Frame* f)$/
+matrix	program.c	/^GLdouble** matrix(int siz)$/
+matrix_mul	program.c	/^GLdouble** matrix_mul(GLdouble** m, GLdouble** n, /
+move_frameD	program.c	/^void move_frameD(Frame* f, GLdouble x, GLdouble y,/
+print_frame	program.c	/^void print_frame(Frame* f)$/
+render_scene	program.c	/^void render_scene(void)$/
+resize_scene	program.c	/^void resize_scene(int w, int h)$/
+rotate_frameR	program.c	/^void rotate_frameR(Frame* f, GLdouble x, GLdouble /
+rotatex	program.c	/^void rotatex(GLdouble** m, GLdouble ang)$/
+rotatey	program.c	/^void rotatey(GLdouble** m, GLdouble ang)$/
+rotatez	program.c	/^void rotatez(GLdouble** m, GLdouble ang)$/
+set_frameD	program.c	/^void set_frameD(Frame* f, GLdouble x, GLdouble y, /
+set_frameDR	program.c	/^void set_frameDR(Frame* f, GLdouble dx, GLdouble d/
+set_frameR	program.c	/^void set_frameR(Frame* f, GLdouble x, GLdouble y, /
+set_frameRD	program.c	/^void set_frameRD(Frame* f, GLdouble rx, GLdouble r/
+time_counter	program.c	/^void time_counter()$/
+translate	program.c	/^void translate(GLdouble** m, GLdouble x, GLdouble /
+translatex	program.c	/^void translatex(GLdouble** m, GLdouble arg)$/
+translatey	program.c	/^void translatey(GLdouble** m, GLdouble arg)$/
+translatez	program.c	/^void translatez(GLdouble** m, GLdouble arg)$/
+try_swap	program.c	/^int try_swap(GLdouble** m, int idx, int dim)$/
+vector	program.c	/^GLdouble* vector(int siz)$/
+visible	program.c	/^void visible(int vis)$/

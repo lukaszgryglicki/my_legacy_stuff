@@ -1,0 +1,45 @@
+STRIP = strip
+AS = as
+GCC = gcc48
+all: trajpeg mfjpeg fjpeg fjpegd libfjpegudf.so libfjpegudfd.so calln testasm
+testasm: testasm.o asmudf.o
+	$(GCC) -g3 -Wall -ansi -pedantic -o testasm testasm.o asmudf.o -lc
+testasm.o: testasm.c
+	$(GCC) -g3 -Wall -ansi -pedantic -c testasm.c -o testasm.o
+trajpeg: trajpeg.c
+	$(GCC) -Wall -ansi -pedantic -O3 -I/usr/local/include -L/usr/local/lib -o trajpeg trajpeg.c -ljpeg
+	$(STRIP) -s trajpeg
+fjpeg: fjpeg.o fpar.o asmudf.o libfjpegudf.so
+	$(GCC) -ffast-math -pthread -O4 -fexpensive-optimizations -funroll-all-loops -L. -L/usr/local/lib -Wall -ansi -pedantic -o fjpeg fjpeg.o fpar.o asmudf.o -lfjpegudf -ljpeg -lpng -lc -lm
+	$(STRIP) -s fjpeg
+mfjpeg: mfjpeg.o fpar.o libfjpegudf.so
+	$(GCC) -ffast-math -O4 -fexpensive-optimizations -funroll-all-loops -L. -L/usr/local/lib -Wall -ansi -pedantic -o mfjpeg mfjpeg.o fpar.o -lfjpegudf -lc -lm
+	$(STRIP) -s mfjpeg
+fjpegd: fjpegd.o fpard.o asmudf.o libfjpegudfd.so
+	$(GCC) -pthread -g3 -L. -L/usr/local/lib -Wall -ansi -pedantic -o fjpegd fjpegd.o fpard.o asmudf.o -lfjpegudfd -ljpeg -lpng -lc -lm
+fjpeg.o: fjpeg.c
+	$(GCC) --save-temps -DMJPEG -DMPNG -DMM -DMASM -DMTHR -DMUSECASE -DMUSETIMER -DSILENT -ffast-math -pthread -O4 -fexpensive-optimizations -funroll-all-loops -I/usr/local/include -Wall -ansi -pedantic -c fjpeg.c
+mfjpeg.o: fjpeg.c
+	$(GCC) -DSILENT -ffast-math -O4 -fexpensive-optimizations -funroll-all-loops -Wall -ansi -pedantic -c fjpeg.c -o mfjpeg.o
+fjpegd.o: fjpeg.c
+	$(GCC) -pthread -g3 -DMJPEG -DMPNG -DMM -DMASM -DMTHR -DMUSECASE -DMUSETIMER -I/usr/local/include -Wall -ansi -pedantic -c fjpeg.c -o fjpegd.o
+fpar.o: fpar.c fpar.h
+	$(GCC) --save-temps -DSILENT -ffast-math -pthread -O4 -fexpensive-optimizations -funroll-all-loops -I/usr/local/include -Wall -ansi -pedantic -c fpar.c
+fpard.o: fpar.c fpar.h
+	$(GCC) -g3 -I/usr/local/include -Wall -ansi -pedantic -c fpar.c -o fpard.o
+libfjpegudf.so: udf.c udf.h
+	$(GCC) --save-temps -DSILENT -Wall -ansi -pedantic -O4 -fPIC -pthread -shared -o libfjpegudf.so udf.c 
+	$(STRIP) -s libfjpegudf.so
+libfjpegudfd.so: udf.c udf.h
+	$(GCC) -Wall -ansi -pedantic -g3 -fPIC -pthread -shared -o libfjpegudfd.so udf.c 
+asmudf.o: asmudf64.s
+	$(AS) --gstabs -o asmudf.o asmudf64.s
+calln: calln.c
+	$(GCC) --save-temps -Wall -ansi -pedantic -O3 -o calln calln.c
+	$(STRIP) -s calln
+install: all
+	cp *.so /usr/local/lib
+	cp fjpeg fjpegd mfjpeg calln /usr/local/bin
+clean:
+	-rm -f trajpeg fjpeg fjpegd mfjpeg calln *.o *.i *.so
+

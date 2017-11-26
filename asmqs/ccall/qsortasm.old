@@ -1,0 +1,96 @@
+section .data
+	funcptr  dd      0x00000000	;addres to compare function
+	dataptr  dd      0x00000000	;address to data (void**) base pointer
+	v	 dd	 0x00000000	;void* value
+	tmp	 dd	 0x00000000	; -||-
+	i	 dd	 0x00000000	; int
+	j	 dd	 0x00000000	; int
+	__asm_print_regs dd 0x00000000	;address to external print function
+	btrace	 dd	 0x00000000	;stack value saver
+section .text
+    global qsortasm__FiiPPvPFPvPv_i	;global symbols for linker ``ld''
+    global qsortasm
+    global pregs
+    global pregs__FPFiiiiiiii_v
+    global qsortasm__FiiPPvPFPvPv_iPFiiiiiiii_v
+
+kernel:
+        int     0x80
+        ret
+
+qsortasm__FiiPPvPFPvPv_i:		;for normal c++
+qsortasm__FiiPPvPFPvPv_iPFiiiiiiii_v:	;for debug
+qsortasm:				;for c
+	mov [btrace], esp		;remember stack!!!
+code_start:
+	pop eax				;get unused stack value
+	pop ebx				;get left in ebx
+	pop edx				;get right in edx
+	pop dword [dataptr]		;set data pointer
+	pop dword [funcptr]		;set compare function
+	pop dword [__asm_print_regs]	;set debug function address
+	mov eax, [dataptr]		;eax = (void**)data
+	imul ecx,ebx,4			;offset of data
+	add eax,ecx			;eax = address of data
+	mov dword [v],eax		;v=A[l]
+	xor eax,eax			;eax=0
+	mov [tmp],eax			;tmp=0;
+	mov [i], ebx			;i=l
+	mov [j], edx			;j=r
+	inc dword [j]			;j++
+main_loop:
+loop_i:
+	inc dword [i]			;i++;
+	mov eax, dword [v]		;eax=v
+	push dword [eax]		;poloz v
+	mov eax, [dataptr]		;eax = (void**)data
+	imul ecx,[i],4			;offset of data
+	add eax,ecx			;eax = address of data
+	push dword [eax]		;poloz A[i]
+	call [funcptr]			;call external comapre function
+	add esp, 8			;clean stack after call
+	;cmp i,ebx
+	;jg end_loop_i
+	;call debug_out			;doesn't seem to work yet :(
+	cmp eax,0
+	jnz loop_i
+end_loop_i:
+	mov eax,edx
+
+	;end main_loop
+code_end:
+	mov esp, [btrace]
+	ret
+pregs:
+pregs__FPFiiiiiiii_v:
+	mov [btrace], esp
+	pop eax
+	pop dword [__asm_print_regs]
+	push eax
+	push dword eax
+	push dword ebx
+	push dword ecx
+	push dword edx
+	push dword esi
+	push dword edi
+	push dword esp
+	push dword ebp
+	call [__asm_print_regs]
+	mov esp, [btrace]
+	ret
+debug_out:
+	push dword eax
+	push dword eax
+	push dword ebx
+	push dword ecx
+	push dword edx
+	push dword esi
+	push dword edi
+	push dword esp
+	push dword ebp
+	call [__asm_print_regs]
+	add esp,36
+	ret
+
+
+

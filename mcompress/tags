@@ -1,0 +1,5 @@
+btable	mcompress.c	/^} btable;$/
+btree	mcompress.c	/^} btree;$/
+list	mcompress.c	/^} list;$/
+shtree	mcompress.c	/^} shtree;$/
+tree	mcompress.c	/^} tree;$/

@@ -1,0 +1,130 @@
+Exception: STATUS_ACCESS_VIOLATION at eip=9C04618A
+eax=00000000 ebx=9C08A040 ecx=9C2C1DB8 edx=18A3FBE0 esi=00114000 edi=00000000
+ebp=18A3E6E4 esp=18A3E6D8 program=Z:\data\cprogs\Newest\tetris3d\tetris3d.exe, pid 8, thread unknown (0xC)
+cs=0033 ds=003B es=003B fs=110F gs=001B ss=003B
+Stack trace:
+Frame     Function  Args
+18A3E6E4  9C04618A  (00000000, 9C2C1DB8, 9C2BB965, 9C2BC137)
+18A3E708  9BF306C0  (00000000, 9C2C1DB8, 9C2BB965, 9C2BC137)
+18A3E728  9C2B0823  (00000000, 00000000, 00000F84, 00000000)
+18A3E758  61003ADA  (18A3F07C, 18A3E790, 6109D110, 00000000)
+18A3E788  61003E8B  (00000000, 00000000, 00000000, 00000000)
+18A3F728  61003EDA  (00000000, 00000000, 00000000, 00000000)
+End of stack trace
+13275746 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with exception code -1073741510
+13706399 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with exception code -1073741510
+13706894 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13714896 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13715380 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13715860 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13716341 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13716822 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13717297 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13717772 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13718250 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13718731 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13719646 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13720139 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13720638 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13721143 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13721639 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13722134 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13722643 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13723138 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13723633 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13724134 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13724638 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13725134 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13726388 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13726885 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13727385 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13727889 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13728397 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13728897 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13729800 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13730330 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13730860 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13731388 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13731916 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13732454 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13732987 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13733530 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13734053 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13734583 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13735113 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13735643 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13736171 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13736704 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13737232 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13737760 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13738291 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13738822 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13739432 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13740368 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13740950 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13741524 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13742101 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13742683 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13743287 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13743864 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13744443 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13745022 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13745604 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13746178 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13746840 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13747424 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13748015 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13748603 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13749186 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13749774 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13750363 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13751320 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13751917 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13752518 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13753124 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13753734 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13754342 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13754966 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13767095 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13767706 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13768305 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13768900 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13769498 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13770096 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13770708 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13771303 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13771899 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13772494 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13773094 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13774102 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13774735 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13775372 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13776008 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13776645 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13777282 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13789115 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13789985 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13790605 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13791234 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13791864 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13792489 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13793113 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13793742 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13794376 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13795002 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13795629 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13796257 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13796875 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13797902 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13798562 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13799226 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13799887 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13811875 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13812546 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13813208 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13813864 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13814522 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13815179 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13815838 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13816497 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1
+13817155 [sig] tetris3d 8 handle_threadlist_exception: handle_threadlist_exception called with threadlist_ix -1

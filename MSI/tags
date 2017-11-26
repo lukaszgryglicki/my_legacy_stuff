@@ -1,0 +1,465 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.3.1	//
+BITS16	cpus.c	142;"	d	file:
+BITS16	fast.c	142;"	d	file:
+BITS16	xmsi.c	151;"	d	file:
+BITS24	cpus4.c	142;"	d	file:
+BITS24	xmsi4.c	153;"	d	file:
+BLACK	cpus.c	15;"	d	file:
+BLACK	cpus4.c	15;"	d	file:
+BLACK	fast.c	16;"	d	file:
+BLACK	xmsi.c	15;"	d	file:
+BLACK	xmsi4.c	15;"	d	file:
+BLUE	cpus.c	18;"	d	file:
+BLUE	cpus4.c	18;"	d	file:
+BLUE	fast.c	19;"	d	file:
+BLUE	xmsi.c	18;"	d	file:
+BLUE	xmsi4.c	18;"	d	file:
+Debug	cpus.c	/^int Debug(char* fmt, ...)  \/* print out DEBUG information if DEBUG defined *\/$/;"	f
+Debug	cpus4.c	/^int Debug(char* fmt, ...)  \/* print out DEBUG information if DEBUG defined *\/$/;"	f
+Debug	fast.c	/^int Debug(char* fmt, ...)  \/* print out DEBUG information if DEBUG defined *\/$/;"	f
+Debug	msi.c	/^int Debug(char* fmt, ...)  \/* print out DEBUG information if DEBUG defined *\/$/;"	f
+Debug	xmsi.c	/^int Debug(char* fmt, ...)  \/* print out DEBUG information if DEBUG defined *\/$/;"	f
+Debug	xmsi4.c	/^int Debug(char* fmt, ...)  \/* print out DEBUG information if DEBUG defined *\/$/;"	f
+DrawScene	cpus.c	/^void DrawScene(int isBlack)	\/* Rysuje cala scene *\/$/;"	f
+DrawScene	cpus4.c	/^void DrawScene(int isBlack)	\/* Rysuje cala scene *\/$/;"	f
+DrawScene	fast.c	/^void DrawScene(int isBlack)	\/* Rysuje cala scene *\/$/;"	f
+DrawScene	msi.c	/^void DrawScene()		\/* Rysuje cala scene *\/$/;"	f
+DrawScene	msi4.c	/^void DrawScene()		\/* Rysuje cala scene *\/$/;"	f
+DrawScene	xmsi.c	/^void DrawScene(int isBlack)	\/* Rysuje cala scene *\/$/;"	f
+DrawScene	xmsi4.c	/^void DrawScene(int isBlack)	\/* Rysuje cala scene *\/$/;"	f
+GREEN	cpus.c	19;"	d	file:
+GREEN	cpus4.c	19;"	d	file:
+GREEN	fast.c	20;"	d	file:
+GREEN	xmsi.c	19;"	d	file:
+GREEN	xmsi4.c	19;"	d	file:
+Kill_random	cpus.c	/^void Kill_random()  \/* close random seed *\/$/;"	f
+Kill_random	cpus4.c	/^void Kill_random()  \/* close random seed *\/$/;"	f
+Kill_random	fast.c	/^void Kill_random()  \/* close random seed *\/$/;"	f
+Kill_random	msi.c	/^void Kill_random()  \/* close random seed *\/$/;"	f
+Kill_random	msi4.c	/^void Kill_random()  \/* close random seed *\/$/;"	f
+Kill_random	xmsi.c	/^void Kill_random()  \/* close random seed *\/$/;"	f
+Kill_random	xmsi4.c	/^void Kill_random()  \/* close random seed *\/$/;"	f
+MAXZ	cpus.c	13;"	d	file:
+MAXZ	cpus4.c	13;"	d	file:
+MAXZ	fast.c	14;"	d	file:
+MAXZ	xmsi.c	13;"	d	file:
+MAXZ	xmsi4.c	13;"	d	file:
+NFLOATS	cpus.c	21;"	d	file:
+NFLOATS	cpus4.c	21;"	d	file:
+NFLOATS	fast.c	22;"	d	file:
+NFLOATS	xmsi.c	21;"	d	file:
+NFLOATS	xmsi4.c	21;"	d	file:
+NLINES	cpus.c	20;"	d	file:
+NLINES	cpus4.c	20;"	d	file:
+NLINES	fast.c	21;"	d	file:
+NLINES	xmsi.c	20;"	d	file:
+NLINES	xmsi4.c	20;"	d	file:
+NPOINTS	cpus.c	22;"	d	file:
+NPOINTS	cpus4.c	22;"	d	file:
+NPOINTS	fast.c	23;"	d	file:
+NPOINTS	xmsi.c	22;"	d	file:
+NPOINTS	xmsi4.c	22;"	d	file:
+RED	cpus.c	17;"	d	file:
+RED	cpus4.c	17;"	d	file:
+RED	fast.c	18;"	d	file:
+RED	xmsi.c	17;"	d	file:
+RED	xmsi4.c	17;"	d	file:
+RGB	cpus.c	/^unsigned long RGB(int r, int g, int b)  \/*set color from r,g,b*\/$/;"	f
+RGB	cpus4.c	/^unsigned long RGB(int r, int g, int b)  \/*set color from r,g,b*\/$/;"	f
+RGB	fast.c	/^unsigned long RGB(int r, int g, int b)  \/*set color from r,g,b*\/$/;"	f
+RGB	xmsi.c	/^unsigned long RGB(int r, int g, int b)  \/*set color from r,g,b*\/$/;"	f
+RGB	xmsi4.c	/^unsigned long RGB(int r, int g, int b)  \/*set color from r,g,b*\/$/;"	f
+Random	cpus.c	/^int Random(int lb)   \/* randomize number from 0 to lb-1 *\/$/;"	f
+Random	cpus4.c	/^int Random(int lb)   \/* randomize number from 0 to lb-1 *\/$/;"	f
+Random	fast.c	/^int Random(int lb)   \/* randomize number from 0 to lb-1 *\/$/;"	f
+Random	msi.c	/^int Random(int lb)   \/* randomize number from 0 to lb-1 *\/$/;"	f
+Random	msi4.c	/^int Random(int lb)   \/* randomize number from 0 to lb-1 *\/$/;"	f
+Random	xmsi.c	/^int Random(int lb)   \/* randomize number from 0 to lb-1 *\/$/;"	f
+Random	xmsi4.c	/^int Random(int lb)   \/* randomize number from 0 to lb-1 *\/$/;"	f
+Randomize	cpus.c	/^int Randomize()   \/* init random engine *\/$/;"	f
+Randomize	cpus4.c	/^int Randomize()   \/* init random engine *\/$/;"	f
+Randomize	fast.c	/^int Randomize()   \/* init random engine *\/$/;"	f
+Randomize	msi.c	/^int Randomize()   \/* init random engine *\/$/;"	f
+Randomize	msi4.c	/^int Randomize()   \/* init random engine *\/$/;"	f
+Randomize	xmsi.c	/^int Randomize()   \/* init random engine *\/$/;"	f
+Randomize	xmsi4.c	/^int Randomize()   \/* init random engine *\/$/;"	f
+ReturnBlue	cpus.c	/^int ReturnBlue(ulong col)$/;"	f
+ReturnBlue	cpus4.c	/^int ReturnBlue(ulong col)$/;"	f
+ReturnBlue	fast.c	/^int ReturnBlue(ulong col)$/;"	f
+ReturnBlue	xmsi.c	/^int ReturnBlue(ulong col)$/;"	f
+ReturnBlue	xmsi4.c	/^int ReturnBlue(ulong col)$/;"	f
+ReturnGreen	cpus.c	/^int ReturnGreen(ulong col)$/;"	f
+ReturnGreen	cpus4.c	/^int ReturnGreen(ulong col)$/;"	f
+ReturnGreen	fast.c	/^int ReturnGreen(ulong col)$/;"	f
+ReturnGreen	xmsi.c	/^int ReturnGreen(ulong col)$/;"	f
+ReturnGreen	xmsi4.c	/^int ReturnGreen(ulong col)$/;"	f
+ReturnRed	cpus.c	/^int ReturnRed(ulong col)$/;"	f
+ReturnRed	cpus4.c	/^int ReturnRed(ulong col)$/;"	f
+ReturnRed	fast.c	/^int ReturnRed(ulong col)$/;"	f
+ReturnRed	xmsi.c	/^int ReturnRed(ulong col)$/;"	f
+ReturnRed	xmsi4.c	/^int ReturnRed(ulong col)$/;"	f
+START_AX	cpus.c	6;"	d	file:
+START_AX	cpus4.c	6;"	d	file:
+START_AX	fast.c	7;"	d	file:
+START_AX	xmsi.c	6;"	d	file:
+START_AX	xmsi4.c	6;"	d	file:
+START_AY	cpus.c	7;"	d	file:
+START_AY	cpus4.c	7;"	d	file:
+START_AY	fast.c	8;"	d	file:
+START_AY	xmsi.c	7;"	d	file:
+START_AY	xmsi4.c	7;"	d	file:
+START_AZ	cpus.c	8;"	d	file:
+START_AZ	cpus4.c	8;"	d	file:
+START_AZ	fast.c	9;"	d	file:
+START_AZ	xmsi.c	8;"	d	file:
+START_AZ	xmsi4.c	8;"	d	file:
+START_DX	cpus.c	11;"	d	file:
+START_DX	cpus4.c	11;"	d	file:
+START_DX	fast.c	12;"	d	file:
+START_DX	xmsi.c	11;"	d	file:
+START_DX	xmsi4.c	11;"	d	file:
+START_DY	cpus.c	10;"	d	file:
+START_DY	cpus4.c	10;"	d	file:
+START_DY	fast.c	11;"	d	file:
+START_DY	xmsi.c	10;"	d	file:
+START_DY	xmsi4.c	10;"	d	file:
+START_DZ	cpus.c	9;"	d	file:
+START_DZ	cpus4.c	9;"	d	file:
+START_DZ	fast.c	10;"	d	file:
+START_DZ	xmsi.c	9;"	d	file:
+START_DZ	xmsi4.c	9;"	d	file:
+WHITE	cpus.c	16;"	d	file:
+WHITE	cpus4.c	16;"	d	file:
+WHITE	fast.c	17;"	d	file:
+WHITE	xmsi.c	16;"	d	file:
+WHITE	xmsi4.c	16;"	d	file:
+X_PERSP	cpus.c	14;"	d	file:
+X_PERSP	cpus4.c	14;"	d	file:
+X_PERSP	fast.c	15;"	d	file:
+X_PERSP	xmsi.c	14;"	d	file:
+X_PERSP	xmsi4.c	14;"	d	file:
+_ran_device	cpus.c	/^static FILE* _ran_device;		\/* where to grt random values *\/$/;"	v	file:
+_ran_device	cpus4.c	/^static FILE* _ran_device;		\/* where to grt random values *\/$/;"	v	file:
+_ran_device	fast.c	/^static FILE* _ran_device;		\/* where to grt random values *\/$/;"	v	file:
+_ran_device	msi.c	/^static FILE* _ran_device;		\/* where to grt random values *\/$/;"	v	file:
+_ran_device	msi4.c	/^static FILE* _ran_device;		\/* where to grt random values *\/$/;"	v	file:
+_ran_device	xmsi.c	/^static FILE* _ran_device;		\/* where to grt random values *\/$/;"	v	file:
+_ran_device	xmsi4.c	/^static FILE* _ran_device;		\/* where to grt random values *\/$/;"	v	file:
+angle_x	cpus.c	/^static int angle_x = START_AX;		\/*rotations*\/$/;"	v	file:
+angle_x	cpus4.c	/^static int angle_x = START_AX;		\/*rotations*\/$/;"	v	file:
+angle_x	fast.c	/^static int angle_x = START_AX;		\/*rotations*\/$/;"	v	file:
+angle_x	xmsi.c	/^static int angle_x = START_AX;		\/*rotations*\/$/;"	v	file:
+angle_x	xmsi4.c	/^static int angle_x = START_AX;		\/*rotations*\/$/;"	v	file:
+angle_y	cpus.c	/^static int angle_y = START_AY;$/;"	v	file:
+angle_y	cpus4.c	/^static int angle_y = START_AY;$/;"	v	file:
+angle_y	fast.c	/^static int angle_y = START_AY;$/;"	v	file:
+angle_y	xmsi.c	/^static int angle_y = START_AY;$/;"	v	file:
+angle_y	xmsi4.c	/^static int angle_y = START_AY;$/;"	v	file:
+angle_z	cpus.c	/^static int angle_z = START_AZ;$/;"	v	file:
+angle_z	cpus4.c	/^static int angle_z = START_AZ;$/;"	v	file:
+angle_z	fast.c	/^static int angle_z = START_AZ;$/;"	v	file:
+angle_z	xmsi.c	/^static int angle_z = START_AZ;$/;"	v	file:
+angle_z	xmsi4.c	/^static int angle_z = START_AZ;$/;"	v	file:
+board	cpus.c	/^static int board[27];			\/* board 0-empty, 1-human, 2-CPU *\/$/;"	v	file:
+board	cpus4.c	/^static int board[64];			\/* board 0-empty, 1-human, 2-CPU *\/$/;"	v	file:
+board	fast.c	/^static int board[27];			\/* board 0-empty, 1-human, 2-CPU *\/$/;"	v	file:
+board	msi.c	/^static int board[27];			\/* board 0-empty, 1-human, 2-CPU *\/$/;"	v	file:
+board	msi4.c	/^static int board[64];			\/* board 0-empty, 1-human, 2-CPU *\/$/;"	v	file:
+board	xmsi.c	/^static int board[27];			\/* board 0-empty, 1-human, 2-CPU *\/$/;"	v	file:
+board	xmsi4.c	/^static int board[64];			\/* board 0-empty, 1-human, 2-CPU *\/$/;"	v	file:
+board_lines	cpus.c	/^float board_lines[NFLOATS] =$/;"	v
+board_lines	cpus4.c	/^float board_lines[NFLOATS] =$/;"	v
+board_lines	fast.c	/^float board_lines[NFLOATS] =$/;"	v
+board_lines	xmsi.c	/^float board_lines[NFLOATS] =$/;"	v
+board_lines	xmsi4.c	/^float board_lines[NFLOATS] =$/;"	v
+board_lines_buff	cpus.c	/^float board_lines_buff[NFLOATS]; \/* size 6 X 12 *\/$/;"	v
+board_lines_buff	cpus4.c	/^float board_lines_buff[NFLOATS]; \/* size 6 X 12 *\/$/;"	v
+board_lines_buff	fast.c	/^float board_lines_buff[NFLOATS]; \/* size 6 X 12 *\/$/;"	v
+board_lines_buff	xmsi.c	/^float board_lines_buff[NFLOATS]; \/* size 6 X 12 *\/$/;"	v
+board_lines_buff	xmsi4.c	/^float board_lines_buff[NFLOATS]; \/* size 6 X 12 *\/$/;"	v
+check	msi.c	/^void check()			\/* czy wszystkie dane sa sensowne ? *\/$/;"	f
+check	msi4.c	/^void check()			\/* czy wszystkie dane sa sensowne ? *\/$/;"	f
+check_angles	cpus.c	/^void check_angles()			\/* czy wszystkie dane sa sensowne ? *\/$/;"	f
+check_angles	cpus4.c	/^void check_angles()			\/* czy wszystkie dane sa sensowne ? *\/$/;"	f
+check_angles	fast.c	/^void check_angles()			\/* czy wszystkie dane sa sensowne ? *\/$/;"	f
+check_angles	xmsi.c	/^void check_angles()			\/* czy wszystkie dane sa sensowne ? *\/$/;"	f
+check_angles	xmsi4.c	/^void check_angles()			\/* czy wszystkie dane sa sensowne ? *\/$/;"	f
+check_draw	cpus4.c	/^int check_draw(int* h1, int* h2, int n)$/;"	f
+check_draw	msi4.c	/^int check_draw(int* h1, int* h2, int n)$/;"	f
+check_draw	xmsi4.c	/^int check_draw(int* h1, int* h2, int n)$/;"	f
+check_full	cpus4.c	/^void check_full()$/;"	f
+check_full	xmsi4.c	/^void check_full()$/;"	f
+clear_board	cpus.c	/^void clear_board()$/;"	f
+clear_board	cpus4.c	/^void clear_board()$/;"	f
+clear_board	fast.c	/^void clear_board()$/;"	f
+clear_board	msi.c	/^void clear_board()$/;"	f
+clear_board	msi4.c	/^void clear_board()$/;"	f
+clear_board	xmsi.c	/^void clear_board()$/;"	f
+clear_board	xmsi4.c	/^void clear_board()$/;"	f
+copy_buffers	cpus.c	/^void copy_buffers() \/*create dat buffer, once on init*\/$/;"	f
+copy_buffers	cpus4.c	/^void copy_buffers() \/*create dat buffer, once on init*\/$/;"	f
+copy_buffers	fast.c	/^void copy_buffers() \/*create dat buffer, once on init*\/$/;"	f
+copy_buffers	xmsi.c	/^void copy_buffers() \/*create dat buffer, once on init*\/$/;"	f
+copy_buffers	xmsi4.c	/^void copy_buffers() \/*create dat buffer, once on init*\/$/;"	f
+copy_from_buffers	cpus.c	/^void copy_from_buffers()		 \/*set start values before another transformation*\/$/;"	f
+copy_from_buffers	cpus4.c	/^void copy_from_buffers()		 \/*set start values before another transformation*\/$/;"	f
+copy_from_buffers	fast.c	/^void copy_from_buffers()		 \/*set start values before another transformation*\/$/;"	f
+copy_from_buffers	xmsi.c	/^void copy_from_buffers()		 \/*set start values before another transformation*\/$/;"	f
+copy_from_buffers	xmsi4.c	/^void copy_from_buffers()		 \/*set start values before another transformation*\/$/;"	f
+cosines	cpus.c	/^static float cosines[360];$/;"	v	file:
+cosines	cpus4.c	/^static float cosines[360];$/;"	v	file:
+cosines	fast.c	/^static float cosines[360];$/;"	v	file:
+cosines	xmsi.c	/^static float cosines[360];$/;"	v	file:
+cosines	xmsi4.c	/^static float cosines[360];$/;"	v	file:
+cpu1_turn	cpus.c	/^static int cpu1_turn=1;$/;"	v	file:
+cpu1_turn	cpus4.c	/^static int cpu1_turn=1;$/;"	v	file:
+cpu1_turn	fast.c	/^static int cpu1_turn=1;$/;"	v	file:
+cpu1_wins	cpus.c	/^static int cpu1_wins=0;$/;"	v	file:
+cpu1_wins	cpus4.c	/^static int cpu1_wins=0;$/;"	v	file:
+cpu1_wins	fast.c	/^static int cpu1_wins=0;$/;"	v	file:
+cpu2_wins	cpus.c	/^static int cpu2_wins=0;$/;"	v	file:
+cpu2_wins	cpus4.c	/^static int cpu2_wins=0;$/;"	v	file:
+cpu2_wins	fast.c	/^static int cpu2_wins=0;$/;"	v	file:
+cpu_msi_move	cpus.c	/^void cpu_msi_move(int player)$/;"	f
+cpu_msi_move	cpus4.c	/^void cpu_msi_move(int player)$/;"	f
+cpu_msi_move	fast.c	/^void cpu_msi_move(int player)$/;"	f
+cpu_msi_move	msi.c	/^void cpu_msi_move()$/;"	f
+cpu_msi_move	msi4.c	/^void cpu_msi_move()$/;"	f
+cpu_msi_move	xmsi.c	/^void cpu_msi_move()$/;"	f
+cpu_msi_move	xmsi4.c	/^void cpu_msi_move()$/;"	f
+cpu_wins	msi.c	/^static int cpu_wins=0;$/;"	v	file:
+cpu_wins	msi4.c	/^static int cpu_wins=0;$/;"	v	file:
+cpu_wins	xmsi.c	/^static int cpu_wins=0;$/;"	v	file:
+cpu_wins	xmsi4.c	/^static int cpu_wins=0;$/;"	v	file:
+cx	cpus.c	/^static int cx = 600;			\/* window sizes *\/$/;"	v	file:
+cx	cpus4.c	/^static int cx = 600;			\/* window sizes *\/$/;"	v	file:
+cx	fast.c	/^static int cx = 600;			\/* window sizes *\/$/;"	v	file:
+cx	xmsi.c	/^static int cx = 600;			\/* window sizes *\/$/;"	v	file:
+cx	xmsi4.c	/^static int cx = 600;			\/* window sizes *\/$/;"	v	file:
+cy	cpus.c	/^static int cy = 450;$/;"	v	file:
+cy	cpus4.c	/^static int cy = 450;$/;"	v	file:
+cy	fast.c	/^static int cy = 450;$/;"	v	file:
+cy	xmsi.c	/^static int cy = 450;$/;"	v	file:
+cy	xmsi4.c	/^static int cy = 450;$/;"	v	file:
+debug	cpus.c	/^int debug(char* fmt, ...)  \/* print out DEBUG information if DEBUG defined *\/$/;"	f
+debug	cpus4.c	/^int debug(char* fmt, ...)  \/* print out DEBUG information if DEBUG defined *\/$/;"	f
+debug	fast.c	/^int debug(char* fmt, ...)  \/* print out DEBUG information if DEBUG defined *\/$/;"	f
+debug	msi.c	/^int debug(char* fmt, ...)  \/* print out DEBUG information if DEBUG defined *\/$/;"	f
+debug	msi4.c	/^int debug(int line, char* fmt, ...)  \/* print out DEBUG information if DEBUG defined *\/$/;"	f
+debug	xmsi.c	/^int debug(char* fmt, ...)  \/* print out DEBUG information if DEBUG defined *\/$/;"	f
+debug	xmsi4.c	/^int debug(char* fmt, ...)  \/* print out DEBUG information if DEBUG defined *\/$/;"	f
+delta_x	cpus.c	/^static float delta_x=0.0;$/;"	v	file:
+delta_x	cpus4.c	/^static float delta_x=0.0;$/;"	v	file:
+delta_x	fast.c	/^static float delta_x=0.0;$/;"	v	file:
+delta_x	xmsi.c	/^static float delta_x=0.0;$/;"	v	file:
+delta_x	xmsi4.c	/^static float delta_x=0.0;$/;"	v	file:
+delta_y	cpus.c	/^static float delta_y=0.0;$/;"	v	file:
+delta_y	cpus4.c	/^static float delta_y=0.0;$/;"	v	file:
+delta_y	fast.c	/^static float delta_y=0.0;$/;"	v	file:
+delta_y	xmsi.c	/^static float delta_y=0.0;$/;"	v	file:
+delta_y	xmsi4.c	/^static float delta_y=0.0;$/;"	v	file:
+delta_z	cpus.c	/^static float delta_z=0.0;$/;"	v	file:
+delta_z	cpus4.c	/^static float delta_z=0.0;$/;"	v	file:
+delta_z	fast.c	/^static float delta_z=0.0;$/;"	v	file:
+delta_z	xmsi.c	/^static float delta_z=0.0;$/;"	v	file:
+delta_z	xmsi4.c	/^static float delta_z=0.0;$/;"	v	file:
+done	cpus.c	/^static int done = 0;			\/*quit when done*\/$/;"	v	file:
+done	cpus4.c	/^static int done = 0;			\/*quit when done*\/$/;"	v	file:
+done	msi.c	/^static int done = 0;			\/*quit when done*\/$/;"	v	file:
+done	msi4.c	/^static int done = 0;			\/*quit when done*\/$/;"	v	file:
+done	xmsi.c	/^static int done = 0;			\/*quit when done*\/$/;"	v	file:
+done	xmsi4.c	/^static int done = 0;			\/*quit when done*\/$/;"	v	file:
+draw	cpus4.c	/^void draw()$/;"	f
+draw	msi4.c	/^void draw()$/;"	f
+draw	xmsi4.c	/^void draw()$/;"	f
+draw_2D_field	cpus4.c	/^void draw_2D_field(int x, int y, int col, int sel)$/;"	f
+draw_2D_field	xmsi4.c	/^void draw_2D_field(int x, int y, int col, int sel)$/;"	f
+draw_2D_objects	cpus.c	/^void draw_2D_objects()			\/* draw 2D objects *\/$/;"	f
+draw_2D_objects	cpus4.c	/^void draw_2D_objects()			\/* draw 2D objects *\/$/;"	f
+draw_2D_objects	fast.c	/^void draw_2D_objects()			\/* draw 2D objects *\/$/;"	f
+draw_2D_objects	xmsi.c	/^void draw_2D_objects()			\/* draw 2D objects *\/$/;"	f
+draw_2D_objects	xmsi4.c	/^void draw_2D_objects()			\/* draw 2D objects *\/$/;"	f
+dsp	cpus.c	/^static Display* dsp;			\/*Xserver specifics*\/$/;"	v	file:
+dsp	cpus4.c	/^static Display* dsp;			\/*Xserver specifics*\/$/;"	v	file:
+dsp	fast.c	/^static Display* dsp;			\/*Xserver specifics*\/$/;"	v	file:
+dsp	xmsi.c	/^static Display* dsp;			\/*Xserver specifics*\/$/;"	v	file:
+dsp	xmsi4.c	/^static Display* dsp;			\/*Xserver specifics*\/$/;"	v	file:
+end_cond	cpus.c	/^static int end_cond = 0;		\/* CPU win or lost currently *\/$/;"	v	file:
+end_cond	cpus4.c	/^static int end_cond = 0;		\/* CPU win or lost currently *\/$/;"	v	file:
+end_cond	fast.c	/^static int end_cond = 0;		\/* CPU win or lost currently *\/$/;"	v	file:
+end_cond	msi.c	/^static int end_cond = 0;		\/* CPU win or lost currently *\/$/;"	v	file:
+end_cond	msi4.c	/^static int end_cond = 0;		\/* CPU win or lost currently *\/$/;"	v	file:
+end_cond	xmsi.c	/^static int end_cond = 0;		\/* CPU win or lost currently *\/$/;"	v	file:
+end_cond	xmsi4.c	/^static int end_cond = 0;		\/* CPU win or lost currently *\/$/;"	v	file:
+forseen_best_move	cpus.c	/^int forseen_best_move(int h1, int h2, int h3, int h4, int cpu, int opp)$/;"	f
+forseen_best_move	cpus4.c	/^int forseen_best_move(int h1, int h2, int h3, int h4, int cpu, int opp)$/;"	f
+forseen_best_move	fast.c	/^int forseen_best_move(int h1, int h2, int h3, int h4, int cpu, int opp)$/;"	f
+forseen_best_move	msi.c	/^int forseen_best_move(int h1, int h2, int h3, int h4, int cpu, int opp)$/;"	f
+forseen_best_move	msi4.c	/^int forseen_best_move(int h1, int h2, int h3, int h4, int cpu, int opp)$/;"	f
+forseen_best_move	xmsi.c	/^int forseen_best_move(int h1, int h2, int h3, int h4, int cpu, int opp)$/;"	f
+forseen_best_move	xmsi4.c	/^int forseen_best_move(int h1, int h2, int h3, int h4, int cpu, int opp)$/;"	f
+gc	cpus.c	/^static GC gc;$/;"	v	file:
+gc	cpus4.c	/^static GC gc;$/;"	v	file:
+gc	fast.c	/^static GC gc;$/;"	v	file:
+gc	xmsi.c	/^static GC gc;$/;"	v	file:
+gc	xmsi4.c	/^static GC gc;$/;"	v	file:
+get_2D_selected_pos	cpus.c	/^void get_2D_selected_pos(int* dx, int *dy) \/* selected to 2D output screen *\/$/;"	f
+get_2D_selected_pos	cpus4.c	/^void get_2D_selected_pos(int* dx, int *dy) \/* selected to 2D output screen *\/$/;"	f
+get_2D_selected_pos	fast.c	/^void get_2D_selected_pos(int* dx, int *dy) \/* selected to 2D output screen *\/$/;"	f
+get_2D_selected_pos	xmsi.c	/^void get_2D_selected_pos(int* dx, int *dy) \/* selected to 2D output screen *\/$/;"	f
+get_2D_selected_pos	xmsi4.c	/^void get_2D_selected_pos(int* dx, int *dy) \/* selected to 2D output screen *\/$/;"	f
+get_3D_selected_pos	cpus.c	/^void get_3D_selected_pos(float* dx, float* dy, float* dz)$/;"	f
+get_3D_selected_pos	cpus4.c	/^void get_3D_selected_pos(float* dx, float* dy, float* dz)$/;"	f
+get_3D_selected_pos	fast.c	/^void get_3D_selected_pos(float* dx, float* dy, float* dz)$/;"	f
+get_3D_selected_pos	xmsi.c	/^void get_3D_selected_pos(float* dx, float* dy, float* dz)$/;"	f
+get_3D_selected_pos	xmsi4.c	/^void get_3D_selected_pos(float* dx, float* dy, float* dz)$/;"	f
+get_at	cpus.c	/^int get_at(int x, int y, int z)$/;"	f
+get_at	cpus4.c	/^int get_at(int x, int y, int z)$/;"	f
+get_at	fast.c	/^int get_at(int x, int y, int z)$/;"	f
+get_at	msi.c	/^int get_at(int x, int y, int z)$/;"	f
+get_at	msi4.c	/^int get_at(int x, int y, int z)$/;"	f
+get_at	xmsi.c	/^int get_at(int x, int y, int z)$/;"	f
+get_at	xmsi4.c	/^int get_at(int x, int y, int z)$/;"	f
+get_current_heuristics	cpus.c	/^int get_current_heuristics(int* h1, int* h2, int* h3, int* h4, int cpu, int opp)$/;"	f
+get_current_heuristics	cpus4.c	/^int get_current_heuristics(int* h1, int* h2, int* h3, int* h4, int cpu, int opp)$/;"	f
+get_current_heuristics	fast.c	/^int get_current_heuristics(int* h1, int* h2, int* h3, int* h4, int cpu, int opp)$/;"	f
+get_current_heuristics	msi.c	/^int get_current_heuristics(int* h1, int* h2, int* h3, int* h4, int cpu, int opp)$/;"	f
+get_current_heuristics	msi4.c	/^int get_current_heuristics(int* h1, int* h2, int* h3, int* h4, int cpu, int opp)$/;"	f
+get_current_heuristics	xmsi.c	/^int get_current_heuristics(int* h1, int* h2, int* h3, int* h4, int cpu, int opp)$/;"	f
+get_current_heuristics	xmsi4.c	/^int get_current_heuristics(int* h1, int* h2, int* h3, int* h4, int cpu, int opp)$/;"	f
+half_arc	cpus.c	12;"	d	file:
+half_arc	cpus4.c	12;"	d	file:
+half_arc	fast.c	13;"	d	file:
+half_arc	xmsi.c	12;"	d	file:
+half_arc	xmsi4.c	12;"	d	file:
+halt	xmsi4.c	/^static int halt=0;$/;"	v	file:
+halt_btx	xmsi4.c	/^void halt_btx()$/;"	f
+help	cpus.c	/^void help()$/;"	f
+help	cpus4.c	/^void help()$/;"	f
+help	msi.c	/^void help()$/;"	f
+help	msi4.c	/^void help()$/;"	f
+help	xmsi.c	/^void help()$/;"	f
+help	xmsi4.c	/^void help()$/;"	f
+heuristic_count_moves_to_win	cpus.c	/^int heuristic_count_moves_to_win(int player)$/;"	f
+heuristic_count_moves_to_win	cpus4.c	/^int heuristic_count_moves_to_win(int player)$/;"	f
+heuristic_count_moves_to_win	fast.c	/^int heuristic_count_moves_to_win(int player)$/;"	f
+heuristic_count_moves_to_win	msi.c	/^int heuristic_count_moves_to_win(int player)$/;"	f
+heuristic_count_moves_to_win	msi4.c	/^int heuristic_count_moves_to_win(int player)$/;"	f
+heuristic_count_moves_to_win	xmsi.c	/^int heuristic_count_moves_to_win(int player)$/;"	f
+heuristic_count_moves_to_win	xmsi4.c	/^int heuristic_count_moves_to_win(int player)$/;"	f
+heuristic_count_ways_to_win	cpus.c	/^int heuristic_count_ways_to_win(int player)$/;"	f
+heuristic_count_ways_to_win	cpus4.c	/^int heuristic_count_ways_to_win(int player)$/;"	f
+heuristic_count_ways_to_win	fast.c	/^int heuristic_count_ways_to_win(int player)$/;"	f
+heuristic_count_ways_to_win	msi.c	/^int heuristic_count_ways_to_win(int player)$/;"	f
+heuristic_count_ways_to_win	msi4.c	/^int heuristic_count_ways_to_win(int player)$/;"	f
+heuristic_count_ways_to_win	xmsi.c	/^int heuristic_count_ways_to_win(int player)$/;"	f
+heuristic_count_ways_to_win	xmsi4.c	/^int heuristic_count_ways_to_win(int player)$/;"	f
+hum_wins	msi.c	/^static int hum_wins=0;$/;"	v	file:
+hum_wins	msi4.c	/^static int hum_wins=0;$/;"	v	file:
+hum_wins	xmsi.c	/^static int hum_wins=0;$/;"	v	file:
+hum_wins	xmsi4.c	/^static int hum_wins=0;$/;"	v	file:
+hx	cpus.c	/^static int hx = 300;$/;"	v	file:
+hx	cpus4.c	/^static int hx = 300;$/;"	v	file:
+hx	fast.c	/^static int hx = 300;$/;"	v	file:
+hx	xmsi.c	/^static int hx = 300;$/;"	v	file:
+hx	xmsi4.c	/^static int hx = 300;$/;"	v	file:
+hy	cpus.c	/^static int hy = 225;$/;"	v	file:
+hy	cpus4.c	/^static int hy = 225;$/;"	v	file:
+hy	fast.c	/^static int hy = 225;$/;"	v	file:
+hy	xmsi.c	/^static int hy = 225;$/;"	v	file:
+hy	xmsi4.c	/^static int hy = 225;$/;"	v	file:
+init	cpus.c	/^void init() \/*create sine\/cosine tables and board*\/$/;"	f
+init	cpus4.c	/^void init() \/*create sine\/cosine tables and board*\/$/;"	f
+init	fast.c	/^void init() \/*create sine\/cosine tables and board*\/$/;"	f
+init	msi.c	/^void init() \/*create sine\/cosine tables and board*\/$/;"	f
+init	msi4.c	/^void init() \/*create sine\/cosine tables and board*\/$/;"	f
+init	xmsi.c	/^void init() \/*create sine\/cosine tables and board*\/$/;"	f
+init	xmsi4.c	/^void init() \/*create sine\/cosine tables and board*\/$/;"	f
+main	cpus.c	/^int main(int lb, char** par)		\/* tutaj UNIX przekazuje sterowanie do Xengine *\/$/;"	f
+main	cpus4.c	/^int main(int lb, char** par)		\/* tutaj UNIX przekazuje sterowanie do Xengine *\/$/;"	f
+main	fast.c	/^int main(int lb, char** par)		\/* tutaj UNIX przekazuje sterowanie do Xengine *\/$/;"	f
+main	msi.c	/^int main(int lb, char** par)		\/* tutaj UNIX przekazuje sterowanie do Xengine *\/$/;"	f
+main	msi4.c	/^int main(int lb, char** par)		\/* tutaj UNIX przekazuje sterowanie do Xengine *\/$/;"	f
+main	xmsi.c	/^int main(int lb, char** par)		\/* tutaj UNIX przekazuje sterowanie do Xengine *\/$/;"	f
+main	xmsi4.c	/^int main(int lb, char** par)		\/* tutaj UNIX przekazuje sterowanie do Xengine *\/$/;"	f
+mgetch	msi.c	/^int mgetch()$/;"	f
+mgetch	msi4.c	/^int mgetch()$/;"	f
+move_x	cpus.c	/^void move_x(int arg) \/* move selected +\/- X *\/$/;"	f
+move_x	cpus4.c	/^void move_x(int arg) \/* move selected +\/- X *\/$/;"	f
+move_x	fast.c	/^void move_x(int arg) \/* move selected +\/- X *\/$/;"	f
+move_x	msi.c	/^void move_x(int arg) \/* move selected +\/- X *\/$/;"	f
+move_x	msi4.c	/^void move_x(int arg) \/* move selected +\/- X *\/$/;"	f
+move_x	xmsi.c	/^void move_x(int arg) \/* move selected +\/- X *\/$/;"	f
+move_x	xmsi4.c	/^void move_x(int arg) \/* move selected +\/- X *\/$/;"	f
+move_y	cpus.c	/^void move_y(int arg) \/* move selected +\/- Y *\/$/;"	f
+move_y	cpus4.c	/^void move_y(int arg) \/* move selected +\/- Y *\/$/;"	f
+move_y	fast.c	/^void move_y(int arg) \/* move selected +\/- Y *\/$/;"	f
+move_y	msi.c	/^void move_y(int arg) \/* move selected +\/- Y *\/$/;"	f
+move_y	msi4.c	/^void move_y(int arg) \/* move selected +\/- Y *\/$/;"	f
+move_y	xmsi.c	/^void move_y(int arg) \/* move selected +\/- Y *\/$/;"	f
+move_y	xmsi4.c	/^void move_y(int arg) \/* move selected +\/- Y *\/$/;"	f
+move_z	cpus.c	/^void move_z(int arg) \/* move selected +\/- Z *\/$/;"	f
+move_z	cpus4.c	/^void move_z(int arg) \/* move selected +\/- Z *\/$/;"	f
+move_z	fast.c	/^void move_z(int arg) \/* move selected +\/- Z *\/$/;"	f
+move_z	msi.c	/^void move_z(int arg) \/* move selected +\/- Z *\/$/;"	f
+move_z	msi4.c	/^void move_z(int arg) \/* move selected +\/- Z *\/$/;"	f
+move_z	xmsi.c	/^void move_z(int arg) \/* move selected +\/- Z *\/$/;"	f
+move_z	xmsi4.c	/^void move_z(int arg) \/* move selected +\/- Z *\/$/;"	f
+perspective	cpus.c	/^static float perspective = 0.;		\/* perspective *\/$/;"	v	file:
+perspective	cpus4.c	/^static float perspective = 0.;		\/* perspective *\/$/;"	v	file:
+perspective	fast.c	/^static float perspective = 0.;		\/* perspective *\/$/;"	v	file:
+perspective	xmsi.c	/^static float perspective = 0.;		\/* perspective *\/$/;"	v	file:
+perspective	xmsi4.c	/^static float perspective = 0.;		\/* perspective *\/$/;"	v	file:
+selected	cpus.c	/^static int selected = 0;		\/* AKTUALNIE ZAZNACZONE POLE *\/$/;"	v	file:
+selected	cpus4.c	/^static int selected = 0;		\/* AKTUALNIE ZAZNACZONE POLE *\/$/;"	v	file:
+selected	fast.c	/^static int selected = 0;		\/* AKTUALNIE ZAZNACZONE POLE *\/$/;"	v	file:
+selected	msi.c	/^static int selected = 0;		\/* AKTUALNIE ZAZNACZONE POLE *\/$/;"	v	file:
+selected	msi4.c	/^static int selected = 0;		\/* AKTUALNIE ZAZNACZONE POLE *\/$/;"	v	file:
+selected	xmsi.c	/^static int selected = 0;		\/* AKTUALNIE ZAZNACZONE POLE *\/$/;"	v	file:
+selected	xmsi4.c	/^static int selected = 0;		\/* AKTUALNIE ZAZNACZONE POLE *\/$/;"	v	file:
+set_at	cpus.c	/^void set_at(int x, int y, int z, int value)$/;"	f
+set_at	cpus4.c	/^void set_at(int x, int y, int z, int value)$/;"	f
+set_at	fast.c	/^void set_at(int x, int y, int z, int value)$/;"	f
+set_at	msi.c	/^void set_at(int x, int y, int z, int value)$/;"	f
+set_at	msi4.c	/^void set_at(int x, int y, int z, int value)$/;"	f
+set_at	xmsi.c	/^void set_at(int x, int y, int z, int value)$/;"	f
+set_at	xmsi4.c	/^void set_at(int x, int y, int z, int value)$/;"	f
+sines	cpus.c	/^static float sines[360];		\/*tables of function values*\/$/;"	v	file:
+sines	cpus4.c	/^static float sines[360];		\/*tables of function values*\/$/;"	v	file:
+sines	fast.c	/^static float sines[360];		\/*tables of function values*\/$/;"	v	file:
+sines	xmsi.c	/^static float sines[360];		\/*tables of function values*\/$/;"	v	file:
+sines	xmsi4.c	/^static float sines[360];		\/*tables of function values*\/$/;"	v	file:
+stats	cpus.c	/^void stats()$/;"	f
+stats	cpus4.c	/^void stats()$/;"	f
+stats	fast.c	/^void stats()$/;"	f
+stats	msi.c	/^void stats()$/;"	f
+stats	msi4.c	/^void stats()$/;"	f
+stats	xmsi.c	/^void stats()$/;"	f
+stats	xmsi4.c	/^void stats()$/;"	f
+try_random_move	cpus.c	/^int try_random_move(int player)$/;"	f
+try_random_move	cpus4.c	/^int try_random_move(int player)$/;"	f
+try_random_move	fast.c	/^int try_random_move(int player)$/;"	f
+try_random_move	msi.c	/^int try_random_move(int player)$/;"	f
+try_random_move	xmsi.c	/^int try_random_move(int player)$/;"	f
+ulong	cpus.c	/^typedef unsigned long ulong;$/;"	t	file:
+ulong	cpus4.c	/^typedef unsigned long ulong;$/;"	t	file:
+ulong	fast.c	/^typedef unsigned long ulong;$/;"	t	file:
+ulong	msi.c	/^typedef unsigned long ulong;$/;"	t	file:
+ulong	msi4.c	/^typedef unsigned long ulong;$/;"	t	file:
+ulong	xmsi.c	/^typedef unsigned long ulong;$/;"	t	file:
+ulong	xmsi4.c	/^typedef unsigned long ulong;$/;"	t	file:
+win	cpus.c	/^static Window win;$/;"	v	file:
+win	cpus4.c	/^static Window win;$/;"	v	file:
+win	fast.c	/^static Window win;$/;"	v	file:
+win	xmsi.c	/^static Window win;$/;"	v	file:
+win	xmsi4.c	/^static Window win;$/;"	v	file:
+world_transforms	cpus.c	/^void world_transforms()		\/* przeksztalcenia swiata nie uzywam ZADNYCH macierzy *\/$/;"	f
+world_transforms	cpus4.c	/^void world_transforms()		\/* przeksztalcenia swiata nie uzywam ZADNYCH macierzy *\/$/;"	f
+world_transforms	fast.c	/^void world_transforms()		\/* przeksztalcenia swiata nie uzywam ZADNYCH macierzy *\/$/;"	f
+world_transforms	xmsi.c	/^void world_transforms()		\/* przeksztalcenia swiata nie uzywam ZADNYCH macierzy *\/$/;"	f
+world_transforms	xmsi4.c	/^void world_transforms()		\/* przeksztalcenia swiata nie uzywam ZADNYCH macierzy *\/$/;"	f

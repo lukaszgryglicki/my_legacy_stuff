@@ -1,0 +1,60 @@
+Frame	pusn.c	/^} Frame;$/
+I_matrix	pusn.c	/^void I_matrix(GLdouble** dst, GLint siz)$/
+Init	pusn.c	/^void Init()$/
+Mpusn	pusn.c	/^int main(int lb, char** par)$/
+PUMA	pusn.c	/^} PUMA;$/
+Texture	pusn.c	/^} Texture;$/
+angle_froma	pusn.c	/^GLdouble angle_froma(GLdouble as, GLdouble ac)$/
+anim	pusn.c	/^void anim(void)$/
+check_angles	pusn.c	/^void check_angles()$/
+check_puma	pusn.c	/^void check_puma(PUMA* p)$/
+copy_matrix	pusn.c	/^void copy_matrix(GLdouble** dst, GLdouble** src, G/
+dyna_tex_data	pusn.c	/^void dyna_tex_data(Texture* t)$/
+enable_light	pusn.c	/^void enable_light()$/
+equals	pusn.c	/^GLint equals(GLdouble a, GLdouble b)$/
+fatal	pusn.c	/^void fatal(char* par)$/
+free_frame	pusn.c	/^void free_frame(Frame* f)$/
+free_matrix	pusn.c	/^void free_matrix(GLdouble** m, GLint siz)$/
+glInit	pusn.c	/^void glInit()$/
+help	pusn.c	/^void help()$/
+init_frame	pusn.c	/^void init_frame(Frame* f)$/
+init_puma	pusn.c	/^void init_puma(PUMA* p)$/
+init_texture	pusn.c	/^void init_texture(Texture* t, int i)$/
+init_textures_array	pusn.c	/^void init_textures_array()$/
+keyboard	pusn.c	/^void keyboard(unsigned char key, int x, int y)$/
+macos	pusn.c	/^GLdouble macos(GLdouble a)$/
+make_angles	pusn.c	/^void make_angles(Frame* f)$/
+masin	pusn.c	/^GLdouble masin(GLdouble a)$/
+matrix	pusn.c	/^GLdouble** matrix(GLint siz)$/
+matrix_mul	pusn.c	/^GLdouble** matrix_mul(GLdouble** m, GLdouble** n, /
+matrix_mul_vector	pusn.c	/^void matrix_mul_vector(GLdouble* dst, GLdouble** m/
+mglConeX	pusn.c	/^void mglConeX(GLdouble r, GLdouble h)$/
+mglConeY	pusn.c	/^void mglConeY(GLdouble r, GLdouble h)$/
+mglConeZ	pusn.c	/^void mglConeZ(GLdouble r, GLdouble h)$/
+mglCube	pusn.c	/^void mglCube(GLdouble a)$/
+mglCubeR3	pusn.c	/^void mglCubeR3(GLdouble a)$/
+move_frameD	pusn.c	/^void move_frameD(Frame* f, GLdouble x, GLdouble y,/
+render_frame	pusn.c	/^void render_frame(Frame* f)$/
+render_frames	pusn.c	/^void render_frames()$/
+render_puma	pusn.c	/^void render_puma(PUMA* p)$/
+render_scene	pusn.c	/^void render_scene(void)$/
+resize_scene	pusn.c	/^void resize_scene(int w, int h)$/
+rotate_frameR	pusn.c	/^void rotate_frameR(Frame* f, GLdouble x, GLdouble /
+rotatex	pusn.c	/^void rotatex(GLdouble** m, GLdouble ang)$/
+rotatey	pusn.c	/^void rotatey(GLdouble** m, GLdouble ang)$/
+rotatez	pusn.c	/^void rotatez(GLdouble** m, GLdouble ang)$/
+set_frameD	pusn.c	/^void set_frameD(Frame* f, GLdouble x, GLdouble y, /
+set_frameDR	pusn.c	/^void set_frameDR(Frame* f, GLdouble dx, GLdouble d/
+set_frameR	pusn.c	/^void set_frameR(Frame* f, GLdouble x, GLdouble y, /
+set_frameRD	pusn.c	/^void set_frameRD(Frame* f, GLdouble rx, GLdouble r/
+solve_puma	pusn.c	/^void solve_puma(PUMA* p, Frame* f)$/
+switch_current_frame	pusn.c	/^void switch_current_frame()$/
+time_counter	pusn.c	/^void time_counter()$/
+translate	pusn.c	/^void translate(GLdouble** m, GLdouble x, GLdouble /
+translatex	pusn.c	/^void translatex(GLdouble** m, GLdouble arg)$/
+translatey	pusn.c	/^void translatey(GLdouble** m, GLdouble arg)$/
+translatez	pusn.c	/^void translatez(GLdouble** m, GLdouble arg)$/
+update_angles	pusn.c	/^void update_angles(PUMA* p)$/
+vector	pusn.c	/^GLdouble* vector(GLint siz)$/
+visible	pusn.c	/^void visible(int vis)$/
+zero_puma	pusn.c	/^void zero_puma(PUMA* p)$/

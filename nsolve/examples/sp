@@ -1,0 +1,2 @@
+#!/bin/sh
+./nsolves '-0.075*yp' '-sin(z)-0.05*zp' '-50*v-0.1*vp' '(3+c)*cos(a)*sin(b)' '-(3+c)*cos(b)' '(3+c)*sin(a)*sin(b)' 0 0 0.37 0. -2.15 .25 0 0.05

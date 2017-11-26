@@ -1,0 +1,188 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <string.h>
+#include <stdarg.h>
+#include <netinet/in.h>
+#include <arpa/inet.h>
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <fcntl.h>
+#include <signal.h>
+#include <sys/wait.h>
+
+#define BUFS 65536
+#define MSG_FLGS 0
+
+void error(char* fmt, ...)
+{
+ va_list lst;
+ va_start(lst,fmt);
+ printf("CRITICAL ERROR: ");
+ vprintf(fmt,lst);
+ printf("\nSERVER HALTED.\n");
+ fflush(stdout);
+ va_end(lst);
+ exit(1);
+}
+
+
+void help(char* name)
+{
+ printf("usage:\n\t%s  [-p PORT] [-h] [-o] &\n", name);
+ printf("defaults: PORT: 8087\n");
+ printf("-o overwrite flag.\n");
+ printf("-h gives this help msg.\n");
+ fflush(stdout);
+}
+
+
+void catch_int(int signo)
+{
+ printf("Shutting dow server, interrup occured.\n");
+ exit(0);
+}
+
+void handle_client(int fd, int overwr)
+{
+ int cnt,bytes,fdw,i,iter;
+ unsigned int mode;
+ char buff[BUFS+1];
+ char fname[BUFS+1];
+ bytes=0;
+ iter=0;
+ printf("\n");
+ if (read(fd,buff,256)==-1) error("cannot read filename from client.");
+ strcpy(fname, buff);
+ if (!strcmp(fname,"!ERR!"))
+   {
+    printf("cancelling errors on client's file.\n");
+    return;
+   }
+ printf("%s... ", buff); /* filename */
+ fflush(stdout);
+ if (read(fd,buff,16)==-1) error("cannot read filemodes from client");
+ if (!strcmp(fname,"!ERR!"))
+   {
+    printf("cancelling errors on client's file.\n");
+    return;
+   }
+ sscanf(buff,"0%o", &mode);
+ for (i=0;i<strlen(fname);i++) if (fname[i]=='/')
+   {
+    printf("directories separator '/' in names is not supported.\n");
+    if (write(fd,"FAIL",16)==1) error("cannot write error msg to client");
+    return;
+   }
+ if ((fdw=open(fname,O_RDONLY))>=0)
+   {
+    printf("file exists.\n");
+    if (!overwr)
+      {
+       close(fdw);
+       if (write(fd,"FAIL",16)==-1) error("cannot write FAIL msg to client");
+       return;
+      }
+    else printf("but I will overwrite it\n");
+   }
+ if ((fdw=open(fname, O_WRONLY|O_CREAT|O_TRUNC,mode))==-1)
+   {
+    printf("cannot create output file.\n");
+    perror("open");
+    if (write(fd,"FATAL",16)==-1) error("cannot write FATAL msg to client");
+    return;
+   }
+ if (write(fd,"OK",16)==-1) error("cannot write METADATA confirm to client.");
+ while ((cnt=read(fd,buff,BUFS))>0)
+   {
+/*    printf("cnt: %d\n", cnt);*/
+    if (write(fdw,buff,cnt)==-1) error("cannot write data to output file: %s", fname);
+    bytes+=cnt;
+    iter++;
+    if (!(iter%0x100)) { printf("."); fflush(stdout); }
+   }
+ if (cnt==-1) error("cannot read data from client socket, read: %d\n");
+ close(fdw);
+ printf("...%d bytes\n", bytes);
+ fflush(stdout);
+}
+
+void server(int port, int overwr)
+{
+ int sock,csock,err,alive;
+ struct sockaddr_in server;
+ static struct sigaction act;
+ if (port<1 || port>0xffff) error("port: %d is invalid", port);
+ if (port<1024) printf("warning: port: %d is less than 1024 and can be OS-protected.\n", port);
+ printf("Starting server on local machine, port %d\n", port);
+ act.sa_handler = catch_int;
+ sigfillset(&(act.sa_mask));
+ sigaction(SIGPIPE, &act, NULL);
+ sigaction(SIGINT, &act, NULL);
+ server.sin_family = AF_INET;
+ server.sin_port = (in_port_t)(port);
+ server.sin_addr.s_addr = INADDR_ANY;
+ sock = socket(AF_INET, SOCK_STREAM, 0);
+ if (sock==-1) 
+   {
+    perror("socket");
+    error("create socket failed."); 
+   }
+ alive=1;
+ err=setsockopt(sock,SOL_SOCKET,SO_KEEPALIVE,&alive,sizeof(void*));
+ if (err==-1) 
+   {
+    perror("setsockopt");
+    error("set socket options failed"); 
+   }
+ if (bind(sock, (struct sockaddr*)&server, sizeof(struct sockaddr_in))==-1)
+   {
+    perror("bind");
+    error("bind address failed.");
+   }
+ if (listen(sock,5)==-1) 
+   {
+    perror("listen");
+    error("listen on socket failed");
+   }
+ printf("Server started.\n");
+ while (1)
+   {
+    printf("waiting for client...");
+    fflush(stdout);
+    if ((csock=accept(sock,NULL,NULL))==-1) 
+      {
+       perror("accept");
+       error("accept failed");
+      }
+    fflush(stdout);
+    handle_client(csock,overwr);
+    close(csock);
+    fflush(stdout);
+   }
+}
+
+
+int main(int lb, char** par)
+{
+ char u;
+ char port[12];
+ int over;
+ int scanned;
+ scanned=0;
+ strcpy(port,"8087");
+ over=0;
+ while ((u = getopt(lb,par,"p:m:ho"))!=-1)
+ {
+  scanned++;
+  switch (u)
+   {
+    case 'p': if (strlen(optarg)<12) strcpy(port, optarg); break;
+    case 'h': help(par[0]); return 0;
+    case 'o': over=1; break;
+    default: printf("Unrecognized option\n"); return 1;
+   }
+ }
+ server(atoi(port), over);
+ return 0;
+}

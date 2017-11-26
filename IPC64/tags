@@ -1,0 +1,57 @@
+Mbufview	bufview.c	/^int main()$/
+Mcons	cons.c	/^int main()$/
+Mdropipc	dropipc.c	/^int main(int lb, char** par)$/
+Mmutcopy	mutcopy.c	/^int main(int lb, char** par)$/
+Mold	old.c	/^int main(int lb, char** par)$/
+Mprod	prod.c	/^int main()$/
+Mtestlib	testlib.c	/^int main(int lb, char** par)$/
+child_proc	testlib.c	/^void child_proc(int shm, int sem, void* ptr)$/
+client_run	mutcopy.c	/^void client_run(int a, int n, int semc, int sems, /
+drop_ipc	mutcopy.c	/^void drop_ipc()$/
+error	libmipc.c	/^int error(char* fmt, ...)$/
+fatal	libmipc.c	/^int fatal(char* fmt, ...)$/
+file_c	mutcopy.c	/^void file_c(int* fd, int* fdo, char* name, char* o/
+go_consume	cons.c	/^void go_consume()$/
+go_produce	prod.c	/^void go_produce()$/
+go_viewbuff	bufview.c	/^void go_viewbuff()$/
+mdropmsg	libmipc.c	/^int mdropmsg(int msgid)$/
+mdropmsgkey	libmipc.c	/^int mdropmsgkey(int msgkey)$/
+mdropsem	libmipc.c	/^int mdropsem(int semid)$/
+mdropsemkey	libmipc.c	/^int mdropsemkey(int semkey)$/
+mdropshm	libmipc.c	/^int mdropshm(int shmid)$/
+mdropshmkey	libmipc.c	/^int mdropshmkey(int shmkey)$/
+mmsg	libmipc.h	/^struct mmsg$/
+mmsgidfromkey	libmipc.c	/^int mmsgidfromkey(key_t msgkey)$/
+mmsgrecpstr	libmipc.c	/^int mmsgrecpstr(int msgid, struct mmsg* msg, int w/
+mmsgrecptxt	libmipc.c	/^int mmsgrecptxt(int msgid, char* txt, int wt)	\/* /
+mmsgrecvstr	libmipc.c	/^int mmsgrecvstr(int msgid, struct mmsg* msg, int w/
+mmsgrecvtxt	libmipc.c	/^int mmsgrecvtxt(int msgid, char* txt, int type, in/
+mmsgsendstr	libmipc.c	/^int mmsgsendstr(int msgid, struct mmsg* msg)$/
+mmsgsendtxt	libmipc.c	/^int mmsgsendtxt(int msgid, char* text, int pri)$/
+mque	libmipc.c	/^int mque(key_t quek)$/
+mquenew	libmipc.c	/^int mquenew(key_t quek, int* newq)$/
+msem	libmipc.c	/^int msem(key_t semk, int val)$/
+msemget	libmipc.c	/^int msemget(key_t semk)$/
+msemidfromkey	libmipc.c	/^int msemidfromkey(key_t semkey)$/
+msemnew	libmipc.c	/^int msemnew(key_t semk, int val, int* news)$/
+msemun	libmipc.h	/^union msemun$/
+mshm	libmipc.c	/^int mshm(key_t shmk, int size)$/
+mshmconn	libmipc.c	/^int mshmconn(int shmid, void** ptr)$/
+mshmdisconn	libmipc.c	/^int mshmdisconn(void** ptr)$/
+mshmidfromkey	libmipc.c	/^int mshmidfromkey(key_t shmkey)		\/* SIZE ISN'T KN/
+mshmnew	libmipc.c	/^int mshmnew(key_t shmk, int size, int* newm)$/
+msignal	libmipc.c	/^int msignal(int semid)$/
+mwait	libmipc.c	/^int mwait(int semid)$/
+parent_proc	testlib.c	/^void parent_proc(int shm, int sem, void* ptr)$/
+pop	common.c	/^int pop(int q)$/
+push	common.c	/^void push(int q, int val)$/
+read_from_buffer	mutcopy.c	/^void read_from_buffer(int fd, char* buff, int que,/
+run_server	mutcopy.c	/^void run_server(int n, char* fname, char* outn)$/
+server_run	mutcopy.c	/^void server_run(int n, int semc, int sems, int sem/
+setup_ipc	mutcopy.c	/^void setup_ipc(int* shmid, void** buff, int* sems,/
+signals	mutcopy.c	/^void signals()$/
+testmmsg	testlib.c	/^void testmmsg()$/
+testmsem	testlib.c	/^void testmsem()$/
+testmshm	testlib.c	/^void testmshm()$/
+warn	libmipc.c	/^int warn(char* fmt, ...)$/
+write_to_buffer	mutcopy.c	/^int write_to_buffer(int fd, int a, int n, char* bu/

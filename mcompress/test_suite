@@ -1,0 +1,10 @@
+#!/bin/sh
+make
+echo "args file pwd bits bsize"
+echo 'COMPRESSING. . .'
+./mcompress -pwd $2 -bits $3 -compress -infile $1 -outfile $1.cod -debug 0 -block-size $4
+echo 'DECOMPRESSING. . .'
+./mcompress -pwd $2 -bits $3 -uncompress -infile $1.cod -outfile $1.dec -debug 0
+echo 'COMPARE. . .'
+diff $1 $1.dec
+

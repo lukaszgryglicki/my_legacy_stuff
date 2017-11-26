@@ -1,0 +1,17 @@
+Number of equations: 3
+Rank of equations system: 2
+Integral step: 0.01
+Start conditions:
+t0=0.0
+y1(t0)=2.0, y1'(t0)=15.0
+y2(t0)=0.5, y2'(t0)=1.0
+y3(t0)=0.0, y3'(t0)=0.0
+Differential equations system:
+y1"=-0.0343*y1'
+y2"=-0.0317*y2'-2.305*sin(y2)
+y3"=0
+Mapping functions:
+X=4.5*cos(y1)*sin(y2)+y1"
+Y=-4.5*cos(y2)+y2"/5
+Z=4.5*sin(y1)*sin(y2)-y1'/5-y2'/5
+

@@ -1,0 +1,18 @@
+#!/bin/sh
+killall cvoicest cvoice cvoicedbg cvoiceraw
+sleep 1
+rm /tmp/cvoice*
+touch cvoice.cc
+make cvoice cvoicest
+#./cvoice -I /dev/dsp1 -a -c 1 -y 1 -q 10
+#./cvoice -I /dev/dsp1 -a -c 30 -y 30 -q 0
+#./cvoicest -I /dev/dsp1 -a $*
+./cvoice -I /dev/dsp1 -a $*
+sleep 1
+#./cvoice -I /dev/dsp1 -c 1 -y 1 -q 10
+#./cvoice -I /dev/dsp1 -c 30 -y 30 -q 0
+#./cvoicest -I /dev/dsp1 $*
+./cvoice -I /dev/dsp1 $*
+sleep 3600
+killall cvoicest cvoice cvoicedbg cvoiceraw
+

@@ -1,0 +1,3 @@
+all: inftetrad.exe
+inftetrad.exe: inftetrad.cc
+	c++ -o inftetrad.exe inftetra.cc

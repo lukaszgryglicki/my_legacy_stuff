@@ -1,0 +1,35 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.3.1	//
+BLANK	jvcrypt.c	6;"	d	file:
+alphabet	jvcrypt.c	/^char alphabet[36] = {$/;"	v
+alphabet	mcrypt.c	/^char alphabet[37] = {$/;"	v
+alphabet	mcryptd.c	/^char alphabet[37] = {$/;"	v
+downcase	jvcrypt.c	/^void downcase(char* code)$/;"	f
+downcase	mcrypt.c	/^void downcase(char* code)$/;"	f
+downcase	mcryptd.c	/^void downcase(char* code)$/;"	f
+encode	jvcrypt.c	/^int encode(int zn, char* code, int curr, int direction)$/;"	f
+encode	mcrypt.c	/^int encode(int zn, char* code, int curr, int direction)$/;"	f
+encode	mcryptd.c	/^int encode(int zn, char* code, int curr, int direction)$/;"	f
+encodefpass1	mcrypt.c	/^int encodefpass1(int zn, FILE* file, int direction)$/;"	f
+encodefpass2	mcrypt.c	/^int encodefpass2(int zn, int ch, int pass, int direction)$/;"	f
+find_hash	jvcrypt.c	/^int find_hash(char zn)$/;"	f
+find_hash	mcrypt.c	/^int find_hash(char zn)$/;"	f
+find_hash	mcryptd.c	/^int find_hash(char zn)$/;"	f
+isHexDigit	jvcrypt.c	/^int isHexDigit(char dgt)$/;"	f
+isHexDigit	mcrypt.c	/^int isHexDigit(char dgt)$/;"	f
+isHexDigit	mcryptd.c	/^int isHexDigit(char dgt)$/;"	f
+isLetter	jvcrypt.c	/^int isLetter(int zn, int encode)	\/* on decoding we decode spaces *\/$/;"	f
+isLetter	mcrypt.c	/^int isLetter(int zn, int encode)	\/* on decoding we decode spaces *\/$/;"	f
+isLetter	mcryptd.c	/^int isLetter(int zn, int encode)	\/* on decoding we decode spaces *\/$/;"	f
+jvcode	jvcrypt.c	/^int jvcode(char tp, char* infile, char* outfile, char* hxcode)$/;"	f
+jvcode	mcrypt.c	/^int jvcode(char tp, char* infile, char* outfile, char* hxcode)$/;"	f
+jvcode	mcryptd.c	/^int jvcode(char tp, char* infile, char* outfile, char* hxcode)$/;"	f
+loss	mcrypt.c	/^int loss=1;$/;"	v
+main	jvcrypt.c	/^int main(int lb, char** par)$/;"	f
+main	mcrypt.c	/^int main(int lb, char** par)$/;"	f
+main	mcryptd.c	/^int main(int lb, char** par)$/;"	f
+ok	mcrypt.c	/^int ok=1;$/;"	v

@@ -1,0 +1,96 @@
+#include <math.h>
+#include <stdlib.h>
+#include <stdio.h>
+
+#define real long double
+
+const real a = 4.905;
+const real b = 0.156;
+
+real friction_pendulum(real x, real y, real yp)
+{
+ return -a*sin(y)-b*yp;
+}
+
+void runge_kutta_single_step(
+	real (*func)(real, real, real),
+	real  x0, real  y0, real  yp0, 
+	real h,
+	real* x1, real* y1, real* yp1)
+{
+ real x,y,yp,f,k;
+ real k1,k2,k3,k4;
+ real kk0, kk1;
+ real h2;
+
+ h2 = h/2.;
+
+ k1 = h * h2 * func(x0, y0, yp0);
+ k2 = h * h2 * func(x0+h2, y0+h2*yp0+k1/4., yp0+k1/h);
+ k3 = h * h2 * func(x0+h2, y0+h2*yp0+k1/4., yp0+k2/h);
+ k4 = h * h2 * func(x0+h, y0+h*yp0+k3, yp0+(2*k3)/h);
+
+ kk0 = (k1+k2+k3)/3.;
+ kk1 = (k1+2.*k2+2.*k3+k4)/3.;
+
+ printf("k1=%Lf, k2=%Lf, k3=%Lf, k4=%Lf\n", k1, k2, k3, k4);
+ printf("kk0=%Lf, kk1=%Lf\n", kk0, kk1);
+ 
+ 
+ x = x0;
+ y = y0;
+ yp = yp0;
+ 
+ f = func(x, y, yp);
+ k = k1;
+ printf("%Lf %Lf %Lf %Lf %Lf\n", x, y, yp, f, k);
+ 
+ x = x0 + h2;
+ y = y0+h2*yp0+k/4.;
+ yp = yp0+k/h;
+ f = func(x, y, yp);
+ k = k2;
+ printf("%Lf %Lf %Lf %Lf %Lf\n", x, y, yp, f, k);
+
+ x = x0 + h2;
+ y = y0+h2*yp0+k/4.;
+ yp = yp0+k/h;
+ f = func(x, y, yp);
+ k = k3;
+ printf("%Lf %Lf %Lf %Lf %Lf %Lf\n", x, y, yp, f, k, kk0);
+ 
+ x = x0 + h;
+ y = y0+h*yp0+k3;
+ yp = yp0+(2.*k)/h;
+ f = func(x, y, yp);
+ k = k4;
+ printf("%Lf %Lf %Lf %Lf %Lf %Lf\n", x, y, yp, f, k, kk1);
+
+}
+
+void runge_kutta_nsolve(
+	real (*f)(real, real, real),
+	real x0, real x1,
+	real y0, real yp0,
+	real h
+	)
+{
+ int n;
+ real x,y,yp;
+ n = (int)((x1 - x0)/h);
+ printf("steps: %d\n", n);
+ runge_kutta_single_step(f, x0, y0, yp0, h, &x, &y, &yp);
+ 
+}
+
+void nsolve()
+{
+ runge_kutta_nsolve(friction_pendulum, 0, 0.4, M_PI/2., 0, 0.2);
+}
+
+int main(int lb, char** par)
+{
+ nsolve();
+ return 0;
+}
+

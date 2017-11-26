@@ -1,0 +1,10 @@
+
+#		old algorithms
+	#sal $7, %eax			# EaX = X*16*8, trzeba jeszcze <<16 i to co sie nie zmiesci do EDX
+	#mov %eax, %edx			# najstarsze 16 bitow eax do edx
+	#sar $16, %edx			# mamy w edx 16 najst bitow od poczatku, teraz trzeba do EDI dzielna
+	#sal $16, %eax			# a eax przesuwamy
+	#mov $0x100000, %edi		# edi = 16*ONE
+	#add %ebx, %edi			# edi (16+Z(normal))*ONE
+	#div %eax			# EAX = [(X*16*8)/(16+Z)]*ONE, 8*(16/(16+Z))*X co bylo potrzebne
+	#add %eax, (_current_t2x)

@@ -1,0 +1,4 @@
+#define LINUX 0x100
+#define OSTYPE LINUX
+#define ostype "linux"
+

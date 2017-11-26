@@ -1,0 +1,15 @@
+Input=/dev/dsp
+Output=/dev/dsp
+MyID=0
+TargetID=0
+CacheSize=80
+Debug=0
+Quality=1
+Complexity=10
+Timeout=-30
+Wide=1
+EnchanceR=1.000
+EnchanceW=1.000
+Save=0
+NSync=50
+HZ=8000

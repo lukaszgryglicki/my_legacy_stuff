@@ -1,0 +1,16 @@
+Pomac dla programu (polecania):
+
+h	-pomoc (wyswietla ten plik)
+k	-zakancza dzialanie aplikacji
+d	-dodaje nowy telefon
+z	-zobacz telefony
+s	-zapisz telefony
+l	-wczytaj telefony
+u	-usun telefon
+m	-modyfikuj telefon
+g	-generuj plik TXT
+a	-zobacz wszystko
+w	-wyszukaj telefon
+c	-sprawdz wpisy
+t	-sortuje rekordy
+

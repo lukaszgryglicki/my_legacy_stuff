@@ -1,0 +1,200 @@
+allocating pointer. . .
+machine run parametrized.
+pointer allocated
+machine init ok
+tape file opened ok
+tape length is: 6
+tape allocated and blanked ok
+reading data.......
+alphabet length: 1
+init alphabet ok, blanked
+alphabet constructed
+SAFE_GUARD: allocated 70 bytes for machine tape
+SAFE_GUARD: allocated 11 bytes for machine alphabet
+scanned tape image:
+00000
+
+scanned alphabet:  
+0
+tape file closed, temporaries freed ok
+machine_read_tape ok
+machine_read_matrix:
+init memory ok
+scanned number of ctmethods: 45
+GOT ruleset:
+(2,0,10,0,r)
+(2,1,20,1,r)
+(10,0,10,0,r)
+(20,0,20,0,r)
+(10,1,10,1,r)
+(20,1,20,1,r)
+(10,#,11,#,l)
+(20,#,21,#,l)
+(11,0,12,A,l)
+(11,1,12,B,l)
+(21,0,12,C,l)
+(21,1,12,D,l)
+(12,0,12,0,l)
+(12,1,12,1,l)
+(12,!,22,!,r)
+(10,B,10,B,r)
+(11,B,11,B,l)
+(10,A,10,A,r)
+(11,A,11,A,l)
+(22,1,2,E,r)
+(22,0,2,F,r)
+(20,B,20,B,r)
+(20,A,20,A,r)
+(21,A,21,A,l)
+(21,B,21,B,l)
+(20,C,20,C,r)
+(20,D,20,D,r)
+(21,C,21,C,l)
+(21,D,21,D,l)
+(12,F,22,F,r)
+(10,C,10,C,r)
+(10,D,10,D,r)
+(11,C,11,C,l)
+(11,D,11,D,l)
+(12,E,22,E,r)
+(22,A,30,X,l)
+(22,B,30,X,l)
+(22,C,30,X,l)
+(22,D,30,X,l)
+(30,F,30,F,l)
+(30,E,30,E,l)
+(30,!,1,!,r)
+(2,A,30,Y,l)
+(2,#,0,#,s)
+(2,C,2,C,l)
+methods set to CTCPU
+machine_read _matrix ok
+RUN MACHINE>>
+
+TCPU(x0,0):
+00000
+
+^ <q2,0>
+TCPU(x1,1):
+00000
+
+ ^ <q10,0>
+TCPU(x2,2):
+00000
+
+  ^ <q10,0>
+TCPU(x3,3):
+00000
+
+   ^ <q10,0>
+TCPU(x4,4):
+00000
+
+    ^ <q10,0>
+TCPU(x5,5):
+00000
+
+     ^ <q10,
+>
+TCPU(x6,4):
+00000
+    ^ <q11,0>
+TCPU(x7,3):
+0000A
+   ^ <q12,0>
+TCPU(x8,2):
+0000A
+  ^ <q12,0>
+TCPU(x9,1):
+0000A
+ ^ <q12,0>
+TCPU(xa,0):
+0000A
+^ <q12,0>
+TCPU(xb,-1):
+0000A
+^ <q12,BLANK>
+TCPU(xc,0):
+0000A
+^ <q22,0>
+TCPU(xd,1):
+F000A
+ ^ <q2,0>
+TCPU(xe,2):
+F000A
+  ^ <q10,0>
+TCPU(xf,3):
+F000A
+   ^ <q10,0>
+TCPU(x10,4):
+F000A
+    ^ <q10,A>
+TCPU(x11,5):
+F000A
+     ^ <q10,BLANK>
+TCPU(x12,4):
+F000A
+    ^ <q11,A>
+TCPU(x13,3):
+F000A
+   ^ <q11,0>
+TCPU(x14,2):
+F00AA
+  ^ <q12,0>
+TCPU(x15,1):
+F00AA
+ ^ <q12,0>
+TCPU(x16,0):
+F00AA
+^ <q12,F>
+TCPU(x17,1):
+F00AA
+ ^ <q22,0>
+TCPU(x18,2):
+FF0AA
+  ^ <q2,0>
+TCPU(x19,3):
+FF0AA
+   ^ <q10,A>
+TCPU(x1a,4):
+FF0AA
+    ^ <q10,A>
+TCPU(x1b,5):
+FF0AA
+     ^ <q10,BLANK>
+TCPU(x1c,4):
+FF0AA
+    ^ <q11,A>
+TCPU(x1d,3):
+FF0AA
+   ^ <q11,A>
+TCPU(x1e,2):
+FF0AA
+  ^ <q11,0>
+TCPU(x1f,1):
+FFAAA
+ ^ <q12,F>
+TCPU(x20,2):
+FFAAA
+  ^ <q22,A>
+TCPU(x21,1):
+FFXAA
+ ^ <q30,F>
+TCPU(x22,0):
+FFXAA
+^ <q30,F>
+TCPU(x23,-1):
+FFXAA
+^ <q30,!>
+machine stopped, language accepted: 1
+machine stopped, state is: 1
+
+machine_run ok
+There are differences between alpabet in and out
+Machine did 36(0x24) steps.
+result's length is: 5
+writing output file
+output file written
+exiting...
+freeying CTCPU memory
+done

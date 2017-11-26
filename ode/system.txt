@@ -1,0 +1,48 @@
+Number of equations: 8
+Number of mappings: 8
+Rank of equations system: 2
+Integral step: 0.002
+Start conditions:
+t0=0.0
+y1(t0)=0.5,   y1'(t0)=1.5
+y2(t0)=-0.5,  y2'(t0)=-1.5
+y3(t0)=1.0,   y3'(t0)=-0.33
+y4(t0)=-1.0,  y4'(t0)=0.33
+y5(t0)=0.33,  y5'(t0)=-1.0
+y6(t0)=-0.33, y6'(t0)=1.0
+y7(t0)=-1.5,  y7'(t0)=-0.5
+y8(t0)=1.5,   y8'(t0)=0.5
+Differential equations system:
+y1"=sin(-y1-y1'+t)*10-3*y1'+y2'
+y2"=-y2'+sin(3*t)-0.8*y3'-y3'
+y3"=-0.8*y3-0.1*y3'+y4'
+y4"=-0.2*y4'+cbrt(y4)/10-y5'
+y5"=y1+y2+y3+y4-y1'-y2'-y3'+cbrt(t)+y6'
+y6"=cbrt(y1)-cbrt(t-y2')+1-y7'
+y7"=-log(sin(t)+1.01)+y8'
+y8"=log(abs(t+y1+y2'+2))-y1'
+Mapping functions:
+X1=cos(y1)*sin(y1')*log(abs(y1"+2))
+Y1=-cos(log(abs(y1')))*log(abs(y1"+2))
+Z1=sin(log(abs(y1)))*cos(log(abs(y1')))*log(abs(y1"+2))
+X2=cos(y2)*sin(y2')*log(abs(y2"+2))
+Y2=-cos(log(abs(y2')))*log(abs(y2"+2))
+Z2=sin(log(abs(y2)))*cos(log(abs(y2')))*log(abs(y2"+2))
+X3=cos(y3)*sin(y3')*log(abs(y3"+2))
+Y3=-cos(log(abs(y3')))*log(abs(y3"+2))
+Z3=sin(log(abs(y3)))*cos(log(abs(y3')))*log(abs(y3"+2))
+X4=cos(y4)*sin(y4')*log(abs(y4"+2))
+Y4=-cos(log(abs(y4')))*log(abs(y4"+2))
+Z4=sin(log(abs(y4)))*cos(log(abs(y4')))*log(abs(y4"+2))
+X5=cos(y5)*sin(y5')*log(abs(y5"+2))
+Y5=-cos(log(abs(y5')))*log(abs(y5"+2))
+Z5=sin(log(abs(y5)))*cos(log(abs(y5')))*log(abs(y5"+2))
+X6=cos(y6)*sin(y6')*log(abs(y6"+2))
+Y6=-cos(log(abs(y6')))*log(abs(y6"+2))
+Z6=sin(log(abs(y6)))*cos(log(abs(y6')))*log(abs(y6"+2))
+X7=cos(y7)*sin(y7')*log(abs(y7"+2))
+Y7=-cos(log(abs(y7')))*log(abs(y7"+2))
+Z7=sin(log(abs(y7)))*cos(log(abs(y7')))*log(abs(y7"+2))
+X8=cos(y8)*sin(y8')*log(abs(y8"+2))
+Y8=-cos(log(abs(y8')))*log(abs(y8"+2))
+Z8=sin(log(abs(y8)))*cos(log(abs(y8')))*log(abs(y8"+2))

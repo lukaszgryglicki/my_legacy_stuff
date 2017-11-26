@@ -1,0 +1,3 @@
+#define WINDOWS 0x98
+#define OSTYPE WINDOWS
+#define ostype "windows"

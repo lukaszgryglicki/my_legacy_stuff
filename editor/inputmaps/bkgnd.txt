@@ -1,0 +1,27 @@
+typedef struct _BackGroundVertex
+{
+  float h; /* wysokosc */
+  float s,t; /* tex coord */
+  int texid;   /* uzywana textura */
+  /*double nx,ny,nz;*/ /* normalna do powierzchni */
+} BackGroundVertex;
+
+typedef struct _Texture
+{
+ int x,y;
+ unsigned char* data;
+};
+
+class BackGround
+{
+ int x,y /* wymiary tablicy BackGroundVertex */
+ BackGroundVertex** bkgnd; /* wlasciwa tablica */
+ double water_h; /* na jakiej wysokosci woda */
+ Texture* texture;
+ int nTex;
+ (...)
+}
+
+to tylko ORIENTACYJNA propozycja, w klasie BackGround beda oczywiscie odpowiednie metody
+
+pozdry :) ;

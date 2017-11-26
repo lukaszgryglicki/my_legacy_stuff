@@ -1,0 +1,1 @@
+./nsolve '-6.137*(y+2)-0.2*yp+t' '-5.553*(z-1)-0.2*zp-9' '-4.991*(v+2)-0.2*vp' 'a' 'b' 'c' 10 50 0 0 0 0 0 0 0.02 examples/external_forces.txt

@@ -1,0 +1,3 @@
+Mmplayereq	mplayereq.c	/^int main(int lb, char** par)$/
+load_preset	mplayereq.c	/^int load_preset(char* pn, int** v)$/
+mplayereq	mplayereq.c	/^int mplayereq(int lb, char** par)$/

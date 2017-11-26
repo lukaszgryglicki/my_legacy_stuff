@@ -1,0 +1,10 @@
+# Makefile written by Morgoth DBMA, morgothdbma@o2.pl, tel: +48693582014
+# Lukasz Gryglicki MiNI M1 CC, License BSD
+all: program
+CFLAGS= -Wall -ansi -pedantic -pthread -I/usr/X11R6/include -L/usr/X11R6/lib -O3
+LINK= -lglut -lm
+CC= gcc
+STRIP= strip -s 
+program: program.c
+	$(CC) $(CFLAGS) -o program program.c $(LINK)
+	$(STRIP) program

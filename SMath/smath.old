@@ -1,0 +1,290 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include <string.h>
+
+static FILE* _ran_device;
+
+int Randomize()   /* init random engine */
+{
+ if ((_ran_device=fopen("/dev/urandom","r"))==NULL)
+   {
+    return 0;
+   }
+ else return 1;
+}
+
+
+int Random(int lb)   /* randomize number from 0 to lb-1 */
+{
+ int ins[4],i;
+ unsigned long result;
+ for (i=0;i<4;i++)
+     ins[i] = fgetc(_ran_device);
+ result = ins[0] + 0x100*ins[1] + 0x10000*ins[2]+0x1000000*ins[3];
+ result /= (0xffffffff/lb);
+ return (int)result;
+}
+
+
+void Kill_random()  /* close random seed */
+{
+  if (_ran_device) fclose(_ran_device);
+}
+
+int c2i(char arg)
+{
+ return arg-'0';
+}
+
+char i2c(int arg)
+{
+ return (char)arg+'0';
+}
+
+char* SSUB(const char* p1, const char* p2) /* p1=FROM, p2=WHAT*/
+{
+ int l1,l2;
+ int lb,rest;
+ int c1,c2,c3;
+ char* tmp, *tmp2;
+ register int i;
+ if (!p1 || !p2) return NULL;
+ i=0;
+ while (p1[++i]);
+ l1=i;
+ i=0;
+ while (p2[++i]);
+ l2=i;
+ if (!l1 || l2>l1) return NULL;
+ if (!l2) 
+   {
+    tmp = (char*)malloc(l1+1);
+    for (i=0;i<l1;i++) tmp[i] = p1[i];
+    tmp[i] = 0;
+    return tmp;
+   }
+ c1 = l1-1;
+ c2 = l2-1;
+ c3 = c1;
+ tmp = (char*)malloc(c1+2);
+ tmp[c1+1] = 0;
+ rest=0;
+ for (i=0;i<l1;i++) tmp[i] = 'X';
+/* printf("c1=%d, c2=%d, c3=%d\n", c1,c2,c3);*/
+ while (c1>=0 && c2>=0)
+   {
+    lb = (p1[c1]-'0')-(p2[c2]-'0')-rest;
+    rest = (lb<0)?1:0;
+    lb = (rest)?(lb+10):lb;
+    tmp[c3] = lb+'0';
+    printf("lb=%d, rest=%d\n", lb,rest);
+    c3--;
+    c2--;
+    c1--;
+   }
+ /*printf("%s:%s, %d, %d, %s\n", p1,p2,c1,c2,tmp);*/
+ /*if (c1<0 && !rest) return tmp;*/
+ if (c1<0 && rest) return NULL;
+ if (c1>=0) for (i=c1;i>=0;i--) 
+   {
+    if (rest && p1[i]=='0') tmp[i]='9';  
+    else if (rest && p1[i]!='0') 
+      {
+       tmp[i] = (char)(p1[i]-1); 
+       rest=0;
+      }
+    else tmp[i] = p1[i];
+   }
+ if (rest) tmp[0] = '0';
+ c1=0;
+ c2=l1;
+ printf("tmp[0]=%c, %s\n", tmp[0],tmp);
+ printf("l1=%d\n", l1);
+ while (tmp[i]=='0') { c1++; c2--; }
+ printf("c2=%d, c1=%d\n",c2,c1);
+ if (c1==l1) 
+   {
+    tmp2 = malloc(2);
+    tmp2[0] = '0';
+    tmp2[1] == 0;
+    return tmp2;
+   }
+ if (c2)
+   {
+    printf("G! c2=%d, c1=%d\n",c2,c1);
+    tmp2 = malloc(c2+1);
+    for (i=c1;i<l1;i++) tmp2[i-c1] = tmp[i];
+    tmp2[c2] = 0;
+    free(tmp);
+    return tmp2;
+   }
+ else return tmp;
+}
+
+char* SADD(const char* p1, const char* p2)
+{
+ int l1,l2;
+ int mlen,lb,rest;
+ int c1,c2,c3;
+ char* tmp,*tmp2;
+ register int i;
+ if (!p1 || !p2) return NULL;
+ i=0;
+ while (p1[++i]);
+ l1=i;
+ i=0;
+ while (p2[++i]);
+ l2=i;
+ if (!l1 && !l2) return NULL;
+ if (!l1) 
+   {
+    tmp = (char*)malloc(l2+1);
+    for (i=0;i<l2;i++) tmp[i] = p2[i];
+    tmp[i] = 0;
+    return tmp;
+   }
+ if (!l2) 
+   {
+    tmp = (char*)malloc(l1+1);
+    for (i=0;i<l1;i++) tmp[i] = p1[i];
+    tmp[i] = 0;
+    return tmp;
+   }
+ c1 = l1-1;
+ c2 = l2-1;
+ mlen = (c1>=c2)?c1:c2;
+ c3 = mlen+1;
+ tmp = (char*)malloc(mlen+3);
+ tmp[mlen+2] = 0;
+ rest=0;
+ tmp[0] = 1;
+ while (c1>=0 && c2>=0)
+   {
+    lb = (p1[c1]-'0')+(p2[c2]-'0')+rest;
+    rest = (lb>=10)?1:0;
+    lb = (rest)?(lb-10):lb;
+    tmp[c3] = lb+'0';
+    c3--;
+    c1--;
+    c2--;
+   }
+ if (c1>=0) for (i=c1;i>=0;i--) 
+   {
+    if (rest && p1[i]=='9') tmp[i+1] = '0';
+    else if (rest && p1[i]!='9') 
+      {
+       tmp[i+1] = (char)(p1[i]+1); 
+       rest=0;
+      }
+    else tmp[i+1] = p1[i];
+   }
+ if (c2>=0) for (i=c2;i>=0;i--) 
+   {
+    if (rest && p2[i]=='9') tmp[i+1] = '0';
+    else if (rest && p2[i]!='9') 
+      {
+       tmp[i+1] = (char)(p2[i]+1); 
+       rest=0;
+      }
+    else tmp[i+1] = p2[i];
+   }
+ if (rest) tmp[0] = '1';
+ if (tmp[0]==1) 
+   {
+    tmp2 = (char*)malloc(mlen+2);
+    tmp2[mlen+1] = 0;
+    for (i=1;i<mlen+2;i++) tmp2[i-1] = tmp[i];
+    free(tmp);
+    return tmp2;
+   }
+ else return tmp;
+}
+
+void test()
+{
+ int i,j, ires,ires2,ok;
+ char* sres;
+ int r1,r2;
+ char s1[11];
+ char s2[11];
+ float percent;
+ ok=0;
+ for (i=0;i<300;i++) for (j=0;j<300;j++)
+   {
+    r1=i;
+    r2=j;
+    ires = r1+r2;
+    sprintf(s1,"%d", r1);
+    sprintf(s2,"%d", r2);
+    sres = SADD(s1,s2);
+    if (!sres) continue;
+    sscanf(sres,"%d", &ires2);
+    if (ires2==ires) ok++;
+    else printf("E(%4d,%4d), ",i,j);
+    free(sres);
+   }
+ percent = (float)ok/90000.0;
+ printf("Reliability: %f%% (%d/%d)\n", percent*100,ok,90000);
+}
+
+void test2()
+{
+ char* tmp;
+ char pom[65536];
+ int i;
+ tmp = malloc(2);
+ tmp[0] = '1';
+ tmp[1] = 0;
+ strcpy(pom, tmp);
+ for (i=0;i<1024*64;i++)
+ {
+  printf("i = %d\n", i);
+  tmp = SADD(pom,pom);
+  strcpy(pom, tmp);
+  free(tmp);
+ }
+ printf("%s\n", tmp);
+}
+
+void test3()
+{
+ int i,j, ires,ires2,fail;
+ char* sres;
+ int r1,r2;
+ char s1[11];
+ char s2[11];
+ float percent;
+ fail=0;
+ sres = SSUB("120", "0");
+ if (sres) printf("> %s\n", sres);
+ for (i=0;i<300;i++) for (j=i;j<300;j++)
+   {
+    r1=i;
+    r2=j;
+    ires = r2-r1;
+    sprintf(s1,"%d", r1);
+    sprintf(s2,"%d", r2);
+    sres = SSUB(s2,s1);
+    if (!sres) continue;
+    sscanf(sres,"%d", &ires2);
+    if (ires2!=ires) 
+      {
+       fail++;
+       printf("\n\n%4d-%d=%d\n\n",j,i,ires2);
+      }
+    free(sres);
+   }
+ percent = (float)fail/90000.0;
+ printf("Fail: %d\n", fail);
+}
+
+int main(int lb, char** par)
+{
+ Randomize(); 
+ /* test();  */
+ /* test2(); */
+ test3();
+ return 0;
+}
+

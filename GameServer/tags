@@ -1,0 +1,96 @@
+Mclient	client.c	/^int main(int lb, char** par)$/
+Mgrfx	grfx.c	/^int main()$/
+Mlevedit	levedit.c	/^int main(int lb, char** par)$/
+Mrnd	rnd.c	/^int main()$/
+Mserver	server.c	/^int main(int lb, char** par)		\/* server starts */
+Musleep	usleep.c	/^int main(int lb, char** par)$/
+RGB	client.c	/^unsigned long RGB(int r, int g, int b)  \/*set col/
+ReturnBlue	client.c	/^int ReturnBlue(ulong col)$/
+ReturnGreen	client.c	/^int ReturnGreen(ulong col)$/
+ReturnRed	client.c	/^int ReturnRed(ulong col)$/
+ThreadData	server.c	/^struct ThreadData$/
+X	client.c	/^void X()		\/* WRITER THREAD PROCESSES X EVENTS *\//
+add_client	server.c	/^void add_client(pthread_t* tr, pthread_t* tw, int /
+alloc_mem	client.c	/^void alloc_mem()$/
+broadcast_board	server.c	/^void broadcast_board(int locked)$/
+catch_int	levedit.c	/^void catch_int()$/
+catch_signal	client.c	/^void catch_signal(int signo)		\/* FIXME, CHECK IT /
+client	client.c	/^void client(char* ipstr, int port, int secs, char*/
+close_socket_list	server.c	/^void close_socket_list(int* tab, int siz, int lock/
+create_socket_list	server.c	/^void create_socket_list(int** tab, int* siz, int l/
+debug	client.c	/^int debug(char* fmt, ...)$/
+direction	server.c	/^int direction(int fire)$/
+draw_entire	levedit.c	/^void draw_entire()$/
+draw_field	client.c	/^void draw_field(int x, int y, int idx)$/
+enter	levedit.c	/^void enter()$/
+error	client.c	/^void error(char* fmt, ...)$/
+error_handler	client.c	/^int error_handler(Display*d,  XErrorEvent* xer)	\//
+exit_client	server.c	/^void exit_client(int fdr)	\/* FIXME IS THAT FUNCTI/
+exit_client_dead	server.c	/^void exit_client_dead(int fdr)	\/* FIXME IS THAT F/
+exit_game	client.c	/^void exit_game(int fd, int locked)	\/* FIXME write/
+exit_game_server_down	client.c	/^void exit_game_server_down()$/
+field_hit	server.c	/^void field_hit(int idx, uchar* bmatrix, int what)$/
+finalize	client.c	/^void finalize(int locked)$/
+finish_threads	server.c	/^void finish_threads(struct ThreadData* td)	\/* FIX/
+finish_threads_dead	server.c	/^void finish_threads_dead(struct ThreadData* td)$/
+fire	server.c	/^void fire(int fd, int where)$/
+fire_gun	client.c	/^void fire_gun(int where)$/
+fire_id	server.c	/^void fire_id(int id, int stype)$/
+fire_root	server.c	/^int fire_root(int fire)$/
+fire_type	server.c	/^int fire_type(int fire)$/
+flush_matrix	levedit.c	/^void flush_matrix()$/
+free_mem	client.c	/^void free_mem()$/
+get_board	client.c	/^void get_board(int fd)		\/* VERY FIXME, MUTEX WHEN/
+get_first_free	server.c	/^int get_first_free()$/
+get_host	client.c	/^void get_host(char* to, char* name)$/
+get_id	client.c	/^void get_id(int fd)	\/* FIXME MUTEX NEEDED, WHEN A/
+help	client.c	/^void help(char* name)$/
+inform_refuse	server.c	/^void inform_refuse(int fd)$/
+init_game	server.c	/^void init_game(char* dat)$/
+init_matrixes	client.c	/^void init_matrixes()$/
+init_mutex	client.c	/^void init_mutex()$/
+init_random	mrandom.h	/^int init_random()$/
+initial_matrix	levedit.c	/^void initial_matrix()$/
+kill_random	mrandom.h	/^void kill_random()$/
+last_selected	levedit.c	/^void last_selected()$/
+ledit	levedit.c	/^void ledit(char* dat, char* fn, int recover)$/
+load_pixels	client.c	/^void load_pixels(char* fn)$/
+move_down	client.c	/^void move_down()$/
+move_id_down	server.c	/^int move_id_down(int id)$/
+move_id_left	server.c	/^int move_id_left(int id)$/
+move_id_right	server.c	/^int move_id_right(int id)$/
+move_id_up	server.c	/^int move_id_up(int id)$/
+move_left	client.c	/^void move_left()$/
+move_right	client.c	/^void move_right()$/
+move_up	client.c	/^void move_up()			\/*FIXME, THIS AND 4 NEXT FUNCS A/
+mrandom	mrandom.h	/^int mrandom(int lb)$/
+no_room	client.c	/^void no_room(int fd)	\/* FIXME THERE WAS MUTEX, DO/
+place_client_onboard	server.c	/^int place_client_onboard(int id)$/
+play_game	client.c	/^void play_game(int fdr, int fdw)$/
+player_hit	server.c	/^void player_hit(int id)$/
+proc_dead	client.c	/^void proc_dead()		\/* APPEARS IN THE MIDDLE OF PRO/
+proc_dead_rd	client.c	/^void proc_dead_rd(int fd)$/
+progress_fire	server.c	/^void progress_fire()$/
+read_file	levedit.c	/^void read_file(int recover)$/
+reader_thread	client.c	/^void* reader_thread(void* ptr)$/
+refresh_fields	client.c	/^void refresh_fields()$/
+refresh_window	client.c	/^void refresh_window()$/
+register_client	server.c	/^void register_client(int fdw, int fdr, int maxc)$/
+remove_from_boardR	server.c	/^void remove_from_boardR(int fdr, int locked)$/
+remove_id	server.c	/^void remove_id(int id)$/
+send_board	server.c	/^int send_board(int fd, int with_mut)	\/* FIXME, TH/
+send_client_id	server.c	/^int send_client_id(int fd, int id)	\/* SHULD SYNCH/
+send_signal	client.c	/^void send_signal()$/
+server	server.c	/^void server(int port, int maxc, int maxw, int cls,/
+set_error_handler	client.c	/^void set_error_handler()	\/* FIXME NOT USED, BUT../
+setup_signals	levedit.c	/^void setup_signals()$/
+shutdown_clients	server.c	/^int shutdown_clients(int locked)$/
+signal_from_thread	client.c	/^void signal_from_thread()		\/* ASYNC OF COURSE *\//
+space	levedit.c	/^void space()$/
+teleport	server.c	/^int teleport()$/
+transform_pixels	client.c	/^void transform_pixels()$/
+uchar	client.c	/^typedef unsigned char uchar;$/
+ulong	client.c	/^typedef unsigned long ulong;$/
+warning	client.c	/^void warning(char* fmt, ...)$/
+write_gfx	grfx.c	/^void write_gfx(FILE* dat)$/
+writer_thread	client.c	/^void* writer_thread(void* ptr)$/

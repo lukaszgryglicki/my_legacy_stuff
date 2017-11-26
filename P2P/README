@@ -1,0 +1,143 @@
+	Changes to orginal protocol & task descriptin:
+
+-ping czy server odpowiada						ok
+-lista aktywnych i gdy mniej niz n to szukac				ok
+-getopt() wyszukuje -p ale nie --port np, wiec tylko
+	jednoliterowe opcje						fail
+-zapisy do logu systemowego						ok
+-konsola uzytkownika z poleceniami					ok
+-konsola w ncurses							fail
+-uaktualnianie listy serverow						ok
+-trzymanie listy jako nazwy+porty					ok
+-sysnchronizacje							ok
+-obsluga sysgnalow							ok
+-klasy K*								ok
+-consty przy metodach							ok
+-asercje								ok
+-wyjatki, klasy K*Exception						ok
+-implementacja klasy KFile						ok
+-asynchroniczny transfer						ok
+-transfer w oddzielnym watku						ok
+-wyszukiwanie serverow z listy aktywnych 				ok
+-powtarzanie wyszukiwania (jezxeli potzrebne) co 30 sek			ok
+-tryb daemon								ok
+-nie ma ncurses dodalem komendy: listd, listu, lclear,info,shred	ok
+-CRC brak, zmienilem wszystkie pakiety tak ze nie ma CRC		fail
+-lpdk, do transferu uzywana jest lista lfind, ale przesylam serverowi	fail
+-porzadek sieciowy bajtow						ok
+-informacje o bledzie w OutOfBound					ok
+-dziedziczenie klas wyjatkow						ok
+-program napisany w wielu plikach					ok
+-nieuzywanie fread/fwrite, StdTemplateLib tylko ISO/ANSI C++		ok
+-przykladowe wywolanie w ./example_call					ok
+-pliki znanych hostow: known_hosts, known_hosts2, mini_hosts		ok
+-kodowanie stringa jako String { int len; char* str; } przez siec	ok
+-protokol wprowadziem zmiany niezbedne do przejscia z UDP na TCP	fail
+-nasluch na UDP								fail
+-na wielu systemach po pthread_create adres klienta zwracany przez
+	accept to wypelniona zerami struktura, odczyt z niej
+	adresu klienta jest niemozliwy ale na FreeBSD dziala		ok/fail
+
+	** ZMIANY W PROTOKOLE **
+-uzywam TCP w obu komunikacjach - UDP nie moglem w zaden sposob
+	pobrac adresu klienta, pakiety przychodzily w roznej
+	kolejnosci - byly same problemy, nazwy metod *UDP*
+	pozostaly - NIE MA SZANS ABYM ZAIMPLEMENTOWAL TO W UDP!
+	na tym samym porcie TCP7782 i UDP7782
+	domyslnie x to 7782
+	W zwiazku z tym ZAMIAST komunikacji UDP(x) jest TCP(x)
+	A zamiast TCP(x) jest TCP(x+0x8000)
+	dlatego MAX_PORT w Common.hh to 0x7FFFF
+
+	PROTOKOL:
+	UDP7782 (zmieniony na TCP7782)
+	**********
+	----------
+	(4b)	1 zadanie opisu servera/ping (bez zmian)
+	----------
+	(4b)	2 odp na 1 (bez zmian)
+	(nb)	string opis servera
+	----------
+	(4b)	3 wyszukiwanie (zmiany)
+	nie ma adresu na ktory odpowiedz bo TCP
+	(4b)	lpdk (ignorowana ale przesylana)
+	(nb)	string wildcard nazwy pliku
+	----------
+	(4b)	4 plik dostepny (bez zmian)
+	(nb)	string nazwa
+	(8b)	dlugosc (moze byc >4Gb)
+	(4b)	lpdk (przesylana ale ignorowana)
+	----------
+	(4b)	5 plik niedostepny (zmienione, potrzeba odpowiedziec w TCP)
+	----------
+	informacji oryginalnych 5 i 6 nie ma bo aplikacja jest tak napisana
+	ze liste serverow aktualizuje automatycznie oddzielny watek..
+	ten podany w wymagania co pinguje co 30 sek
+	**********
+	PROTOKOL
+	TCP7782 (zmieniony na TCP(7782+0x8000) = TCP40550
+	**********
+	----------
+	(4b)	3 zadanie przeslania pliku (bez zmian)
+	(nb)	string nazwa pliku
+	----------
+	(4b)	4 przesylanie pliku, uzywa AIO (bez zmian)
+	(8b)	dlugosc pliku
+	(nB)	dane pliku (strumien ASCII)
+	----------
+	(4b)	5 informacje o bledzie OOB (bez zmian)
+	(nb)	string opis bledu
+	----------
+	(4b)	6 potwierdzenie inf o bledzie (bez zmian)
+	(nb)	string opis bledu (ignorowany/nie odczytywany)
+	----------
+	**********
+
+	Ogolnie program dziala, robi to co trzeba nie wywoluje bledow
+	Podsumowujac bledy/brakujace funkcjonalnosci:
+		-nie przyjmuje opcji dlugich tj. np, --port
+		-nie ma ncurses
+		-brak obslugi CRC
+		-ignorowanie LPDK
+		-zmiany w protokole 
+		-nasluch na UDP przeniesiony na TCP
+		-linux ignoruje w accept(..,&cliaddr) i nie znamy adresu
+		-zmiany w protokolach aby pominac CRC i inne drobne (patrz wyzej)
+		-dziala dobrze jako root, a inaczej zalezy czy user ma uprawnienia do logu
+	Rozszerzenia:
+		-dodalem w konsoli polecenia
+			-listd lista downloadow (miala byc w okienku curses)
+			-listu (lista uploadow)
+			-shred (zabija klienta i servera oraz zakancza dzialanie)
+			-lclear (czysci liste plikow do zciagniecia)
+		-katalogi upload/download sa sprawdzane pod katem czy mozna
+			do nich przejsc chdir
+		-gdy wpiszesz listd, w liscie downloadow jest ile bajtow
+			z danego pliku juz zciagnieto
+	Dzialanie:
+		-aby program dobrze dzialal musi byc uruchomiona jakas siec
+			gdyz inaczej funkcje systemowe (np. connect)
+			moga czekac w nieskonczonosc
+		-aby mozna bylo uzywac AIO na FreeBSD 
+			(platforma programistyczna na ktorej pisano program)
+			nalezy wczytac modul jadra: 'kldload aio' jako root
+			ale jest to naturalne, gdyz domyslnie system
+			nie udostepnia wywolan I/O asynchronicznych
+		-sprawdz ./example_call
+		-zciagnelem DivX'a z tej samej maszynay (upload/download) jednoczesnie
+		-zciagnelem MPGa z laptopa przez siec lokalna
+		-uruchomilem kilka serverow i wzielem download tego samego
+			pliku, tylko jeden zostal zciagniety (tak byc powinno)
+		-tryb daemon zapisuje tylko do logu, log to: /var/log/messages
+		-wszelka pamiec jest zwalniana i sprawdzana przed zwolnieniem
+		-klient/server wykrywa brak uprawnien i wyrzuca KIOexception
+			przed rozpoczeciem uploadu/downloadu
+		-program testUDP obrazuje systuacje zlego odbierania adresu
+			klienta przez server, dlatego zmienilem
+			komunikacje UDP na TCP
+			
+
+
+		To by bylo na tyle ;-)
+		wt(38-42)h
+

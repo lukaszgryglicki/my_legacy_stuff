@@ -1,0 +1,1 @@
+/usr/local/bin/gimp -i -d -f -s -b 

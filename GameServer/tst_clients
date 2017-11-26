@@ -1,0 +1,1 @@
+while (true); do ./client & ./usleep $1; killall -SIGINT client; done

@@ -1,0 +1,9 @@
+Program do kolekcjonowania numerow telefonow
+Autor programu morgothdbma wersja 1.1
+Last Compiled FRI 23:27:57  3 MARCH 2002 on FreeBSD 4.5 (STABLE)
+Wymagania sprzetowe:
+	-32 bitowy system operacyjny (najlepiej Unix/Linux)
+	-okolo 1,5 MB RAM
+	-okolo 300 KB wolnego miejsca na dysku
+
+Aby otrzymac pomoc wpisz h

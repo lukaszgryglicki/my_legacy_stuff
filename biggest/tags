@@ -1,0 +1,7 @@
+Mbiggest	biggest.c	/^int main(int lb, char** par)$/
+biggest	biggest.c	/^int biggest(char* path, off_t minsize)$/
+compare_filesize	biggest.c	/^int compare_filesize(const void* fsv1, const void*/
+filesize	biggest.c	/^} filesize;$/
+getline	biggest.c	/^char* getline(FILE* fp)$/
+getsize	biggest.c	/^void getsize(filesize* fs)$/
+print_wait	biggest.c	/^void print_wait(int num, int div)$/

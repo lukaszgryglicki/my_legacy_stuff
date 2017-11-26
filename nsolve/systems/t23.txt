@@ -1,0 +1,19 @@
+Number of equations: 2
+Number of mappings: 2
+Rank of equations system: 1
+Integral step: 0.02
+Start conditions:
+t0=-1.0
+y1(t0)=0.5
+y2(t0)=-0.5
+Differential equations system:
+y1'=y1+3*y2
+y2'=y1-y2
+Mapping functions:
+X1=t
+Y1=y1
+Z1=y1'
+X2=t
+Y2=y2
+Z2=y2'
+

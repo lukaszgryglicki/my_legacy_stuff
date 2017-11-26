@@ -1,0 +1,180 @@
+#include <fstream>
+#include <iostream>
+#include <string>
+#include <set>
+#include<queue>
+#include <iomanip>
+#include <sstream>
+#include <exception>
+
+class stream_exc : std::exception
+{
+    public:
+    stream_exc() throw() {}
+
+    stream_exc(const std::ostream& s)
+    {
+	//this->ss << " aaa " << 1;
+	//std::cout << s.str() << std::endl;
+    }
+
+    stream_exc(const std::string& s)
+    {
+	this->ss << s;
+    }
+
+    ~stream_exc() throw()
+    {
+    }
+
+    stream_exc(const stream_exc& se)
+    {
+	std::string s1, s;
+	while (se.ss >> s1)
+	{
+	    this->ss << s1;
+	}
+
+	//this->ss << se.ss.str();
+    }
+
+    std::string what()
+    {
+	std::string s1, s;
+	//this->ss << " aaa " << 1;
+	while (ss >> s1) s += s1;
+	return s;
+    }
+
+    private:
+    std::stringstream ss;
+};
+
+
+class occ_string
+{
+    public:
+	occ_string()
+	{
+	    n = 0;
+	}
+
+	void set(const std::string& _s, const unsigned long _n)
+	{
+	    //if (_n <= 0) throw std::stringstream str("negative n: ");
+	    //if (_n <= 0) throw (std::stringstream("negative n: ")).str();
+
+	    //throw stream_exc( std::stringstream("negative n: ") << _n);
+	    throw stream_exc( "negative n: ");
+	    s = _s;
+	    n = _n;
+	}
+
+	std::string gets() const
+	{
+	    return s;
+	}
+
+	unsigned int getn() const
+	{
+	    return n;
+	}
+
+    private:
+	std::string s;
+	unsigned int n;
+};
+
+bool operator<(const occ_string& l, const occ_string& r)
+{
+    if (l.getn() == r.getn()) return l.gets() > r.gets();
+    else return (l.getn() < r.getn());
+}
+
+int main(int lb, char** par)
+{
+    if (lb < 2)
+    {
+	std::cout << par[0] << ": filename" << std::endl;
+	return 1;
+    }
+
+    std::string str;
+    unsigned int N = 10;
+    if (lb >= 3)
+    {
+	if (std::stringstream( str = std::string( par[2] ) ) >> N)
+	{
+	    std::cout << "Top " << N << " numbers" <<  std::endl;
+	}
+	else
+	{
+	    std::cout << str << ": is not a integer value" << std::endl;
+	}
+    }
+
+    std::ifstream fin( par[1] );
+
+    if (!fin)
+    {
+	std::cout << par[1] << ": cannot be read" << std::endl;
+	return 2;
+    }
+
+    std::string s;
+    std::multiset<std::string> ms;
+    std::set<std::string> st;
+
+    int nw = 0;
+    while (!fin.eof())
+    {
+	fin >> s;
+	ms.insert( s );
+	st.insert( s );
+	nw ++;
+    }
+
+    std::cout << "words: " << nw << std::endl;
+    std::cout << "distinct words: " << st.size() << std::endl;
+
+    std::pair<std::multiset<std::string>::iterator, std::multiset<std::string>::iterator> p;
+    size_t d;
+    occ_string ocs;
+    std::priority_queue<occ_string> q;
+
+    for (std::set<std::string>::iterator it=st.begin();it!=st.end();++it)
+    {
+	p = ms.equal_range( *it );
+	d = distance( p.first, p.second );
+
+	//std::cout << d << " --> " << *it << std::endl;
+
+	try
+	{
+	    ocs.set( *it, d);
+	}
+	catch (stream_exc e)
+	{
+	    std::cout << "exception: " << e.what() << std::endl;
+	}
+
+	q.push( ocs );
+    }
+
+    //std::cout << std::endl;
+    std::cout<< "qsize: " << q.size() << std::endl;
+
+    int n = q.size() > N ? N : q.size();
+
+    for (int i=0;i<n;i++)
+    {
+	ocs = q.top();
+	q.pop();
+
+	std::cout << std::setw( 10 );
+	std::cout<< ocs.getn() << " times --> " << ocs.gets() << std::endl;
+    }
+
+    return 0;
+}
+

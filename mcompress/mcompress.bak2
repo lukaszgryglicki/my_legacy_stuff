@@ -1,0 +1,1323 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#include <stdarg.h>
+/*#include <varargs.h>*/
+
+#define UINT8  unsigned char
+#define SINT8  signed char
+#define UINT16 unsigned short
+#define SINT16 signed short
+#define UINT32 unsigned int
+#define SINT32 signed int
+#define UINT64 unsigned long long
+#define SINT64 signed long long
+
+typedef struct _tree
+{
+  struct _tree *l, *r, *u;
+  long val;
+  long sum;
+} tree;
+
+typedef struct _shtree
+{
+  struct _shtree *l, *r, *u;
+  long val;
+} shtree;
+
+typedef struct _list
+{
+ struct _list *n, *p;
+ long val;
+} list;
+
+typedef struct _btable
+{
+ unsigned char nbits;
+ unsigned char nbytes;
+ long* bits;
+} btable;
+
+typedef struct _btree
+{
+  struct _btree *l, *r;
+  long idx;
+  btable b;
+} btree;
+
+static int g_err_code = 0;
+unsigned char* prev_buffer = NULL;
+unsigned char* buffer = NULL;
+unsigned char* outbuffer_hdr = NULL;
+unsigned char* outbuffer_data = NULL;
+char* gcout = NULL;
+long fsize, fbits;
+long current_bit = 0;
+long bits = 8;
+long g_htree = 0;
+long g_max_depth = 0;
+long h_len = 0;
+long h_idx = 0;
+long data_size = 0;
+long data_size_bits = 0;
+long outbuffer_hdr_len = 0;
+long outbuffer_data_len = 0;
+long btab_len = 0;
+long bbits_len = 0;
+long debug_mode = 1;
+int* h_tab = NULL;
+tree *otree, *htree, *stree;
+shtree *s_htree;
+btree* idxtree;
+list *dlist_head, *dlist_tail;
+/*btable *btab;*/
+double cratioh, cratiod, gcratio;
+
+void travel_htree_postorder(tree* t, long);
+void travel_shtree_postorder(shtree* t, long);
+void check_htree(tree*, int);
+
+int debug(long debug_level, char* fmt, ...)
+{
+ va_list ap;
+ int err;
+ if (debug_level > debug_mode) return 1;
+ va_start(ap, fmt);
+ err = vprintf(fmt,ap);
+ va_end(ap);
+ return err;
+}
+
+void readbuffer(FILE* f)
+{
+ int i, zn;
+ fseek(f, 0, SEEK_END);
+ fsize = ftell(f);
+ debug(1, "Size is: %ld bytes\n", fsize);
+ fseek(f, 0, SEEK_SET);
+ buffer = (unsigned char*)malloc(fsize + 8);
+ if (!buffer) g_err_code = 4;
+ i = 0;
+ while ((zn = fgetc(f)) != EOF) buffer[i++] = (unsigned char)zn;
+ fbits = 8*fsize;
+ debug(1, "Read %d/%ld bits, %ld bytes\n", i*8, fbits, fsize);
+ for (i=0;i<6;i++) buffer[fsize+i] = 0;
+}
+
+char* binout(unsigned long val)
+{
+ long mask;
+ int i;
+ if (!gcout) gcout = malloc(34);
+ gcout[32] = 0;
+ for (i=31;i>=0;i--)
+ {
+     mask = 1 << i;
+     if (val & mask) gcout[31-i] = '1';
+     else gcout[31-i] = '0';
+ }
+ return gcout;
+}
+
+
+int get_next_chunk(unsigned long* chunk)
+{
+ long start_bit, start_byte;
+ long start_bit_byte, bit_offset, bit_mask;
+ unsigned long tmp;
+ start_bit = current_bit;
+ debug(4, "gnc: start_bit(DEC) = %ld\n", start_bit);
+ if (start_bit >= fbits) { *chunk = 0; return 0; }
+ start_byte = start_bit >> 3;
+ debug(4, "start_byte(DEC) = %ld\n", start_byte);
+ start_bit_byte = start_byte << 3;
+ debug(4, "start_bit_byte(DEC) = %ld\n", start_bit_byte);
+ bit_offset = start_bit - start_bit_byte;
+ debug(4, "bit_offset(DEC) = %ld\n", bit_offset);
+ bit_mask = (1 << bits) - 1;
+ debug(4, "bit_mask = %s\n", binout(bit_mask));
+ bit_mask <<= bit_offset;
+ debug(4, "bit_mask = %s\n", binout(bit_mask));
+ memcpy((void*)(&tmp), (void*)(buffer + start_byte), 4);
+ debug(4, "tmp1 =     %s\n", binout(tmp));
+ tmp &= bit_mask;
+ debug(4, "tmp2 =     %s\n", binout(tmp));
+ tmp >>= bit_offset;
+ debug(3, "gnc:chunk= %s\n", binout(tmp));
+ *chunk = tmp;
+ current_bit += bits;
+ return 1;
+}
+
+void correct_htree_up(tree* p)
+{
+ tree* tmp;
+ debug(5, "correct htree up\n");
+ if (!p) return;
+
+ if (p->l && p->r)
+ {			/* both nodes */
+/*     printf("both nodes\n");*/
+     if (p->l->sum > p->r->sum)
+     {			/* swap nodes */
+         debug(5, "nodes swap\n");
+	 tmp  = p->l;
+	 p->l = p->r;
+	 p->r = tmp;
+	 		/* update sum */
+     }
+     p->sum = p->l->sum + p->r->sum;
+     correct_htree_up(p->u);
+ }
+ else if (!p->l && p->r)
+ {			/* only right node */
+/*     printf("right node\n");*/
+     p->sum = p->r->sum;
+     correct_htree_up(p);
+ }
+ else if (p->l && !p->r)
+ {			/* only left node */
+/*     printf("left node\n");*/
+     p->sum = p->l->sum;
+     correct_htree_up(p->u);
+ }
+ else if (!p->l && !p->r) return;	/* shouldn't happen */
+}
+
+void insert_htree_node(tree** t, tree* parent, long sum, long chunk)
+{
+ if (!(*t)) 
+ {
+     debug(4, "insert htree node: s=%d, %ld\n", sum, chunk);
+     /* rolled to the leaf */
+     *t = (tree*)malloc(sizeof(tree));
+     (*t)->u = parent;
+     (*t)->l = NULL;
+     (*t)->r = NULL;
+     (*t)->val = chunk;
+     (*t)->sum = sum;
+     /* make parent node a sum node, and roll its down to create new node */
+     if ((*t)->u)	/* if we have parent */
+     {
+		if ((*t)->u->sum < (*t)->sum)		/* move parent to left */
+		{
+		     debug(5, "move parent to left\n");
+			/* new node left from parent */
+			(*t)->u->r = *t;				/* connect us */
+			(*t)->u->l = (tree*)malloc(sizeof(tree));	/* make new note from parent left */
+			(*t)->u->l->u = (*t)->u;			/* connect it to parent */
+			(*t)->u->l->l = NULL;			/* gave it no children */
+			(*t)->u->l->r = NULL;
+			(*t)->u->l->sum = (*t)->u->sum;		/* copy prent val to it */
+			(*t)->u->l->val = (*t)->u->val;		
+			/* update parent */
+			(*t)->u->sum += sum;			/* update parent sum */
+			(*t)->u->val = 0x7FFFFFFF;			/* special for internal node */
+			correct_htree_up((*t)->u);
+		}
+		else					/* move parent to right */
+		{
+		     debug(5, "move parent to right\n");
+			/* new node right from parent */
+			(*t)->u->l = *t;				/* connect us */
+			(*t)->u->r = (tree*)malloc(sizeof(tree));	/* make new note from parent right */
+			(*t)->u->r->u = (*t)->u;			/* connect it to parent */
+			(*t)->u->r->l = NULL;			/* gave it no children */
+			(*t)->u->r->r = NULL;
+			(*t)->u->r->sum = (*t)->u->sum;		/* copy prent val to it */
+			(*t)->u->r->val = (*t)->u->val;		
+			/* update parent */
+			(*t)->u->sum += sum;			/* update parent sum */
+			(*t)->u->val = 0x7FFFFFFF;			/* special for internal node */
+			correct_htree_up((*t)->u);
+		}
+
+     }
+/* 	 printf("htree\n");*/
+/*	 travel_htree_postorder(htree);*/
+/*	 printf("check htree\n");*/
+/*	 check_htree(htree, 1);*/
+     return;
+ }
+ if (sum <= (*t)->sum) insert_htree_node(&((*t)->l), *t, sum, chunk);
+ else insert_htree_node(&((*t)->r), *t, sum, chunk);
+
+}
+
+void insert_stree_sum(tree** t, tree* parent, long sum, long chunk)
+{
+ long where;
+ debug(4, "iss: %ld - %ld\n", sum, chunk); 
+ where = rand() % 2;
+ if (!(*t)) 
+ {
+     *t = (tree*)malloc(sizeof(tree));
+     (*t)->u = parent;
+     (*t)->l = NULL;
+     (*t)->r = NULL;
+     (*t)->val = chunk;
+     (*t)->sum = sum;
+     return;
+ }
+ if (where)		/* randomize tree */
+ {
+	if (sum <= (*t)->sum) insert_stree_sum(&((*t)->l), *t, sum, chunk);
+	if (sum > (*t)->sum) insert_stree_sum(&((*t)->r), *t, sum, chunk);
+ }
+ else
+ {
+	if (sum < (*t)->sum) insert_stree_sum(&((*t)->l), *t, sum, chunk);
+	if (sum >= (*t)->sum) insert_stree_sum(&((*t)->r), *t, sum, chunk);
+ }
+
+}
+
+void insert_otree_chunk(tree** t, tree* parent, long chunk)
+{
+ if (!(*t)) 
+ {
+     *t = (tree*)malloc(sizeof(tree));
+     (*t)->u = parent;
+     (*t)->l = NULL;
+     (*t)->r = NULL;
+     (*t)->val = chunk;
+     (*t)->sum = 1;
+     return;
+ }
+ if ((*t)->val == chunk) 
+ {
+     (*t)->sum ++;
+ }
+ if (chunk < (*t)->val) insert_otree_chunk(&((*t)->l), *t, chunk);
+ if (chunk > (*t)->val) insert_otree_chunk(&((*t)->r), *t, chunk);
+}
+
+void travel_otree_postorder(tree* t)
+{
+ debug(4, "t=%8p: l=%8p u=%8p r=%8p v=%4ld s=%4ld\n", 
+	 (void*)t, (void*)t->l, (void*)t->u, (void*)t->r, t->val, t->sum);
+
+ insert_stree_sum(&stree, NULL, t->sum, t->val);
+
+ if (t->l) 
+ {
+     debug(5, "going left\n");
+     travel_otree_postorder(t->l);
+ }
+ if (t->r) 
+ {
+     debug(5, "going right\n");
+     travel_otree_postorder(t->r);
+ }
+}
+
+void travel_stree_inorder(tree* t)
+{
+ if (t->r) 
+ {
+     debug(5, "going left\n");
+     travel_stree_inorder(t->r);
+ }
+ debug(4, "t=%8p: l=%8p u=%8p r=%8p v=%4ld s=%4ld\n", 
+	 (void*)t, (void*)t->l, (void*)t->u, (void*)t->r, t->val, t->sum);
+
+ insert_htree_node(&htree, NULL, t->sum, t->val);
+
+ if (t->l) 
+ {
+     debug(5, "going right\n");
+     travel_stree_inorder(t->l);
+ }
+}
+
+void add_buffer(tree* t)
+{
+ long start_bit, start_byte;
+ long start_bit_byte, bit_offset, bit_mask;
+ unsigned long tmp, val;
+
+ start_bit = current_bit;
+ start_byte = start_bit >> 3;
+ start_bit_byte = start_byte << 3;
+ bit_offset = start_bit - start_bit_byte;
+
+
+ debug(4, "addb: current_bit = %ld\n", current_bit);
+ debug(4, "start_bit = %ld\n", start_bit);
+ debug(4, "start_byte = %ld\n", start_byte);
+ debug(4, "start_byte_bit = %ld\n", start_bit_byte);
+ debug(4, "bit_offset = %ld\n", bit_offset);
+
+ tmp = 0;
+
+ if (t->l && t->r)
+ {
+    debug(5, "internal node\n"); 
+    val = 0;
+	debug(4, "ival     = %s, %lx\n", binout(val), val); 
+ 	bit_mask = 1 << bit_offset;
+	debug(4, "bit_mask = %s\n", binout(bit_mask)); 
+ 	memcpy((void*)(&tmp), (void*)(outbuffer_hdr + start_byte), 4);
+	debug(4, "tmp1     = %s, %lx\n", binout(tmp), tmp); 
+	tmp |= bit_mask;
+	debug(4, "tmp2     = %s, %lx\n", binout(tmp), tmp); 
+ 	memcpy((void*)(outbuffer_hdr + start_byte), (void*)(&tmp), 4);
+ 	current_bit ++;
+ }
+ else if (!t->l && !t->r)
+ {
+    debug(5, "leaf node\n"); 
+    val = t->val;
+	debug(4, "val       = %s, %lx\n", binout(val), val); 
+ 	/*bit_mask = 1 << bits;*/
+	bit_mask = val;
+	debug(4, "bit_mask1 = %s\n", binout(bit_mask)); 
+	/*bit_mask += val;*/
+	bit_mask <<= 1;
+	debug(4, "bit_mask2 = %s\n", binout(bit_mask)); 
+	bit_mask <<= bit_offset;
+	debug(4, "bit_mask3 = %s\n", binout(bit_mask)); 
+ 	memcpy((void*)(&tmp), (void*)(outbuffer_hdr + start_byte), 4);
+	debug(4, "tmp1      = %s, %lx\n", binout(tmp), tmp); 
+	tmp |= bit_mask;
+	debug(3, "addb:tmp2 = %s, %lx\n", binout(tmp), tmp);
+ 	memcpy((void*)(outbuffer_hdr + start_byte), (void*)(&tmp), 4);
+ 	current_bit += bits + 1;
+ }
+ else
+ {
+     debug(0, "add_buffer: error\n");
+ }
+}
+
+void add_buffer_bits(long chunk, long n_bits)
+{
+ long start_bit, start_byte;
+ long start_bit_byte, bit_offset, bit_mask;
+ unsigned long tmp;
+
+ start_bit = current_bit;
+ start_byte = start_bit >> 3;
+ start_bit_byte = start_byte << 3;
+ bit_offset = start_bit - start_bit_byte;
+
+
+ debug(3, "addb_bits: chunk=%ld, n_bits=%ld\n", chunk, n_bits);
+ debug(4, "addb_bits: current_bit = %ld\n", current_bit);
+ debug(4, "start_bit = %ld\n", start_bit);
+ debug(4, "start_byte = %ld\n", start_byte);
+ debug(4, "start_byte_bit = %ld\n", start_bit_byte);
+ debug(4, "bit_offset = %ld\n", bit_offset);
+ 
+
+
+	tmp = 0;
+	debug(4, "val       = %s, %lx\n", binout(chunk), chunk); 
+	bit_mask = chunk;
+	debug(4, "bit_mask2 = %s\n", binout(bit_mask)); 
+	bit_mask <<= bit_offset;
+	debug(4, "bit_mask3 = %s\n", binout(bit_mask)); 
+ 	memcpy((void*)(&tmp), (void*)(outbuffer_data + start_byte), 4);
+	debug(4, "tmp1      = %s, %lx\n", binout(tmp), tmp); 
+	tmp |= bit_mask;
+	debug(4, "tmp2      = %s, %lx\n", binout(tmp), tmp); 
+ 	memcpy((void*)(outbuffer_data + start_byte), (void*)(&tmp), 4);
+ 	current_bit += n_bits;
+}
+
+void add_buffer_bytes(btable* bt)
+{
+	int i;
+	long n_b;
+	debug(3, "Add_bytes: %ld (%ld bits)\n", bt->nbytes, bt->nbits); 
+/*	for (i=bt->nbytes-1;i>=0;i--)*/
+	for (i=0;i<bt->nbytes;i++)
+	{
+		if (i == (bt->nbytes - 1))	/* last byte */
+		{
+		    n_b = (bt->nbits % 0x10);
+			if (!n_b) n_b = 0x10;
+			debug(3, "Add last bits: %s, %ld\n", binout(bt->bits[i]), n_b); 
+			add_buffer_bits(bt->bits[i], n_b);
+		}
+		else if (bt->nbytes > 1)		/* add entire 16 bits */
+		{
+		    debug(3, "Adding bytes: bytes=%ld, bits=%ld\n", bt->nbytes, bt->nbits);
+			debug(3, "Add internal bits: %s, %d\n", binout(bt->bits[i]), 16); 
+			n_b = (bt->nbits % 0x10);
+			if (!n_b) n_b = 0x10;
+			debug(3, "Add internal prev: %s, %d\n", binout(bt->bits[i+1]), n_b); 
+			add_buffer_bits(bt->bits[i], 0x10);
+		}
+
+	}
+
+}
+/*
+void travel_htree_btable(tree* t, long current_bit, long* tab)
+{
+ long current_byte, bytes_needed, bit_mask, bit_offset;
+ long *tab_store, current_bit_store;
+ int i;
+
+ current_byte = current_bit >> 4;
+ if (current_bit && !(current_bit % 0x10)) 
+ {
+     current_byte --;
+ }
+ bytes_needed = current_byte + 1;
+
+ 
+ if (!t->r && !t->l)
+ {
+        if (bytes_needed > 1) printf("leaf: bytes_needed: %ld, cur_bit = %ld\n", bytes_needed, current_bit);
+	btab[ t->val ].nbytes = bytes_needed; 
+	btab[ t->val ].nbits = current_bit;
+	btab[ t->val ].bits  = (long*)malloc((bytes_needed + 1)*sizeof(long));
+	for (i=0;i<bytes_needed;i++) 
+	{
+		btab[ t->val ].bits[i] = tab[i];
+		btab[ t->val ].bits[i] >>= 1;
+	}
+ }
+
+ tab_store = (long*)malloc((bytes_needed+1) * sizeof(long));
+ for (i=0;i<=bytes_needed;i++) tab_store[i] = tab[i];
+ current_bit_store = current_bit;
+
+ if (t->l) 
+ {
+	 current_bit ++;
+         travel_htree_btable(t->l, current_bit, tab);
+ }
+
+ for (i=0;i<=bytes_needed;i++) tab[i] = tab_store[i];
+ current_bit = current_bit_store;
+
+ if (t->r) 
+ {
+	 current_bit ++;
+	 if ((current_bit >> 4) >= 1 && (current_bit % 0x10) == 1) 
+	 {
+	         printf("node: next byteR for curr_bit = %ld\n", current_bit);
+		 tab[current_byte + 1] |= 1;
+	 }
+	 else
+	 {		 
+	     	 bit_mask = 0;
+		 bit_offset = current_bit % 0x10;
+		 if (current_bit && !bit_offset) bit_offset = 0x10;
+		 bit_mask = 1 << bit_offset;
+		 tab[current_byte] |= bit_mask;
+	 }
+     travel_htree_btable(t->r, current_bit, tab);
+ }
+
+ if (tab_store) free((void*)tab_store);
+ tab_store = NULL;
+
+}
+*/
+
+void insert_btree(btree** t, btable* b, long idx)
+{
+ debug(4, "ibtree: b=(bytes=%ld, bits=%ld)\n", b->nbytes, b->nbits); 
+ if (!(*t)) 
+ {
+     *t = (btree*)malloc(sizeof(btree));
+     (*t)->l = NULL;
+     (*t)->r = NULL;
+	 (*t)->b.bits = b->bits;
+	 (*t)->b.nbits = b->nbits;
+	 (*t)->b.nbytes = b->nbytes;
+	 (*t)->idx = idx;
+     return;
+ }
+
+ if (idx <= (*t)->idx) insert_btree(&((*t)->l), b, idx);
+ if (idx > (*t)->idx) insert_btree(&((*t)->r), b, idx);
+
+}
+
+void travel_htree_btable(tree* t, long current_bit, long* tab)
+{
+ long current_byte, bytes_needed, bit_mask, bit_offset, trunc_bit;
+ long *tab_store, current_bit_store;
+ int i;
+ btable btemp;
+
+ current_byte = current_bit >> 4;
+ if (current_bit && !(current_bit % 0x10)) 
+ {
+     current_byte --;
+     debug(5, "16th bit, current_byte = %ld\n", current_byte);
+ }
+ bytes_needed = current_byte + 1;
+ debug(4, "thb: current_bit = %ld (%ld, %ld)\n", current_bit, current_byte, bytes_needed); 
+ 
+ if (!t->r && !t->l)	/* leaf */
+ {
+	debug(4, "write leaf idx: %ld\n", t->val);
+	/*current_bit ++;*/
+/*        if (bytes_needed > 1) printf("leaf: bytes_needed: %ld, cur_bit = %ld\n", bytes_needed, current_bit);*/
+
+	btemp.nbytes = (unsigned char)bytes_needed; 
+	btemp.nbits = (unsigned char)current_bit;
+	btemp.bits  = (long*)malloc((bytes_needed + 1)*sizeof(long));
+
+	for (i=0;i<bytes_needed;i++) 
+	{
+		btemp.bits[i] = tab[i];
+/*		btab[ t->val ].bits[i] = tab[i];*/
+/*		btab[ t->val ].bits[i] >>= 1;*/
+	}
+
+	/*btab[ t->val ].nbytes = bytes_needed; */
+	/*btab[ t->val ].nbits = current_bit;*/
+	/*btab[ t->val ].bits  = (long*)malloc((bytes_needed + 1)*sizeof(long));*/
+
+	/* FIXME: will it store just value-copied pointer created from local stack */
+	insert_btree( &idxtree, &btemp, t->val);
+ }
+
+ /* tab store */
+ tab_store = (long*)malloc((bytes_needed+1) * sizeof(long));
+ for (i=0;i<=bytes_needed;i++) tab_store[i] = tab[i];
+ current_bit_store = current_bit;
+
+ if (t->l) 
+ {
+	 current_bit ++;
+     travel_htree_btable(t->l, current_bit, tab);
+ }
+
+ /* tab restore */
+ for (i=0;i<=bytes_needed;i++) tab[i] = tab_store[i];
+ current_bit = current_bit_store;
+
+ if (t->r) 
+ {
+	 if ((current_bit >> 4) >= 1 && (current_bit % 0x10) == 0) /* 17th, 33th, 49th ... bit, time to change long */
+	 {
+	     debug(4, "byteR for curr_bit = %ld\n", current_bit);
+		 /* next 1 comes to next byte, so it will by 0x000...0001 */
+		 /* tab[current_byte + 1] |= 1; */
+
+	     bit_mask = 0;
+		 trunc_bit = current_bit - 0x10;
+		 bit_offset = trunc_bit % 0x10;
+		 if (trunc_bit && !bit_offset) bit_offset = 0x10;
+		 bit_mask = 1 << bit_offset;
+		 debug(4, "trunc_bit = %ld, bit_offset = %ld, bit_mask = %s\n", trunc_bit, bit_offset, binout(bit_mask));
+		 tab[current_byte + 1] |= bit_mask;
+		 debug(4, "tab[next:%ld] = %s\n", current_byte + 1, binout(tab[current_byte + 1]));
+	 }
+	 else
+	 {		 
+		 /* next 1 comes, so apply correct mask */
+	     bit_mask = 0;
+		 bit_offset = current_bit % 0x10;
+		 if (current_bit && !bit_offset) bit_offset = 0x10;
+		 bit_mask = 1 << bit_offset;
+		 debug(4, "bit_offset = %ld, bit_mask = %s\n", bit_offset, binout(bit_mask));
+/*	     	 if (current_bit >= 15) printf("curr_bit = %ld, bit_offset = %ld, bit_mask = %ld\n", current_bit, bit_offset, bit_mask);*/
+		 tab[current_byte] |= bit_mask;
+		 debug(4, "tab[curr:%ld] = %s\n", current_byte, binout(tab[current_byte]));
+	 }
+	 current_bit ++;
+     travel_htree_btable(t->r, current_bit, tab);
+ }
+
+ /* tab store free */
+ if (tab_store) free((void*)tab_store);
+ tab_store = NULL;
+
+}
+
+void travel_htree_output(tree* t)
+{
+
+ add_buffer(t);
+
+ if (t->l) 
+ {
+     travel_htree_output(t->l);
+ }
+
+ if (t->r) 
+ {
+     travel_htree_output(t->r);
+ }
+}
+
+void htree_output(FILE* out)
+{
+    long bytes_per_node, bytes, i;
+    double cratio;
+	int enc_zn;
+
+    bytes_per_node = (bits / 8) + 1;	/* safe reserve */
+    bytes = (g_htree + 1) * bytes_per_node;
+
+    outbuffer_hdr = (unsigned char*)malloc( bytes + 1 );
+    outbuffer_hdr_len = bytes + 1;
+    for (i=0;i<=bytes;i++) outbuffer_hdr[i] = 0x00;
+    current_bit = 0;
+
+    travel_htree_output(htree);
+
+    bytes = (current_bit / 8) + 1;
+    for (i=0;i<bytes;i++) 
+	{
+		enc_zn = (outbuffer_hdr[i] + h_tab[h_idx++ % h_len]) % 0x100;
+		fputc(enc_zn, out);
+	}
+    cratio = (double)((bytes + 5)*100) / (double)(fbits / 8);
+
+    debug(1, "Header is %ld(%ld tree) bytes, %3.4f%% original file\n", bytes + 5, bytes, cratio);
+	if (outbuffer_hdr) free((void*)outbuffer_hdr);
+	outbuffer_hdr = NULL;
+
+	cratioh = cratio;
+}
+
+void travel_htree_postorder(tree* t, long depth)
+{
+ g_htree ++;
+ if (depth > g_max_depth) g_max_depth = depth;
+/* printf("t=%8p: l=%8p u=%8p r=%8p v=%4ld(%c) s=%4ld\n",  */
+/*	 (void*)t, (void*)t->l, (void*)t->u, (void*)t->r, t->val, (char)t->val, t->sum); */
+ debug(3, "t=%8p: l=%8p u=%8p r=%8p v=%4ld s=%4ld\n", 
+	 (void*)t, (void*)t->l, (void*)t->u, (void*)t->r, t->val, t->sum); 
+
+
+ if (t->l) 
+ {
+     debug(5, "going right\n");
+     travel_htree_postorder(t->l, depth + 1);
+ }
+ if (t->r) 
+ {
+     debug(5, "going left\n");
+     travel_htree_postorder(t->r, depth + 1);
+ }
+}
+
+void travel_shtree_postorder(shtree* t, long depth)
+{
+ g_htree ++;
+ if (depth > g_max_depth) g_max_depth = depth;
+/* printf("t=%8p: l=%8p u=%8p r=%8p v=%4ld(%c) s=%4ld\n",  */
+/*	 (void*)t, (void*)t->l, (void*)t->u, (void*)t->r, t->val, (char)t->val, t->sum); */
+ debug(3, "t=%8p: l=%8p u=%8p r=%8p v=%4ld\n", 
+	 (void*)t, (void*)t->l, (void*)t->u, (void*)t->r, t->val);
+
+
+ if (t->l) 
+ {
+     debug(5, "going right\n");
+     travel_shtree_postorder(t->l, depth + 1);
+ }
+ if (t->r) 
+ {
+     debug(5, "going left\n");
+     travel_shtree_postorder(t->r, depth + 1);
+ }
+}
+
+void insert_otree(long chunk)
+{
+    insert_otree_chunk(&otree, NULL, chunk);
+}
+
+void check_htree(tree* t, int depth)
+{
+ if (t->r && !t->l) 
+ {
+     debug(0, "truncated node Rl: %p, d=%d\n", (void*)t, depth);
+     check_htree(t->r, depth + 1);
+     return;
+ }
+ if (!t->r && t->l) 
+ {
+     debug(0, "truncated node rL: %p, d=%d\n", (void*)t, depth);
+     check_htree(t->l, depth + 1);
+     return ;
+ }
+ if (!t->r && !t->l)
+ {
+/*     printf("leaf at d=%d, s=%ld, v=%ld\n", depth, t->sum, t->val);*/
+     return;
+ }
+ if (t->r && t->l)
+ {
+     if (t->r->sum + t->l->sum != t->sum)
+     {
+	  debug(0, "LR sum mismatch: %ld + %ld != %ld, d=%d\n", t->l->sum, t->r->sum, t->sum, depth);
+     }
+/*     printf("internal node: depth=%d, s=%ld, v=%ld\n", depth+1, t->sum, t->val);*/
+     check_htree(t->l, depth + 1);
+     check_htree(t->r, depth + 1);
+ }
+}
+
+void insert_dlist_tail(list** h, list** t, long chunk)
+{
+ list* tmp;
+ if (!(*h) || !(*t))
+ {
+	 *h = (list*)malloc(sizeof(list));
+	 *t = *h;
+	 (*h)->val = chunk;
+	 (*h)->p = NULL;
+	 (*h)->n = NULL;
+	 return;
+ }
+ if (*t)
+ {
+	 tmp = (list*)malloc(sizeof(list));
+	 tmp->val = chunk;
+	 tmp->p = *t;
+	 tmp->n = NULL;
+	 (*t)->n = tmp;
+	 *t = tmp;
+ }
+
+}
+
+void insert_dlist(long chunk)
+{
+ insert_dlist_tail(&dlist_head, &dlist_tail, chunk);
+}
+
+void make_occurence_table()
+{
+ unsigned long chunk;
+ current_bit = 0;
+ otree = NULL;
+ htree = NULL;
+ stree = NULL;
+ dlist_head = NULL;
+ dlist_tail = NULL;
+ while (get_next_chunk(&chunk))
+ {
+     debug(3, "Got chunk: %08lx\n", chunk);
+     insert_otree(chunk);
+	 insert_dlist(chunk);
+ }
+ debug(2, "Otree\n");
+ travel_otree_postorder(otree);
+ debug(2, "Stree\n");
+ travel_stree_inorder(stree);
+ g_htree = 0;
+ g_max_depth = 0;
+ debug(2, "Htree\n");
+ travel_htree_postorder(htree, 1);
+ debug(1, "HTREE has %ld nodes, depth is %ld\n", g_htree, g_max_depth);
+ debug(2, "check htree\n");
+ check_htree(htree, 1);
+}
+
+void write_header(FILE* out)
+{
+ unsigned char ubits;
+ ubits = (unsigned char)bits;
+ fwrite((void*)(&ubits), 1, 1, out);
+ fwrite((void*)(&fsize), 4, 1, out);
+/* fwrite((void*)(&g_htree), 4, 1, out); */
+ htree_output(out);
+}
+
+void travel_btree_inorder(btree* t, long* minlen, long* maxlen)
+{
+ int j;
+ if (t->r) 
+ {
+     debug(5, "going left\n");
+     travel_btree_inorder(t->r, minlen, maxlen);
+ }
+
+ if (t->b.nbits > *maxlen) *maxlen = t->b.nbits;
+ if (t->b.nbits < *minlen) *minlen = t->b.nbits;
+ for (j=0;j<t->b.nbytes;j++) 
+	 debug(3, "[key=%x,byte=%x]: %s (bits=%ld, bytes=%ld)\n", t->idx, j, binout(t->b.bits[j]), t->b.nbits, t->b.nbytes);
+
+
+ if (t->l) 
+ {
+     debug(5, "going right\n");
+     travel_btree_inorder(t->l, minlen, maxlen);
+ }
+}
+
+void print_btable()
+{
+/* long tabsize; */
+ long minlen, maxlen;
+/* int i; */
+/* int j; */
+
+/* tabsize = 1 << bits;*/
+ minlen = 2000000000;
+ maxlen = 0;
+
+ travel_btree_inorder(idxtree, &minlen, &maxlen);
+
+ /*
+ for (i=0;i<tabsize;i++)
+ {
+	 if (btab[i].nbytes > 0)
+	 {
+		 if (btab[i].nbits > maxlen) maxlen = btab[i].nbits;
+		 if (btab[i].nbits < minlen) minlen = btab[i].nbits;
+		 for (j=0;j<btab[i].nbytes;j++) 
+			 debug(3, "[key=%x,byte=%x]: %s (bits=%ld, bytes=%ld)\n", i, j, binout(btab[i].bits[j]), btab[i].nbits, btab[i].nbytes);
+	 }
+ }
+ */
+ debug(1, "Min/Max length in tree: %ld/%ld\n", minlen, maxlen);
+
+}
+
+void make_bit_table()
+{
+/* long tabsize;*/
+ int i;
+ long bnbytes;
+ long* bbits;
+ /*
+ tabsize = 1 << bits;
+ btab = (btable*)malloc(tabsize*sizeof(btable));
+ btab_len = tabsize;
+ for (i=0;i<tabsize;i++) 
+ {
+	 btab[i].nbits = 0;
+	 btab[i].nbytes = 0;
+	 btab[i].bits = NULL;
+ }
+ */
+
+ /* store 16bits on one long (safe reserve) */
+ bnbytes = (g_max_depth >> 4) + 1;
+ bbits = (long*)malloc((bnbytes + 1) * sizeof(long));
+ bbits_len = bnbytes + 1;
+ for (i=0;i<=bnbytes;i++) bbits[i] = 0;
+
+ idxtree = NULL;
+ travel_htree_btable( htree, 0, bbits );
+ print_btable();
+
+}
+
+btable* find_bkey(btree* t, long key)
+{
+ if (t == NULL) return NULL;
+ if (t->idx == key) return &t->b;
+ else if (t->idx > key) return find_bkey(t->l, key);
+ else if (t->idx < key) return find_bkey(t->r, key);
+ return NULL;
+}
+
+void write_data(FILE* out)
+{
+ list* i;
+ long d_offset;
+ unsigned int j;
+ unsigned long nbi, nby, bytes;
+ double cratio;
+ int enc_zn;
+ btable* btemp;
+
+ make_bit_table();
+
+ nbi = nby = 0;
+ i = dlist_head;
+ while (i)
+ {
+	 btemp = find_bkey(idxtree, i->val);
+	 if (!btemp)
+	 {
+		 debug(0, "Fatal error1: key: %ld not found in btree\n", i->val);
+		 return;
+	 }
+	 /*nbi += btab[ i->val ].nbits;*/
+	 /*nby += btab[ i->val ].nbytes;*/
+	 /*debug(3, "bytes: %ld | bits: %ld (%ld|%ld)\n", nby, nbi, btab[ i->val ].nbits, btab[ i->val ].nbytes );*/
+	 nbi += btemp->nbits;
+	 nby += btemp->nbytes;
+	 debug(3, "bytes: %ld | bits: %ld (%ld|%ld)\n", nby, nbi, btemp->nbits, btemp->nbytes );
+	 i = i->n;
+ }
+
+ bytes = (nbi / 8) + 1;
+ outbuffer_data = (unsigned char*)malloc(bytes + 1);
+ outbuffer_data_len = bytes + 1;
+ for (j=0;j<=bytes;j++) outbuffer_data[j] = 0;
+ debug(1, "Data buffer length: %ld\n", bytes);
+
+ i = dlist_head;
+ current_bit = 0;
+ while (i)
+ {
+	 debug(3, "saving chunk: %ld\n", i->val);
+	 btemp = find_bkey(idxtree, i->val);
+	 if (!btemp)
+	 {
+		 debug(0, "Fatal error2: key: %ld not found in btree\n", i->val);
+		 return;
+	 }
+	 /*add_buffer_bytes(&(btab[ i->val ])); */
+	 add_buffer_bytes( btemp ); 
+	 i = i->n;
+ }
+
+  bytes = (current_bit / 8) + 1;
+  d_offset = (long)ftell(out);
+  debug(1, "Data offset is: %ld\n", d_offset);
+  debug(1, "Data buffer length written: %ld\n", bytes);
+  for (j=0;j<bytes;j++) 
+  {
+	enc_zn = (outbuffer_data[j] + h_tab[h_idx++ % h_len]) % 0x100;
+	fputc(enc_zn, out);
+  }
+  
+  if (outbuffer_data) free((void*)outbuffer_data);
+  outbuffer_data = NULL;
+
+  cratio = (double)(bytes * 100) / (double)(fbits / 8);
+  debug(1, "Data buffer needs %ld bytes, compression ratio: %3.4f%%\n", bytes, cratio);
+  cratiod = cratio;
+  gcratio = cratioh + cratiod;
+  debug(1, "Final compression ratio: %3.4f%%\n", gcratio);
+}
+
+void compress(char* fin, char* fout)
+{
+ FILE *in, *out;
+ in = fopen(fin, "rb");
+ if (!in) { g_err_code = 2; return; }
+ out = fopen(fout, "wb");
+ if (!out) { fclose(in); g_err_code = 3; return; }
+
+ readbuffer(in);
+ fclose(in);
+ if (g_err_code) return;
+ /* final algorithm */
+ make_occurence_table();
+ if (buffer) free((void*)buffer);
+ buffer = NULL;
+ write_header(out);
+ write_data(out);
+
+ fclose(out);
+}
+
+int read_shtree_binary(shtree* t)
+{
+ long start_bit, start_byte;
+ long start_bit_byte, bit_offset, bit_mask;
+ unsigned long tmp;
+ start_bit = current_bit;
+ debug(4, "rshb: start_bit(DEC) = %ld\n", start_bit);
+ if (start_bit >= fbits) return 0;
+ start_byte = start_bit >> 3;
+ debug(4, "start_byte(DEC) = %ld\n", start_byte);
+ start_bit_byte = start_byte << 3;
+ debug(4, "start_bit_byte(DEC) = %ld\n", start_bit_byte);
+ bit_offset = start_bit - start_bit_byte;
+ debug(4, "bit_offset(DEC) = %ld\n", bit_offset);
+ /*bit_mask = (1 << bits) - 1;*/
+ bit_mask = 1;
+ debug(4, "bit_mask = %s\n", binout(bit_mask));
+ bit_mask <<= bit_offset;
+ debug(4, "bit_mask = %s\n", binout(bit_mask));
+ memcpy((void*)(&tmp), (void*)(buffer + start_byte), 4);
+ debug(4, "tmp1 =     %s\n", binout(tmp));
+ tmp &= bit_mask;
+ debug(4, "tmp2 =     %s\n", binout(tmp));
+ tmp >>= bit_offset;
+ debug(4, "tmp3 =     %s\n", binout(tmp));
+ if (tmp == 1)	/* internal node */
+ {
+	 debug(3, "rshb: Read internal node\n");
+	 t->val = 0x7FFFFFFF;
+	 current_bit ++;
+	 return 1; /* is_internal_node, not leaf */
+
+ }
+ current_bit ++;
+ start_bit = current_bit;
+ debug(4, "rshb: leaf: start_bit(DEC) = %ld\n", start_bit);
+ if (start_bit >= fbits) return 0;
+ start_byte = start_bit >> 3;
+ debug(4, "start_byte(DEC) = %ld\n", start_byte);
+ start_bit_byte = start_byte << 3;
+ debug(4, "start_bit_byte(DEC) = %ld\n", start_bit_byte);
+ bit_offset = start_bit - start_bit_byte;
+ debug(4, "bit_offset(DEC) = %ld\n", bit_offset);
+ bit_mask = (1 << bits) - 1;
+ debug(4, "bit_mask = %s\n", binout(bit_mask));
+ bit_mask <<= bit_offset;
+ debug(4, "bit_mask = %s\n", binout(bit_mask));
+ memcpy((void*)(&tmp), (void*)(buffer + start_byte), 4);
+ debug(4, "tmp1 =     %s\n", binout(tmp));
+ tmp &= bit_mask;
+ debug(4, "tmp2 =     %s\n", binout(tmp));
+ tmp >>= bit_offset;
+ debug(3, "rshb:leaf= %s\n", binout(tmp));
+ t->val = tmp;
+ current_bit += bits;
+ /* now read proper htree leaf */
+ return 0;	/* not node, 0 - means leaf */
+}
+
+void read_shtree_postorder(shtree** t, shtree* parent)
+{
+ int is_node;
+ *t = (shtree*)malloc(sizeof(shtree));
+ (*t)->u = parent;
+ (*t)->l = NULL;
+ (*t)->r = NULL;
+
+ is_node = read_shtree_binary(*t);
+
+ if (is_node)
+ {
+	read_shtree_postorder(&((*t)->l), *t);
+	read_shtree_postorder(&((*t)->r), *t);
+ }
+}
+
+void read_shtree()
+{
+ s_htree = NULL;
+ current_bit = 0;
+ read_shtree_postorder(&s_htree, NULL);
+}
+
+void read_header()
+{
+ unsigned char ubits;
+ data_size = 0;
+ memcpy((void*)(&ubits), &buffer[0], 1);
+ memcpy((void*)(&data_size), &buffer[1], 4);
+ bits = (long)ubits;
+ debug(1, "Bits %ld, uncompressed size %ld\n", bits, data_size);
+ data_size_bits = data_size << 3;		/* size of output file */
+ prev_buffer = buffer;
+ buffer = &buffer[5];					/* move buffer 5bytes ahead */
+ fsize -= 5;							/* and correct its size by 5bytes */
+/* fread((void*)(&g_htree), 4, 1, out); */
+ read_shtree();
+ g_htree = 0;
+ g_max_depth = 0;
+ travel_shtree_postorder(s_htree, 1);
+ debug(1, "Read Htree, depth = %ld, nodes = %ld\n", g_max_depth, g_htree);
+}
+
+void unencode_buffer()
+{
+ long i;
+ for (i=5;i<fsize;i++)
+ {
+    buffer[i] = (buffer[i] - h_tab[h_idx++ % h_len]) % 0x100;
+ }
+}
+
+int uncompress_next_chunk(unsigned char* buf, long* chunk, shtree* t, long* unc_bit)
+{
+ long start_bit, start_byte;
+ long start_bit_byte, bit_offset, bit_mask;
+ unsigned long tmp;
+
+ if (!t->l && !t->r)		/* we have found a leaf */
+ {
+	 *chunk = t->val;
+	 debug(3, "uncnc: got val=%ld\n", *chunk);
+	 return 1;
+ }
+
+ start_bit = *unc_bit;
+ debug(4, "uncnc: start_bit(DEC) = %ld\n", start_bit);
+ debug(5, "uncnc: %ld/%ld\n", start_bit, (fsize << 3));
+ if (start_bit >= (fsize << 3) ) return 0;
+ start_byte = start_bit >> 3;
+ debug(4, "start_byte(DEC) = %ld\n", start_byte);
+ start_bit_byte = start_byte << 3;
+ debug(4, "start_bit_byte(DEC) = %ld\n", start_bit_byte);
+ bit_offset = start_bit - start_bit_byte;
+ debug(4, "bit_offset(DEC) = %ld\n", bit_offset);
+ /*bit_mask = (1 << bits) - 1;*/
+ bit_mask = 1 << bit_offset;
+ debug(4, "bit_mask = %s\n", binout(bit_mask));
+ memcpy((void*)(&tmp), (void*)(buf + start_byte), 4);
+ debug(4, "tmp1 =     %s\n", binout(tmp));
+ tmp &= bit_mask;
+ debug(4, "tmp2 =     %s\n", binout(tmp));
+ tmp >>= bit_offset;
+ debug(4, "tmp3 =     %s\n", binout(tmp));
+
+ if (tmp == 0)	/* we should go to left */
+ {
+	 debug(5, "going left\n");
+	 (*unc_bit) ++;
+	 return uncompress_next_chunk(buf, chunk, t->l, unc_bit);
+ }
+ else			/* we should go to right */
+ {
+	 debug(5, "going right\n");
+	 (*unc_bit) ++;
+	 return uncompress_next_chunk(buf, chunk, t->r, unc_bit);
+ }
+ return 0;
+}
+
+void out_buffer(unsigned char* buf, long bsize)
+{
+ int i;
+ long bval;
+ for (i=0;i<bsize;i+=2)
+ {
+	 memcpy((void*)(&bval), (void*)(&buf[i]), 4);
+	 debug(1, "buf[%4d] = %s, %ld\n", i, binout(bval), bval);
+ }
+}
+
+void read_data()
+{
+ long bytes, chunk, unc, unc_bit, j;
+ unsigned char* buf;
+
+ outbuffer_data = (unsigned char*)malloc(data_size + 1);
+ outbuffer_data_len = data_size + 1;
+ for (j=0;j<=data_size;j++) outbuffer_data[j] = 0;
+
+ bytes = (current_bit / 8) + 1;
+ debug(1, "Data offset: %ld\n", bytes);
+/* out_buffer(buffer, fsize);*/
+ buf = &buffer[ bytes ];
+ unc = 0;
+ unc_bit = 0;
+ current_bit = 0;
+ while (uncompress_next_chunk(buf, &chunk, s_htree, &unc_bit))
+ {
+	 unc ++;
+	 debug(3, "uncompressed chunk(%ld): %lx\n", unc, chunk);
+
+	 add_buffer_bits(chunk, bits);
+	 debug(4, "%adbbits check: ld/%ld\n", current_bit, data_size_bits);
+	 if (current_bit >= data_size_bits)
+	 {
+		 debug(1, "Decompressed %ld bits\n", current_bit);
+		 break;
+	 }
+ }
+
+}
+
+void write_uncompressed(FILE* out)
+{
+	long bytes, i;
+	bytes = (current_bit / 8) + 1;
+	debug(1, "Writing output: %ld bytes\n", bytes);
+/*    	for (i=0;i<bytes;i++) */
+    	for (i=0;i<data_size;i++) 
+	{
+		fputc(outbuffer_data[i], out);
+	}
+}
+
+void decompress(char* fin, char* fout)
+{
+ FILE *in, *out;
+ in = fopen(fin, "rb");
+ if (!in) { g_err_code = 2; return; }
+ out = fopen(fout, "wb");
+ if (!out) { fclose(in); g_err_code = 3; return; }
+
+ readbuffer(in);
+ fclose(in);
+ if (g_err_code) return;
+
+ unencode_buffer();
+ read_header();
+ read_data();
+ write_uncompressed(out);
+
+ if (prev_buffer) free((void*)prev_buffer);
+ if (outbuffer_data) free((void*)outbuffer_data);
+ prev_buffer = buffer = outbuffer_data = NULL;
+ fclose(out);
+}
+
+void make_pwd(char* pwd)
+{
+ int i;
+ if (!strcmp(pwd, ""))		/* no password special case */
+ {
+	h_len = 1;
+	h_tab = (int*)malloc(sizeof(int));
+	h_tab[0] = 0;
+ }
+ else
+ {
+	h_len = (long)strlen(pwd);
+	h_tab = (int*)malloc(h_len * sizeof(int));
+	for (i=0;i<h_len;i++) h_tab[i] = (int)pwd[i];
+ }
+ h_idx = 0;
+}
+
+int types_check()
+{
+	if (sizeof(UINT8) != 1)  { debug(0, "size UINT8 mismatch: %d, error\n", sizeof(UINT8)); return 0; }
+	if (sizeof(SINT8) != 1)  { debug(0, "size SINT8 mismatch: %d, error\n", sizeof(SINT8)); return 0; }
+	if (sizeof(UINT16) != 2) { debug(0, "size UINT16 mismatch: %d, error\n", sizeof(UINT16)); return 0; }
+	if (sizeof(SINT16) != 2) { debug(0, "size SINT16 mismatch: %d, error\n", sizeof(SINT16)); return 0; }
+	if (sizeof(UINT32) != 4) { debug(0, "size UINT32 mismatch: %d, error\n", sizeof(UINT32)); return 0; }
+	if (sizeof(SINT32) != 4) { debug(0, "size SINT32 mismatch: %d, error\n", sizeof(SINT32)); return 0; }
+	if (sizeof(UINT64) != 8) { debug(0, "size UINT64 mismatch: %d, error\n", sizeof(UINT64)); return 0; }
+	if (sizeof(SINT64) != 8) { debug(0, "size SINT64 mismatch: %d, error\n", sizeof(SINT64)); return 0; }
+	return 1;
+}
+
+void mcompress(int nbits, char* pwd, char* ctype, char* fin, char* fout)
+{
+ bits = nbits;
+ if (!types_check())
+ {
+	 debug(0, "Types mismatch: cannot continue, aborting.\n");
+	 return;
+ }
+ if (bits < 2) 
+ {
+	 bits = 2;
+	 debug(0, "bits truncated to: %ld\n", bits);
+ }
+ if (bits > 24) 
+ {
+	 bits = 24;
+	 debug(0, "bits truncated to: %ld\n", bits);
+ }
+ make_pwd(pwd);
+ if (!strcmp(ctype, "c")) compress(fin, fout);
+ else if (!strcmp(ctype, "d")) decompress(fin, fout);
+ else g_err_code = 1;
+}
+
+int main(int lb, char** par)
+{
+ if (lb <= 5) printf("%s bits(2-25) pwd c|d filein fileout [debug_level 0-5]\n", par[0]);
+ else 
+ {
+	 if (lb >= 7) 
+	 {	
+		 debug_mode = atoi(par[6]);
+	 }
+	 mcompress(atoi(par[1]), par[2], par[3], par[4], par[5]);
+ }
+ if (g_err_code) printf("ERROR_CODE = %d\n", g_err_code);
+ return g_err_code;
+}
+

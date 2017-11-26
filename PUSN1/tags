@@ -1,0 +1,32 @@
+Block	program.c	/^} Block;$/
+Mill	program.c	/^} Mill;$/
+Mprogram	program.c	/^int main(int lb, char** par)$/
+PList	program.c	/^} PList;$/
+anim	program.c	/^void anim(void)$/
+approx	program.c	/^double approx(double** tab, int i, int j)$/
+draw_mill	program.c	/^void draw_mill(Mill* m)$/
+draw_mills	program.c	/^void draw_mills()$/
+glInit	program.c	/^void glInit()$/
+help	program.c	/^void help()$/
+init	program.c	/^void init(Block* b, double bx, double by, double b/
+interpolate_normals	program.c	/^void interpolate_normals()$/
+keyboard	program.c	/^void keyboard(unsigned char key, int x, int y)$/
+menu	program.c	/^void menu(int sel)$/
+mill_step	program.c	/^void mill_step()$/
+mscanf	program.c	/^int mscanf(FILE* plik, double* x, double* y, doubl/
+myNormal	program.c	/^void myNormal(int i, int j, double* nx, double* ny/
+myNormalT1	program.c	/^void myNormalT1(int i, int j, double* nx, double* /
+myNormalT2	program.c	/^void myNormalT2(int i, int j, double* nx, double* /
+myNormal_old	program.c	/^void myNormal_old(int i, int j, double* nx, double/
+path_step	program.c	/^void path_step(Mill* mil)$/
+path_step_old	program.c	/^void path_step_old(Mill* mil)$/
+plist_add	program.c	/^void plist_add(PList** pl, double x, double y, dou/
+process_mill	program.c	/^void process_mill(char* mname, Mill* mil)$/
+process_mill_old	program.c	/^void process_mill_old(char* mname, Mill* mil)$/
+render_scene	program.c	/^void render_scene(void)$/
+resize_scene	program.c	/^void resize_scene(int w, int h)$/
+self_move	program.c	/^void self_move()$/
+time_counter	program.c	/^void time_counter()$/
+toggle_lines	program.c	/^void toggle_lines()$/
+toggle_mill	program.c	/^void toggle_mill()$/
+visible	program.c	/^void visible(int vis)$/

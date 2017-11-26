@@ -1,0 +1,13 @@
+Number of equations: 1
+Rank of equations system: 1
+Integral step: 0.01
+Start conditions:
+t0=0.0
+y1(t0)=0.0
+Differential equations system:
+y1'=0
+Mapping functions:
+X=t
+Y=t^2
+Z=0
+

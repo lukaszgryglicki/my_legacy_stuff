@@ -1,0 +1,17 @@
+"Producent","Nazwa produktu","Cena","Gwarancja do","Zysk%","Data produkcji","CLSID","Primary-Key"
+"Intel","Pentium IV",1100,2005-05-12,250,2003-02-25,"CLIP4",4
+"AMD","Athlon XP",500,2004-01-01,150,2002-12-29,"CLAAXP",5
+"VT180","MainBoard",335,2004-01-01,160,2002-06-20,"CLVTMB8",7
+"Intel","Pentium III",450,2003-05-20,160,2001-06-20,"CLIP3",6
+"Microsoft","WIndows XP",425,2003-01-01,400,2002-06-20,"CLMSXP",3
+"Open Source","Open Office",9.90,2010-10-10,110,1999-09-09,"CLOOO",9
+"Microsoft","Windows .NET",660,2003-01-01,500,2003-04-10,"CLMSNET",8
+"Microsoft","Windows NT 4.0",280,2005-02-28,300,1993-10-20,"CLMSNT4",11
+"Symantec","Norton Antivirus",550,2003-05-20,500,1999-09-09,"CLNAV",10
+"Stadion","Visual C++ 7.0",2500,2004-08-18,125,1998-05-25,"CLVC7",12
+"Blizzard","StarCraft - BroodWar",99.90,2007-10-11,800,1996-10-19,"CLBLBRW",13
+"Microsoft","Microsof Office .NET",390,2003-05-05,600,2003-04-10,"CLSMSOFFN",1
+"AMD","Athlon 1200",185,2004-11-27,130,2002-01-10,"CLSATHL",2
+"FreeBSD","UNIX RELEASE",35.50,2099-12-31,115,2003-04-30,"CLBSDR5",15
+"Stadion","Metallica (Black)",10,2006-06-16,125,1991-06-18,"CLMETBL",14
+"Open Source","ElectricFence 2.0.2",0,2011-07-16,101,1999-10-25,"CLEFENC",0

@@ -1,0 +1,53 @@
+void main(float2 tex		   : TEXCOORD0,				// wejœciowe wspó³rzêdne tekstury (interpolowane dla danego pixela)
+														// w sposób zadany w warstwie openGL (w tej aplikacji liniowo: GL_LINEAR)
+		  float4 position      : TEXCOORD1,             // pozycja zapisana w texturze przez VS (interpolowana)
+          float3 normal        : TEXCOORD2,				// normalna zpisana w texturze przez VS (interpolowana) - "porz¹dny"
+														// model oœwietlenia Phonga wymaga w³aœnie interpolacji normalnej a 
+														// nie oœwietlenia z s¹siaduj¹cych wierzcho³ków
+          out float4 color     : COLOR,					// wyjœcie to kolor konkretnego pixela
+          uniform float3 globalAmbient,					// parametry œwiat³a i materia³u zadane przez aplikacjê
+          uniform float3 lightColor,					// kolor i po³o¿enie œwiat³a
+          uniform float3 lightPosition,
+          uniform float3 eyePosition,					// po³o¿enie oka obserwatora (dla rozby³ysku/odbicia)
+          uniform float3 emission,						// emisja materia³u
+          uniform float3 ambient,						// œwiat³o t³a
+          uniform float3 diffuse,						// œwiat³o rozproszone
+          uniform float3 specular,						// œwiat³o odbite
+          uniform float  shininess,						// wspó³czynnik odbicia œwiat³a (wyk³adnik potêgi)
+		  uniform sampler2D decal : TEX0)				// jednostka teksturowania
+														// dla po³o¿enia i normalnej (tex0, tex1) nie potrzeba samplera
+														// gdy¿ dane to wspó³rzêdne po prostu, natomiast w tex0 s¹ nie dane
+														// ale wspó³rzêdne danych z textury0, czyli standardowy "normalny/tradycyjny"
+														// dostêp do textury
+{
+  float3 P = position.xyz;								// pozycja punktu
+  float3 N = normalize(normal);							// jego normalna, musimy ja normalizowaæ (zmieniæ d³ugoœc na 1) bo
+														// pochodzi ona z interpolacji i mo¿e byæ krótsza ni¿ 1
+  float3 femissive = emission;							// œwiat³o emisji...
+
+  float3 fambient = ambient * globalAmbient;			// œwiat³o t³a (mno¿enie przez globalne)
+
+  float3 L = normalize(lightPosition - P);				// wektor do œwiat³a
+  float diffuseLight = max(dot(L, N), 0);				// max z iloczynu skalarnego i zera
+														// dla równoleg³ych L i N mamy 1 lub -1, dla prostopad³ych 0
+														// czyli defacto cos(k¹ta padania), potrzebny do wzoru
+														// max po to aby nie liczyæ œwiat³a "zpod" powierzchni
+  float3 fdiffuse = diffuse * lightColor * diffuseLight;// obliczenie czêsci rozproszonej
+
+  float3 V = normalize(eyePosition - P);				// wektor do obserwatora
+  float3 H = normalize(L + V);							// wektor w po³owie pomiêdzy nimi (patrz rózne ksi¹¿ki z grafiki 
+														// komputeropwej, tam s¹ wzory na rozb³ysk œwiat³a)
+														// cos(k¹ta(H,N) jak mniej ni¿ zero to zero (bez rozb³ysku w ty³)
+														// to co wysz³o trzeba ukierunkowaæ, jets to z przedzia³u [0-1]
+														// podniesienie do potêgi shininess da wyostrzenie tylko w okolicy
+														// 1, reszta szybko d¹¿y do 0, co da rozb³ysk kierunkowy
+														// dot -> iloczyn skalarny wektoró, pow(a,b) to a do potêgi b
+  float specularLight = pow(max(dot(H, N), 0), shininess);
+  if (diffuseLight <= 0) specularLight = 0;				// jak poni¿ej zera to nie uwzglêdniaj
+  float3 fspecular = specular * lightColor * specularLight;// ostatecznie sk³adnik rozb³ysku
+
+  color.xyz = femissive + fambient + fdiffuse + fspecular;// ostatecznie suma róznych typów oœwietlenia
+  color.w = 1;
+  color *= tex2D(decal, tex);							// i przemno¿enie przez kolor tekstury w zadanym punkcie...
+														// daje to nam ostateczny kolor piksela
+}

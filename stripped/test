@@ -1,0 +1,8 @@
+#!/bin/sh
+as --gstabs -o objD.o asmqsort.s
+as -o objS.o asmqsort.s
+ld -e pure_start -o sortS objS.o
+ld -e pure_start -o sortD objD.o
+strip -s -x --strip-unneeded sortS
+rm -f objS.o objD.o
+

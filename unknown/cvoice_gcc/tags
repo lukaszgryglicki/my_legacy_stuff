@@ -1,0 +1,145 @@
+Mcvoice	cvoice.c	/^int main(int lb, char** par)$/
+Mechocli	echocli.c	/^int main(int lb, char** par)$/
+Mgcvoice	gcvoice.c	/^int main(int lb, char** par)$/
+Minf	inf.c	/^int main()$/
+Mmspxplay	mspxplay.c	/^int main(int lb, char** par)$/
+Mwizard	wizard.c	/^int main(int lb, char** par)$/
+MyRetText	gcvoice.c	/^} MyRetText;$/
+WDSP	windsp.h	/^} WDSP;$/
+btn_cfg	gcvoice.c	/^void btn_cfg(GtkWidget* _w, gpointer _l)$/
+btn_cfg_clear	gcvoice.c	/^void btn_cfg_clear(GtkWidget* _w, gpointer _l)$/
+btn_cfg_display	gcvoice.c	/^void btn_cfg_display(GtkWidget* _w, gpointer _l)$/
+btn_cfg_intopt	gcvoice.c	/^void btn_cfg_intopt(GtkWidget* _w, gpointer i)$/
+btn_cfg_iofile	gcvoice.c	/^void btn_cfg_iofile(GtkWidget* _w, gpointer i)$/
+btn_cfg_ip	gcvoice.c	/^void btn_cfg_ip(GtkWidget* _w, gpointer _l)$/
+btn_cfg_load	gcvoice.c	/^void btn_cfg_load(GtkWidget* _w, gpointer _l)$/
+btn_cfg_save	gcvoice.c	/^void btn_cfg_save(GtkWidget* _w, gpointer _l)$/
+btn_cfg_toggleopt	gcvoice.c	/^void btn_cfg_toggleopt(GtkWidget* _w, gpointer i)$/
+btn_client	gcvoice.c	/^void btn_client(GtkWidget* w, gpointer l)$/
+btn_server	gcvoice.c	/^void btn_server(GtkWidget* w, gpointer l)$/
+btn_stats	gcvoice.c	/^void btn_stats(GtkWidget* w, gpointer l)$/
+btn_stop	gcvoice.c	/^void btn_stop(GtkWidget* w, gpointer l)$/
+catch_int	libcvoice.c	/^void catch_int(int signo)$/
+cfg_load	gcvoice.c	/^void cfg_load(char* fn, gpointer l)$/
+check_config	gcvoice.c	/^int check_config(char* err)$/
+client	echocli.c	/^void client(char* ipstr, int port, int from, int t/
+cv_cfg	libcvoice.h	/^} cv_cfg;$/
+cv_cfg_clear	libcvoice.c	/^void cv_cfg_clear(cv_cfg* c)$/
+cv_cfg_free	libcvoice.c	/^void cv_cfg_free(cv_cfg* c)$/
+cvoice	libcvoice.c	/^void cvoice(int listener)$/
+cvoice_check_config	libcvoice.c	/^void cvoice_check_config()$/
+cvoice_clear_mshm	libcvoice.c	/^void cvoice_clear_mshm()$/
+cvoice_client	libcvoice.c	/^int cvoice_client(int inp)$/
+cvoice_error	libcvoice.c	/^void cvoice_error(const char* fmt, ...)$/
+cvoice_forked	libcvoice.c	/^void cvoice_forked(int listener, int* pid1, int* p/
+cvoice_free	libcvoice.c	/^void cvoice_free()$/
+cvoice_get_host	libcvoice.c	/^void cvoice_get_host(char* to, char* name)$/
+cvoice_getopt	libcvoice.c	/^int cvoice_getopt(int lb, char** par)$/
+cvoice_help	libcvoice.c	/^void cvoice_help(char* name)$/
+cvoice_init	libcvoice.c	/^void cvoice_init()$/
+cvoice_init_mipc	libcvoice.c	/^void cvoice_init_mipc(int clear)$/
+cvoice_load_config	libcvoice.c	/^int cvoice_load_config(const char* fn, cv_cfg* c)$/
+cvoice_load_config_fp	libcvoice.c	/^void cvoice_load_config_fp(FILE* fp, cv_cfg* c)$/
+cvoice_log	libcvoice.c	/^void cvoice_log(const char* fmt, ...)$/
+cvoice_logd	libcvoice.c	/^void cvoice_logd(int lev, const char* fmt, ...)$/
+cvoice_msignal	libcvoice.c	/^void cvoice_msignal()$/
+cvoice_msignalaudio	libcvoice.c	/^void cvoice_msignalaudio()$/
+cvoice_mspeex_decode	libcvoice.c	/^int cvoice_mspeex_decode( char* in, int n, unsigne/
+cvoice_mspeex_decode_destroy	libcvoice.c	/^int cvoice_mspeex_decode_destroy()$/
+cvoice_mspeex_decode_init	libcvoice.c	/^int cvoice_mspeex_decode_init()$/
+cvoice_mspeex_encode	libcvoice.c	/^int cvoice_mspeex_encode( unsigned char* in, int n/
+cvoice_mspeex_encode_destroy	libcvoice.c	/^int cvoice_mspeex_encode_destroy()$/
+cvoice_mspeex_encode_init	libcvoice.c	/^int cvoice_mspeex_encode_init()$/
+cvoice_mwait	libcvoice.c	/^void cvoice_mwait()$/
+cvoice_mwaitaudio	libcvoice.c	/^void cvoice_mwaitaudio()$/
+cvoice_save_config	libcvoice.c	/^int cvoice_save_config(const char* fn, cv_cfg* c)$/
+cvoice_save_config_fp	libcvoice.c	/^void cvoice_save_config_fp(FILE* fp, cv_cfg* c)$/
+cvoice_server	libcvoice.c	/^int cvoice_server()$/
+cvoice_timestamp	libcvoice.c	/^unsigned short cvoice_timestamp()$/
+error	echocli.c	/^void error(const char* fmt, ...)$/
+fatal	libmipc.c	/^int fatal(const char* fmt, ...)$/
+gcvoice	gcvoice.c	/^void gcvoice()$/
+get_host	echocli.c	/^void get_host(char* to, char* name)$/
+get_user_input	gcvoice.c	/^void get_user_input(const char* question, char* pt/
+get_user_yesno	gcvoice.c	/^int get_user_yesno(const char* q)$/
+handle_client	libcvoice.c	/^int handle_client(int s)$/
+help	echocli.c	/^void help()$/
+info	inf.c	/^void info()$/
+init_mutex	libcvoice.c	/^void init_mutex()$/
+input_reciever	libcvoice.c	/^void input_reciever(int sock, int sync)$/
+input_sender	libcvoice.c	/^void input_sender(int sock, int sync)$/
+join_threads	libcvoice.c	/^void join_threads(thread_struct* thrs)$/
+kill_forked	gcvoice.c	/^void kill_forked()$/
+mdropmsg	libmipc.c	/^int mdropmsg(int msgid)$/
+mdropmsgkey	libmipc.c	/^int mdropmsgkey(int msgkey)$/
+mdropsem	libmipc.c	/^int mdropsem(int semid)$/
+mdropsemkey	libmipc.c	/^int mdropsemkey(int semkey)$/
+mdropshm	libmipc.c	/^int mdropshm(int shmid)$/
+mdropshmkey	libmipc.c	/^int mdropshmkey(int shmkey)$/
+mgetch	wizard.c	/^int mgetch()$/
+mipc_getsteps	libcvoice.c	/^int mipc_getsteps()$/
+mipc_getsteps2	libcvoice.c	/^int mipc_getsteps2()$/
+mipc_incsteps	libcvoice.c	/^void mipc_incsteps()$/
+mipc_putsteps	libcvoice.c	/^void mipc_putsteps(int st)$/
+mipc_putsteps2	libcvoice.c	/^void mipc_putsteps2(int st2)$/
+mipc_stats	libcvoice.c	/^void mipc_stats()$/
+mmsg	libmipc.h	/^struct mmsg$/
+mmsgidfromkey	libmipc.c	/^int mmsgidfromkey(key_t msgkey)$/
+mmsgrecpstr	libmipc.c	/^int mmsgrecpstr(int msgid, struct mmsg* msg, int w/
+mmsgrecptxt	libmipc.c	/^int mmsgrecptxt(int msgid, char* txt, int wt)	\/* /
+mmsgrecvstr	libmipc.c	/^int mmsgrecvstr(int msgid, struct mmsg* msg, int w/
+mmsgrecvtxt	libmipc.c	/^int mmsgrecvtxt(int msgid, char* txt, int type, in/
+mmsgsendstr	libmipc.c	/^int mmsgsendstr(int msgid, struct mmsg* msg)$/
+mmsgsendtxt	libmipc.c	/^int mmsgsendtxt(int msgid, char* text, int pri)$/
+mque	libmipc.c	/^int mque(key_t quek)$/
+mquenew	libmipc.c	/^int mquenew(key_t quek, int* newq)$/
+msem	libmipc.c	/^int msem(key_t semk, int val)$/
+msemget	libmipc.c	/^int msemget(key_t semk)$/
+msemidfromkey	libmipc.c	/^int msemidfromkey(key_t semkey)$/
+msemnew	libmipc.c	/^int msemnew(key_t semk, int val, int* news)$/
+msemun	libmipc.h	/^union msemun$/
+mshm	libmipc.c	/^int mshm(key_t shmk, int size)$/
+mshmconn	libmipc.c	/^int mshmconn(int shmid, void** ptr)$/
+mshmdisconn	libmipc.c	/^int mshmdisconn(void** ptr)$/
+mshmidfromkey	libmipc.c	/^int mshmidfromkey(key_t shmkey)		\/* SIZE ISN'T KN/
+mshmnew	libmipc.c	/^int mshmnew(key_t shmk, int size, int* newm)$/
+msignal	libmipc.c	/^int msignal(int semid)$/
+mspxplay	mspxplay.c	/^void mspxplay(FILE* f)$/
+mwait	libmipc.c	/^int mwait(int semid)$/
+my_exit	libcvoice.c	/^void my_exit(int ecode)$/
+my_init	gcvoice.c	/^void my_init()$/
+my_play_mt	libcvoice.c	/^int my_play_mt(int sock, int audio, char* buff, in/
+my_read	libcvoice.c	/^int my_read(int fd, unsigned char* bstr, int n)$/
+my_recv	libcvoice.c	/^int my_recv(int sock, char* bstr, int n)$/
+my_recv_uc	libcvoice.c	/^int my_recv_uc(int sock, unsigned char* bstr, int /
+my_return_txt	gcvoice.c	/^void my_return_txt( GtkWidget* w, gpointer p)$/
+my_save	libcvoice.c	/^void my_save(char* buff, unsigned short l, int dir/
+my_send	libcvoice.c	/^int my_send(int sock, char* bstr, int n)$/
+my_send_mt	libcvoice.c	/^int my_send_mt(int sock, char* bstr, int n)$/
+my_send_mt_uc	libcvoice.c	/^int my_send_mt_uc(int sock, unsigned char* bstr, i/
+my_send_uc	libcvoice.c	/^int my_send_uc(int sock, unsigned char* bstr, int /
+my_waitpid	libcvoice.c	/^void my_waitpid(int pid, int opt)$/
+my_write	libcvoice.c	/^int my_write(int fd, unsigned char* bstr, int n)$/
+saveraw	mspxplay.c	/^int saveraw(FILE* fp, unsigned char* buff, unsigne/
+setup_signals	libcvoice.c	/^void setup_signals()$/
+speex_cfg	libcvoice.h	/^} speex_cfg;$/
+speex_cfg_clear	libcvoice.c	/^void speex_cfg_clear(speex_cfg* c)$/
+spx_int16_t	speex_types.h	/^\/\/#    include <_G_config.h>$/
+spx_int32_t	speex_types.h	/^	typedef int spx_int32_t;$/
+spx_uint16_t	speex_types.h	/^	typedef unsigned short spx_uint16_t;$/
+spx_uint32_t	speex_types.h	/^	typedef unsigned int spx_uint32_t;$/
+start_thread_syncer	libcvoice.c	/^int start_thread_syncer(int inp, int s)$/
+sync_reciever	libcvoice.c	/^void sync_reciever(int s)$/
+sync_sender	libcvoice.c	/^void sync_sender(int s)$/
+thread_data_play	libcvoice.h	/^} thread_data_play;$/
+thread_data_send	libcvoice.h	/^} thread_data_send;$/
+thread_play	libcvoice.c	/^void* thread_play(void* ptr)$/
+thread_sender	libcvoice.c	/^void* thread_sender(void* ptr)$/
+thread_struct	libcvoice.h	/^} thread_struct;$/
+thread_sync	libcvoice.c	/^void* thread_sync(void* ptr)$/
+traffic_stats	libcvoice.c	/^void traffic_stats(int out)$/
+transfer_finalize	libcvoice.c	/^void transfer_finalize(int n, int sock, int audio,/
+transfer_finalize_sw	libcvoice.c	/^void transfer_finalize_sw(int n, int sock, int aud/
+user_info_msg	gcvoice.c	/^void user_info_msg(const char* m)$/
+warn	libmipc.c	/^int warn(const char* fmt, ...)$/
+wizard	wizard.c	/^void wizard()$/

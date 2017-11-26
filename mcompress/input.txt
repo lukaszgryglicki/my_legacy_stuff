@@ -1,0 +1,5 @@
+Hello Huffmann code algorithm.
+This example shouws You how Huffmann algorithm works.
+Examine it & understand it, good luck.
+Huffmann algorithm by MorgothV8
+

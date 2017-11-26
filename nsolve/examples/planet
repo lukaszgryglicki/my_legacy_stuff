@@ -1,0 +1,1 @@
+./nsolve '-0.1*yp/z^2+4*yp*(sgn(z-1)-1)*sgn(yp)/z' '-9.81/z^2+0.2*yp^2*z-15*zp/z^2-(100/z)*(sgn(z-1)-1)' 'sgn(z-1)-1' 'b*sin(a)*(sgn(b)+1)/2' 'b*cos(a)*(sgn(b)+1)/2' '0' 0 50 0 0.789 3 2.00 0.0 0.0 0.05 examples/planet.txt

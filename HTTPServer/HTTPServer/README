@@ -1,0 +1,75 @@
+For Win32 - CYGWIN change one line in Server.cc:95, NOCLDWAIT
+For *BSD           change one line in Server.cc:95, NOCLDSTOP
+        For Windows start Run->cmd
+        cd to correct directory
+        run IPC daemon for windows: ipc-daemon.exe &
+        run server: wwwserver.exe
+Compilation in BSD: make
+Compilation in Win32+Cygwin: make -f Makefile.win32
+On *BSD You need to run as ROOT, or specify ports higher than 1024
+NOTE if You write as url: / then ./index.html from server WD will be used
+BUT You can write: // as url, then FS: / will be used.
+For Windows You will need also:
+	cygwin1.dll (in CYGWIN package)
+	ipc-daemon.exe (in CYGIPC package)
+	this file are *NOT* in this package, because they are binary
+	first You must start CygIPC: ipc-daemin.exe &
+
+	EXAMPLES:
+	start server in one terminal by typing:
+		./wwwserver -c 8080 -a 8081
+			or if You are root just:
+		./wwwserver
+	start another terminal, there try following:
+		./terminal -p 8080 -c 'GET / HTTP/1.1'
+		./terminal -p 80   -c 'GET/index.html HTTP/1.1'
+			to get server answer at terminal
+	start about 4 new terminals, there: 
+	(each on different terminal assuming server on 8080 and 8081)
+		mozilla http://localhost:8080/index.html
+		konqueror 127.0.0.1:8080
+		opera http://127.0.0.1:8080/some/path/to/file
+	from a remote computer:
+	get own IP: ifconfig (this on local)
+	on remote: (assuming IP of computer running server is 194.29.178.165)
+		links 194.29.178.165:8080
+	Now you have about 4-5 browsers running on your server, now You can
+		try all browsers to get some different files
+		see all images, check all links in main page
+		try to get too big file, try to get device:
+			got URL: http://localhost:8080/dev, (...):8080:/dev/tty
+	Now check administrative ports (using ./terminal or telnet, I assume terminal)
+		./terminal -p 8081 -c 'suspend'
+			all browsers should be frozen (but some newer can *RECONNECT*)
+		./terminal -p 8081 -c 'resume'
+			should unblock those who were frozen
+		./terminal -p 8081 -c 'reset'
+			should disconnect all clients, but most browsers
+			will reconnect at any click or activity
+	Telnet:
+		telnet 127.0.0.1 8081
+			in telnet already connected
+				halt
+			should disconnect automatically
+			but on 8080 port will not disconnect
+			to disconnect do:
+				CTRL+]
+				telnet> quit
+	Browse FS a little, browse FS from remote
+	try saving some big files on a remote client
+	Then
+		use CTRL+C on server process to stop SERVER
+		*OR*
+		./terminal -p 8081 -c 'halt' to stop SERVER
+		*OR*
+		./terminal -i 194.29.178.165 -p 8081 -c 'halt' to stop SERVER from REMOTE
+	Do *NOT* use kill -9 on server, it will not save LOG file
+		(possibly save partialy, unsynced)
+	Now when server is stopped
+		vi Server.LOG (or other file You selected as LOG)
+			you can see all clients how much send and
+			total bytes transferred by the server
+	To see which options server accepts just read startup messages
+	Server displays its options
+Thats All
+

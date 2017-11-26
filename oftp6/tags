@@ -1,0 +1,40 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.3.1	//
+BUFS	oftpc.c	19;"	d	file:
+BUFS	oftps.c	19;"	d	file:
+HERE	oftpc.c	21;"	d	file:
+PATH_MAX	oftpc.c	20;"	d	file:
+PATH_MAX	oftps.c	18;"	d	file:
+catch_int	oftps.c	/^void catch_int(int signo)	\/* catch signals *\/$/;"	f
+catch_signal	oftpc.c	/^void catch_signal(int signo)		\/* catch signals *\/$/;"	f
+client	oftpc.c	/^void client(int ipv6, int loc, char* sockpth, char* ipstra, int port, int secs, char**filename, int from, int all, int enc, char* pass)$/;"	f
+create_ipv6addr	oftpc.c	/^void create_ipv6addr(char* there, char* from)$/;"	f
+decode	oftps.c	/^void decode(char* buff, char* pass, int blen, int len, int bytes)\/* decode buffer *\/$/;"	f
+encode	oftpc.c	/^void encode(char* buff, char* pass, int blen, int len, int bytes)\/* encode buffer *\/$/;"	f
+error	oftpc.c	/^void error(char* fmt, ...)	\/* to inform server, and the close socket *\/$/;"	f
+error	oftps.c	/^void error(char* fmt, ...)	\/* printf error msg and exit *\/$/;"	f
+get_fmodes	oftpc.c	/^void get_fmodes(char* to, char* file)	\/* get modes of `file' *\/$/;"	f
+get_host	oftpc.c	/^void get_host(char* to, char* name, int ipv6)	\/* get IP of host from its NAME *\/$/;"	f
+gfd	oftpc.c	/^static int gfd=-1;		\/* global server socket *\/$/;"	v	file:
+globsock	oftps.c	/^char globsock[101];$/;"	v
+handle_client	oftps.c	/^void handle_client(int fd, int overwr, int enc, char* pass)$/;"	f
+has_double	oftpc.c	/^int has_double(char* str)$/;"	f
+help	oftpc.c	/^void help(char* name)		\/* print usage *\/$/;"	f
+help	oftps.c	/^void help(char* name)		\/* usage help *\/$/;"	f
+is_regfile	oftpc.c	/^int is_regfile(char* file)	\/* is file regular file or something else *\/$/;"	f
+loc	oftps.c	/^int loc = 0;$/;"	v
+main	oftpc.c	/^int main(int lb, char** par)		\/* client starts *\/$/;"	f
+main	oftps.c	/^int main(int lb, char** par)		\/* server starts *\/$/;"	f
+reconnect	oftpc.c	/^int reconnect(int loc, int ipv6, int secs, struct sockaddr_in* server, struct sockaddr_in6* server6, struct sockaddr_un* serverl)$/;"	f
+s6_addr16	oftpc.c	23;"	d	file:
+s6_addr32	oftpc.c	24;"	d	file:
+s6_addr8	oftpc.c	22;"	d	file:
+send_dir	oftpc.c	/^void send_dir(int fd, char* fname, int enc, char* pass, char* postfix, int loc, int ipv6, int secs, struct sockaddr_in* server, struct sockaddr_in6* server6, struct sockaddr_un* serverl)$/;"	f
+send_file	oftpc.c	/^void send_file(int fd, char* fname, int enc, char* pass)$/;"	f
+server	oftps.c	/^void server(int ipv6, int local, char* sockpth, int port, int maxc, int maxw, int overwr, int enc, char* pass)$/;"	f
+ver	oftpc.c	/^void ver()$/;"	f
+ver	oftps.c	/^void ver()$/;"	f

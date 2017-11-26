@@ -1,0 +1,18 @@
+Moftpc	oftpc.c	/^int main(int lb, char** par)		\/* client starts */
+Moftps	oftps.c	/^int main(int lb, char** par)		\/* server starts */
+catch_int	oftps.c	/^void catch_int(int signo)	\/* catch signals *\/$/
+catch_signal	oftpc.c	/^void catch_signal(int signo)		\/* catch signals */
+client	oftpc.c	/^void client(int ipv6, int loc, char* sockpth, char/
+decode	oftps.c	/^void decode(char* buff, char* pass, int blen, int /
+encode	oftpc.c	/^void encode(char* buff, char* pass, int blen, int /
+error	oftpc.c	/^void error(char* fmt, ...)	\/* to inform server, a/
+get_fmodes	oftpc.c	/^void get_fmodes(char* to, char* file)	\/* get mode/
+get_host	oftpc.c	/^void get_host(char* to, char* name, int ipv6)	\/* /
+handle_client	oftps.c	/^void handle_client(int fd, int overwr, int enc, ch/
+has_double	oftpc.c	/^int has_double(char* str)$/
+help	oftpc.c	/^void help(char* name)		\/* print usage *\/$/
+inaddr6_set	oftpc.c	/^void inaddr6_set(struct in6_addr* dest, char* toke/
+is_ip6_ok	oftpc.c	/^int is_ip6_ok(struct in6_addr* str)$/
+is_regfile	oftpc.c	/^int is_regfile(char* file)	\/* is file regular fil/
+send_file	oftpc.c	/^void send_file(int fd, char* fname, int enc, char*/
+server	oftps.c	/^void server(int ipv6, int local, char* sockpth, in/

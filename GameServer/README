@@ -1,0 +1,21 @@
+	PRiR Project (network game)
+-written using sockets, pthreads, Xlib
+-how to use: server -h, client -h, levedit -h should help
+-level editor: levedit graph_datafile.dat level.dat
+	example: ./levedit graphics.dat walls.dat
+-rnd will generate empty game.dat file, levedit will do 
+	the same automaticaly
+-grfx will generate dummy graphics.dat file
+	also overwrite existing
+	this file contains graphics for all possible
+	objects in easy to understand format
+	generated field data are random (RR,GG,BB) values
+-graphics.dat is default graphics fiel and game.dat default
+	level selected by the server
+-compiled optimized version (silent)
+-to have verbose version compile with -DDEBUG, see Makefile
+	for details
+-all writte in clean C, standard C99, license type: BSD
+	open source
+-author: MorgothDBMA (morgothdbma@o2.pl, +48693582014)
+	 Lukasz Gryglicki MiNI M1, rok III

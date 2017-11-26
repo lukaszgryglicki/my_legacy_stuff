@@ -1,0 +1,9 @@
+#!/bin/sh
+echo 'W tresci funkcji NIE uzywaj bialych znakow!'
+echo -n 'Podaj funkcje f(x,y), np: sin(x*cos(y))/(x-y): '
+read z
+echo "Rysuje funkcje $z..."
+cd /data/cprogs/3dfvesa/
+./f ="$z"
+#read z
+

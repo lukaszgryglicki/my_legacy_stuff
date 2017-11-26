@@ -1,0 +1,32 @@
+rozpakowanie:	tar zxf projekt.tgz
+curses: CursesWins.h (przejrzyj kod)
+pipes : game.cc      (popatrz na fd,fd2,fifo,fifo2 itd)
+procesy: na dwoch terminalach odpal kolejno
+wyjatki: brak obslugi
+pthreads: przeczytaj dokladniej!
+		1 terminal: game
+		2 terminal: game
+		-polacza sie i beda wywietlac okna curses z OK
+		-na kazdym terminalu nacisnij OK (ENTER)
+		-teraz przeleci demowka komunikacji a Ty
+		-w tym czasie mozesz naciskac klawiature i jest wysietlany
+		-nasiskany przycisk 9 x np
+		-A -> AAA
+		      AAA
+		      AAA
+		-q zakancza odczyt klawiatury...
+		-gdyby przerwac w czasie curses to terminal moze nie odzyskac odp. ustawien przez endwin()
+		-uzyj wtedy ./rcon
+-poniewaz pthread moga nie dzialac na Solarisie wersje bez watkow zachowalem jako game-nopth.cc
+-wersja game-forks.cc uzywa procesow zamiast watkow
+-kompilacja: po prrostu make (patrz Makefile)
+		-aby udowodnic ze to dziala na FreeBSD przysylam tez binarke dla tego systemu...
+		-czasami jak przerwiesz dzialanie CTRL+C to pozostana pliki fifo1 ififo2
+		-gdy one sa program nie zadziala, uzyj skyptu clear aby sie ich pozbyc i sprobuj jeszcze raz
+		-oczywiscie sposob linkowania z curses na Solarisie moze byc inny wyedytuj Makefile: np -lncurses itp.
+		-tak samo z pthreads zmnien '-pthread' na odpowiednie np -lpthread lub w ostatecznosci jak nie dziala usun i uzyj wersji z fork
+		aby uzyc innej wersji zrob tak:
+		cp game.c game.tmp; cp game-forks.c game.c; make
+		-nie ma obslugi bledow przez wyjatki bo tyle to ja z c++ nie pamietam!!!
+		narka!
+

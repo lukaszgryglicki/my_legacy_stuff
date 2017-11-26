@@ -1,0 +1,4 @@
+rayslib.c:5679: error: conflicting types for 'intersection_btree_old_algorithm'
+rayslib.h:345: error: previous declaration of 'intersection_btree_old_algorithm' was here
+rayslib.c:5900: error: conflicting types for 'intersection_btree'
+rayslib.h:344: error: previous declaration of 'intersection_btree' was here

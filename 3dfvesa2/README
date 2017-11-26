@@ -1,0 +1,34 @@
+Controls for 3d-drawer:
+=======================
+Change X-angle			- =
+Change Y-angle			[ ]
+Use standard view		\
+Use enhanced view		l
+Use 2D view			a
+Move X-direction		;  '
+Move Y-direction		. /
+Move Z-direction		o p
+Scale X				z x 
+Scale Y				c v
+Scale Z				b n
+Scale all dimnesions		1 2
+Toggle show cube		g
+Toggle draw function		y
+Toggle draw prim		u
+Toggle draw second prim		i
+Toggle show X(horiz) lines	h
+Toggle show Y(vert) lines	k
+Next prim function		r
+Toggle show grid in the cube	d
+Multiple/divide horiz lines	7 8
+Multiple/divide vert lines	9 0
+Toggle cube jail for functions	j
+redraw Screen (in -noclr mode)	SPACE
+
+Command line:
+================
+--help			Displays this file
+-h			------- | | ------
+--noclr			Mode NO_CLEAR_SCREEN (user must manually clear scr)
+other			Displays Error Msg.
+

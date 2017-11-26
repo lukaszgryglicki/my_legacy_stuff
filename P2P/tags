@@ -1,0 +1,127 @@
+AIORead	KApp.cc	/^int KApp :: AIORead(int sock, char* fname)$/
+AbortHandler	Main.cc	/^void AbortHandler(int signo)$/
+AddDownloadEntry	KApp.cc	/^bool KApp :: AddDownloadEntry(KList* srv)$/
+AddMessage	KSysLog.cc	/^void KSysLog :: AddMessage(char* fmt , ...)$/
+AddServer	KApp.cc	/^void KApp :: AddServer(char* line)$/
+AsyncGetFile	KApp.cc	/^void KApp :: AsyncGetFile(KList* file)$/
+AsyncSearch	KApp.cc	/^void KApp :: AsyncSearch(KList* list, char* patter/
+CheckDirectories	KApp.cc	/^void KApp :: CheckDirectories()$/
+CheckIfKnown	KApp.cc	/^void KApp :: CheckIfKnown(struct sockaddr_in* addr/
+ConstructDownloadFileName	KApp.cc	/^void KApp :: ConstructDownloadFileName(char* file,/
+Countdown	KApp.cc	/^void* Countdown(void* dummy)$/
+CreateConnectionSyncer	KApp.cc	/^void KApp :: CreateConnectionSyncer()$/
+CreateConsole	KApp.cc	/^void KApp :: CreateConsole()$/
+CreateLists	KApp.cc	/^void KApp :: CreateLists()$/
+CreateMutex	KApp.cc	/^void KApp :: CreateMutex()$/
+CreateTCPListener	KApp.cc	/^void KApp :: CreateTCPListener()$/
+CreateUDPListener	KApp.cc	/^void KApp :: CreateUDPListener()$/
+CreateUDPPackage	KApp.cc	/^void KApp :: CreateUDPPackage(int32_t mtype, char*/
+Daemonize	KApp.cc	/^void KApp :: Daemonize()$/
+Debug	KSysLog.cc	/^void KSysLog :: Debug(char* fmt, ...)$/
+DecCons	KApp.cc	/^bool KApp :: DecCons(KList* srv)$/
+DescribeServer	KApp.cc	/^void KApp :: DescribeServer(KList* srv) const$/
+DoACommand	KApp.cc	/^void KApp :: DoACommand(char* cmd, char* dcmd)$/
+Error	KSysLog.cc	/^void KSysLog :: Error(char* fmt, ...)$/
+FilesFoundList	KApp.cc	/^void KApp :: FilesFoundList() const$/
+FindFile	KApp.cc	/^void KApp :: FindFile(char* cmd)$/
+FindPattern	KApp.cc	/^int FindPattern(KApp* klass, char* pattern, int so/
+FindWildcard	KApp.cc	/^void* FindWildcard(void* pointer)$/
+FreeList	KApp.cc	/^void KApp :: FreeList(KList* list)$/
+GenerateError	KApp.cc	/^int KApp :: GenerateError(int sock, char* errstr) /
+GetActiveServers	KApp.cc	/^KList* KApp :: GetActiveServers() const$/
+GetAddr	KList.cc	/^in_addr_t KList :: GetAddr() const$/
+GetConsole	KGetOptions.cc	/^bool KGetOptions :: GetConsole() const$/
+GetCount	KList.cc	/^int KList :: GetCount()$/
+GetDaemon	KGetOptions.cc	/^bool KGetOptions :: GetDaemon() const$/
+GetDescr	KList.cc	/^char* KList :: GetDescr() const$/
+GetDesiredConnections	KApp.cc	/^int KApp :: GetDesiredConnections() const$/
+GetDownloadDir	KApp.cc	/^char* KApp :: GetDownloadDir() const$/
+GetFile	KApp.cc	/^void KApp :: GetFile(char* cmd)$/
+GetFileLength	KList.cc	/^off_t KList :: GetFileLength() const$/
+GetFileName	KList.cc	/^char* KList :: GetFileName() const$/
+GetHostIP	KApp.cc	/^char* KApp :: GetHostIP(char* name) const$/
+GetHostsFile	KGetOptions.cc	/^char* KGetOptions :: GetHostsFile() const$/
+GetKnownServers	KApp.cc	/^KList* KApp :: GetKnownServers() const$/
+GetLength	KFile.cc	/^off_t KFile :: GetLength() const$/
+GetLine	KFile.cc	/^char* KFile :: GetLine() const$/
+GetLog	KApp.cc	/^KSysLog* KApp :: GetLog() const$/
+GetMutex	KApp.cc	/^KMutex* KApp :: GetMutex() const$/
+GetNMessages	KSysLog.cc	/^int KSysLog :: GetNMessages() const$/
+GetName	KList.cc	/^char* KList :: GetName() const$/
+GetNumActive	KGetOptions.cc	/^int KGetOptions :: GetNumActive() const$/
+GetNumConnections	KApp.cc	/^int KApp :: GetNumConnections() const$/
+GetOptions	KApp.cc	/^void KApp :: GetOptions(int argc, char** argv)$/
+GetPort	KApp.cc	/^int KApp :: GetPort() const$/
+GetSocket	KList.cc	/^int KList :: GetSocket() const$/
+GetStringIP	KList.cc	/^char* KList :: GetStringIP() const$/
+GetTCPSocket	KApp.cc	/^int KApp :: GetTCPSocket() const$/
+GetUDPSocket	KApp.cc	/^int KApp :: GetUDPSocket() const$/
+GetUploadDir	KApp.cc	/^char* KApp :: GetUploadDir() const$/
+GetWD	KApp.cc	/^char* KApp :: GetWD() const$/
+Help	KApp.cc	/^void Help()$/
+InConsoleMode	KApp.cc	/^bool KApp :: InConsoleMode() const$/
+IncCons	KApp.cc	/^bool KApp :: IncCons(KList* srv)$/
+Informations	KApp.cc	/^void KApp :: Informations() const$/
+InsertDEntry	KApp.cc	/^bool KApp :: InsertDEntry(KList* srv)$/
+InsertUEntry	KApp.cc	/^bool KApp :: InsertUEntry(char* fn)$/
+KApp	KApp.cc	/^KApp :: KApp()$/
+KException	KException.cc	/^KException :: KException()$/
+KFile	KFile.cc	/^KFile :: KFile(char* fname)$/
+KGetOptions	KGetOptions.cc	/^KGetOptions :: KGetOptions(int n, char** arr)$/
+KIOException	KIOException.cc	/^KIOException :: ~KIOException() {}$/
+KList	KList.cc	/^KList :: KList()$/
+KMemoryException	KMemoryException.cc	/^KMemoryException :: ~KMemoryException() {}$/
+KMutex	KMutex.cc	/^KMutex :: KMutex()$/
+KeepAliveNotifier	KApp.cc	/^void* KeepAliveNotifier(void* pointer)$/
+ListDownloads	KApp.cc	/^void KApp :: ListDownloads() const$/
+ListKnown	KApp.cc	/^void KApp :: ListKnown() const$/
+ListUploads	KApp.cc	/^void KApp :: ListUploads() const$/
+MMain.cc	Main.cc	/^int main(int argc, char** argv)$/
+MatchInDir	KApp.cc	/^char* MatchInDir(char* dir, char* pattern)$/
+MtestUDP.cc	testUDP.cc	/^int main(int lb, char** par)$/
+Next	KList.cc	/^KList* KList :: Next() const$/
+OpenR	KFile.cc	/^int KFile :: OpenR()$/
+OpenW	KFile.cc	/^int KFile :: OpenW(int overwrite)$/
+PreserverThread	KApp.cc	/^void* PreserverThread(void* pointer)$/
+PrintType	KException.cc	/^void KException :: PrintType() const$/
+Printf	KSysLog.cc	/^void KSysLog :: Printf(char* fmt, ...)$/
+PutHostLine	KFile.cc	/^void KFile :: PutHostLine(KList* srv) const$/
+RemoveDEntry	KApp.cc	/^bool KApp :: RemoveDEntry(KList* srv)$/
+RemoveDownloadEntry	KApp.cc	/^bool KApp :: RemoveDownloadEntry(char* srv)$/
+RemoveUEntry	KApp.cc	/^bool KApp :: RemoveUEntry(char* fn)$/
+Run	KApp.cc	/^void KApp :: Run()$/
+RunGetOpt	KGetOptions.cc	/^void KGetOptions :: RunGetOpt()$/
+ServerIdle	KApp.cc	/^void KApp :: ServerIdle()$/
+SetAddr	KList.cc	/^void KList :: SetAddr(in_addr_t in_addr)$/
+SetConsoleMode	KSysLog.cc	/^void KSysLog :: SetConsoleMode(bool cons)$/
+SetDaemonMode	KSysLog.cc	/^void KSysLog :: SetDaemonMode(bool demon)$/
+SetDescr	KList.cc	/^void KList :: SetDescr(char* desc)$/
+SetFileLength	KList.cc	/^void KList :: SetFileLength(off_t flen)$/
+SetFileName	KList.cc	/^void KList :: SetFileName(char* fnam)$/
+SetName	KList.cc	/^void KList :: SetName(char* name)$/
+SetNext	KList.cc	/^void KList :: SetNext(KList* ptr)$/
+SetPort	KList.cc	/^void KList :: SetPort(int port)$/
+SetSocket	KList.cc	/^void KList :: SetSocket(int sock)$/
+SetStringIP	KList.cc	/^void KList :: SetStringIP(char* name)$/
+SetTCPSocket	KApp.cc	/^void KApp :: SetTCPSocket(int sock)$/
+SetUDPSocket	KApp.cc	/^void KApp :: SetUDPSocket(int sock)$/
+SetupAbortHandler	Main.cc	/^void SetupAbortHandler()$/
+ShortHelp	Main.cc	/^void ShortHelp()$/
+Shred	KApp.cc	/^void Shred()$/
+Signal	KMutex.cc	/^void KMutex :: Signal()$/
+StartLogger	KApp.cc	/^void KApp :: StartLogger()$/
+String	Common.hh	/^\/\/String coding throught the NET$/
+StringAddress	KApp.cc	/^char* StringAddress(struct sockaddr_in* addr)$/
+SyncerInfo	KApp.cc	/^void KApp :: SyncerInfo(int silent) const$/
+TCPListener	KApp.cc	/^void* TCPListener(void* pointer)$/
+TCPTransfer	KApp.cc	/^void* TCPTransfer(void* pointer)$/
+TCPhandler	KApp.cc	/^void* TCPhandler(void* pointer)$/
+TryConnect	KApp.cc	/^void KApp :: TryConnect(KList* srv)$/
+UDPListener	KApp.cc	/^void* UDPListener(void* pointer)$/
+UDPhandler	KApp.cc	/^void* UDPhandler(void* pointer)$/
+Wait	KMutex.cc	/^void KMutex :: Wait()$/
+Warning	KSysLog.cc	/^void KSysLog :: Warning(char* fmt, ...)$/
+WriteKnownHostsFile	KApp.cc	/^void KApp :: WriteKnownHostsFile() const$/
+client	testUDP.cc	/^void client()$/
+error	testUDP.cc	/^void error(char* err)$/
+server	testUDP.cc	/^void server()$/

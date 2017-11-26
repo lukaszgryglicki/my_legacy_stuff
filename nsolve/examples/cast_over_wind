@@ -1,0 +1,1 @@
+./nsolve '-0.15*yp-0.2' '-1-0.15*zp' '-0.15*vp' 'a' 'b' 'c' 0 8 -4 1.8 -4 5 0 -2 0.01 examples/cast_over_wind.txt

@@ -1,0 +1,21 @@
+void main(float4 pos        : POSITION,				// pozycja wejœciowa wierzcho³ka
+          float3 N          : NORMAL,				// normalna wierzcho³ka 
+		  float2 tex		: TEXCOORD0,			// wspó³rzêdne tekstury wierzcho³ka
+          out float4 oPos   : POSITION,				// pozycja wyjœciowa (przemno¿enie przez widok i rzut)
+		  out float2 oTex	: TEXCOORD0,			// textura przekazana dalej (do PS)
+          out float3 objPos : TEXCOORD1,			// kopia pozycji wyjœciowej dla pixel shadera
+          out float3 oN     : TEXCOORD2,			// kopia normalnej dla PS (bo PS nie obs³uguje position i normal)
+          uniform float4x4 matrixView,				// macierz widoku (przekszta³cenia sceny) z OpenGL
+		  uniform float4x4 matrixProj,				// macierz rzutu (perspektywy) z OpenGL
+		  uniform float timer)
+{
+  float4 temp;
+  temp   = mul(pos, matrixView);			// pomnó¿ pozycjê przez rzut
+  oPos   = mul(temp, matrixProj);			// pmnó¿ pozycjê przez widok, przekszta³cenia sk³ada sie od ty³u i mamy
+  objPos = oPos;							// wynikow¹ pozycjê, przepisz j¹ na 2 jednostke teksturowania
+  oN     = mul(N, float3x3(matrixView));	// normalna jest przekszta³cana tylko widokiem i tylko jego czêsci¹ dotycz¹c¹ 
+											// rotacji czyli 3x3 macierz wyciêta z macierzy przekszta³cenia 4x4
+											// normaln¹ zapisz na 3-ciej jednostce teksturowania
+  oTex = tex;								// podstawow¹ teksturê "podaj dalej" do PS
+}
+

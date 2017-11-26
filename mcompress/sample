@@ -1,0 +1,7 @@
+#!/bin/sh
+echo "#COMPRESSION#" > input.alg
+./mcompress.exe 8 "" c input.txt input.cod 4 >> input.alg
+echo "#DECOMPRESSION#" >> input.alg
+./mcompress.exe 8 "" d input.cod input.dec 4 >> input.alg
+echo "#DIFF#" >> input.alg
+diff input.txt input.dec>> input.alg

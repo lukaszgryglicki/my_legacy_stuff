@@ -1,0 +1,61 @@
+Simple VoIP client/server in KISS (Keep It Small Simple) technology.
+Requires python >= 2.6, hardware: microphone and sound output
+Sound in/out driver to choose:
+OSS: using native ossaudiodev python module
+RAW: using native unix sound device files, like /dev/dsp
+SoX: using SoX's rec & play to maniputate sound data - currently only way to work in Cygwin environment
+Upload/Download link usage about 6 kilobytes per second each way, but many modes possible
+In low mode even 3-4 kilobytes, in zombie mode even about 1-2 kilobytes
+HQ mode needs about 60+ kbytes/sec
+Default 8 bit MU-LAW encoding, 8000 Hz, mono but can be changed
+
+Requirements for UNIX-like station:
+OSS sound driver (RAW dsp or ossaudiodev which is buildin in python)
+Python 2.6 or newer, also 3.X
+Optional ut very recomended BZip2 for in-time audio compression
+Optional SoX for audio in/out
+Optional oggenc/oggdec for OGG in-time compression (experimental)
+Optional speex enc/dec to use Speex codec for compression
+
+Requirements on Cygwin station:
+Cygwin version of Python (cygwin version mandatory!) 2.6 or never, also 3.X
+SoX for audio in/out
+Optional ut very recomended BZip2 for in-time audio compression
+Optional oggenc/oggdec for OGG in-time compression (experimental)
+Optional speex enc/dec to use Speex codec for compression
+
+Predefined modes:
+Default: OSS audio, mono, 8bit, MULAW logarithmic encoding, 8000 Hz both ways, BZip2 compression, buffor 1K (>=125ms LAG) 6-9 kb/s
+Low:	 OSS audio, mono, 8bit, U8 unsigned integer encoding, 4096 Hz both w, BZip2 compression, buffer 2K (>= 500ms LAG) 3-4 kb/s
+High:	 OSS audio, mono, 16bit, S16LE unsigned little endian, 22050 Hz, BZip2 compression, buffer 1K (>= 25 ms LAG) 50-80 kb/s
+Zombie:  OSS audio, mono, 8bit, U8 unsigned integer, 4096 Hz, Ogg encoded at quality -1, BZip2 compression level 9, block 16K (>= 4s LAG, terrible low quality) 0.5-2 kb/s
+zspx:	 OSS audio, mono, 8bit, U8 uint, 6 kHz, Speex encoded at 0 quality (lowest), BZ2 9 compression, block 16K (>= 3s LAG, low quality) 0.3-0.6 kb/s
+
+Too start server you need computer which IP and port 9000 (or other) is visible from outside.
+Assume your servercomputer has ip 100.110.120.130
+To start serwer you just need:
+bash$ ./PyVoice2.py -a
+
+To connect and talk with server from outside
+bash$ ./PyVoice2.py -s 100.110.120.130
+
+And thats all.
+
+Logs are in /tmp/PyVoice.log.client /tmp/PyVoice.log.server
+To stop You need to kill python's process
+
+To get help
+bash$ ./PyVoice2.py -h
+
+More help:
+
+vi PyVoice2.py
+
+
+Good luck.
+
+I've written it because skype is so heavy and so hard to set up on FreeBSD, and I just need simplest and minimum net consuming program.
+I'm going for one year to Polish Polar Station "Hornsund" as a geophysician, and just need a way to talk with my wife.
+The goal was to use minimum net traffic, so 8bit MULAW, 8000 Hz, mono and all data sent by network compressed in the fly by BZIP2
+
+

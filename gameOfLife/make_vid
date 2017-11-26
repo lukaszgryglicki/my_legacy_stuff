@@ -1,0 +1,4 @@
+#!/bin/sh
+mencoder "mf://*.jpeg" -mf fps=20 -o life.avi -ovc lavc -lavcopts vcodec=mpeg4
+rm -f *.jpeg
+

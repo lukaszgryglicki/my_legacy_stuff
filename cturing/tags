@@ -1,0 +1,18 @@
+Mct	ct.c	/^int main(int lb, char** par)$/
+check_machine	ct.c	/^int check_machine(struct ctmachine* mach)$/
+ctmachine	ct.c	/^struct ctmachine $/
+ctstate	ct.c	/^struct ctstate$/
+downcase	ct.c	/^void downcase(letter* l)$/
+execute_update	ct.c	/^int execute_update(struct ctmachine* mach)$/
+freem	ct.c	/^void freem(struct ctmachine* mach)$/
+is_machine_letter	ct.c	/^int is_machine_letter(struct ctmachine* mach, lett/
+machine_init	ct.c	/^void machine_init(struct ctmachine* mach)$/
+machine_read_matrix	ct.c	/^int machine_read_matrix(struct ctmachine* mach, ch/
+machine_read_tape	ct.c	/^int machine_read_tape(struct ctmachine* mach, char/
+machine_run	ct.c	/^int machine_run(struct ctmachine* mach)$/
+machine_stdin_tape	ct.c	/^int machine_stdin_tape(char* name)$/
+machine_write_tape	ct.c	/^int machine_write_tape(struct ctmachine* mach, cha/
+print_machine_state	ct.c	/^void print_machine_state(struct ctmachine* mach)$/
+print_machine_tape	ct.c	/^int print_machine_tape(struct ctmachine* mach)$/
+run_machine_parametrized	ct.c	/^int run_machine_parametrized(char* pref)$/
+set_speed	ct.c	/^void set_speed(char* arg)$/
