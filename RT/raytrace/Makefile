@@ -14,6 +14,10 @@ rays96.debug: rays.c rayslib.c rayslib.h
 rays.small: rays.c rayslib.c rayslib.h
 	$(CC) -O3 -ffast-math -Werror -DNOTHREADS -DNOINET -DNOJPEG -DNOGL -DNOSIGNALS -Wall -ansi -pedantic -g -o rays.small rays.c rayslib.c -lc -lm
 	strip -s rays.small
+rays.nogl: rays.c rayslib.c rayslib.h
+	# $(CC) -DREAL=__REAL_64bit -funroll-all-loops -fomit-frame-pointer -fexpensive-optimizations -ffast-math -DNOJPEG -DNOGL -D_REENTRANT -pthread -I/usr/local/include -L/usr/local/lib -Wall -ansi -pedantic -O4 -o rays.nogl rays.c rayslib.c -lm
+	# $(CC) -DREAL=__REAL_64bit -funroll-all-loops -fomit-frame-pointer -fexpensive-optimizations -ffast-math -D_REENTRANT -pthread -I/opt/homebrew/include -I/usr/local/include -L/opt/homebrew/lib -L/usr/local/lib -framework GLUT -framework OpenGL -Wall -ansi -pedantic -O4 -o rays.nogl rays.c rayslib.c -lm -ljpeg -lglut
+	$(CC) -DREAL=__REAL_64bit -funroll-all-loops -fomit-frame-pointer -fexpensive-optimizations -ffast-math -DNOGL -D_REENTRANT -pthread -I/opt/homebrew/include -I/usr/local/include -L/opt/homebrew/lib -L/usr/local/lib -Wall -ansi -pedantic -O4 -o rays.nogl rays.c rayslib.c -lm -ljpeg
 rays.static: rays.c rayslib.c rayslib.h
 	$(CC) -funroll-all-loops -fomit-frame-pointer -fexpensive-optimizations -ffast-math -I/usr/local/include -L/usr/local/lib -pthread -O4 -ffast-math -Werror -static -DNOGL -Wall -ansi -pedantic -o rays.static rays.c rayslib.c  -ljpeg
 	strip -s rays.static

@@ -2021,7 +2021,7 @@ void load_jpeg_texture(Texture* t, FILE* texfile)
  tex_data = NULL;
  err = load_jpeg_file(&tex_data, &tex_x, &tex_y, texfile);
  fclose(texfile);
- if (err) spanic(HERE, "load_jpeg_texture: jpeg decompress error: file=%s", texfile);
+ if (err) spanic(HERE, "load_jpeg_texture: jpeg decompress error: file=%s, err=%d", texfile, err);
  t->x = tex_x;
  t->y = tex_y;
  t->pixels = (unsigned char*)malloc(3*tex_x*tex_y*sizeof(unsigned char));
