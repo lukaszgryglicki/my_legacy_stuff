@@ -2,7 +2,7 @@
 # Lukasz Gryglicki MiNI M1 CC, License BSD
 all: FParserGL
 CFLAGS= -Wall -ansi -pedantic -pthread -I/usr/X11R6/include -L/usr/X11R6/lib -L/usr/local/lib -O3
-LINK= -lglut -lXmu -lXext -lX11 -lm
+LINK= -lglut -lXmu -lXext -lX11 -lm -lGL -lGLU
 SCFLAGS= -Wall -ansi -pedantic -pthread -fPIC -shared -O3
 SLINK= -lm
 CC= g++

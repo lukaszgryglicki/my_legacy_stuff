@@ -19,6 +19,8 @@ int wx,wy;
 int cx,cy;
 int tail_length;
 int follow, sel;
+int glb;
+char** gpar;
 
 real *xo, *yo, *zo, H;
 int rank, nEqu, nMap;
@@ -263,11 +265,12 @@ void opengl_display()
  char** dpar;
  dlb = 1;
  dpar = (char**)malloc(sizeof(char*));
- dpar[0] = (char*)malloc(sizeof(char)*10);
+ dpar[0] = (char*)malloc(sizeof(char)*20);
  strcpy(dpar[0], "nsolver");
  wx = 500;
  wy = 500;
- glutInit(&dlb, dpar);
+ /*glutInit(&dlb, dpar);*/
+ glutInit(&glb, gpar);
  glutInitDisplayMode(GLUT_DOUBLE);
  glutInitWindowSize(wx, wy);
  glutInitWindowPosition(1, 1);
@@ -612,6 +615,8 @@ void help()
 int main(int lb, char** par)
 {
  if (lb < 2) { help(); return 1; }
+ glb = lb;
+ gpar = par;
  parser_ndsolver(par[1]);
  return 0;
 }

@@ -3,12 +3,12 @@
 all: scene4d lib4d.so
 CFLAGS= -Wall -ansi -pedantic -pthread -I/usr/X11R6/include -L/usr/X11R6/lib -L/usr/local/lib -g3 # -O3
 SFLAGS= -Wall -ansi -pedantic -pthread -shared -fPIC -O
-LINK= -lglut -lXmu -lXext -lX11 -lm
+LINK= -lglut -lXmu -lXext -lX11 -lm -lGL -lGLU
 SLINK= -lm -lc
 CC= gcc
 STRIP= ls -l #strip -s
-scene4d: MG11.c lib4d.c lib4d.h
-	$(CC) $(CFLAGS) -o scene4d MG11.c lib4d.c $(LINK)
+scene4d: trimmm.c lib4d.c lib4d.h
+	$(CC) $(CFLAGS) -o scene4d trimmm.c lib4d.c $(LINK)
 	$(STRIP) scene4d
 lib4d.so: lib4d.c lib4d.c
 	$(CC) $(SFLAGS) -o lib4d.so lib4d.c $(SLINK)
